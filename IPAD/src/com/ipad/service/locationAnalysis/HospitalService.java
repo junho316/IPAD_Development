@@ -19,6 +19,7 @@ public class HospitalService implements Service {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		// 개업 폐업수
 		OpenCloseCountDao openCloseCountDao = new OpenCloseCountDao();
 		HospitalDao hospitalDao = new HospitalDao();
 		ResidentPopulationDao residentPopulationDao = new ResidentPopulationDao();
@@ -34,6 +35,7 @@ public class HospitalService implements Service {
 		}
 		request.setAttribute("HospitalCount", hospitalCountDtos);
 
+		// 총 병원수
 		ArrayList<HospitalCountDto> totalHospitalDtos = hospitalDao.getHospitalCount(LocalDate.now().getYear());
 		ArrayList<ResidentPopulationDto> totalPopulationDtos = residentPopulationDao.getTotalPopulation();
 
@@ -52,6 +54,9 @@ public class HospitalService implements Service {
 		}
 
 		request.setAttribute("HospitalPopulation", hospitalPopulationDTOs);
+
+		// 인구 예측
+
 	}
 
 }

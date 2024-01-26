@@ -32,12 +32,12 @@ public class UpdateDBService {
 	// 일정 시간마다 반복해서 실행하는 메소드
 	private void runDailyTask() {
 		connectPopulationService.insertData();
-//		detailPopulationAPIService.insertData();
-//		detailBuildingAPIService.insertData();
-//		connectFootTrafficAPIService.insertData();
-//		connectHospitalApiService.insertData();
-//		connectResidentPopulationAPIService.insertData();
-//		openCloseCountService.saveData();
+		detailPopulationAPIService.insertData();
+		detailBuildingAPIService.insertData();
+		connectFootTrafficAPIService.insertData();
+		connectHospitalApiService.insertData();
+		connectResidentPopulationAPIService.insertData();
+		openCloseCountService.saveData();
 	}
 
 }

@@ -141,7 +141,7 @@ public class OpenCloseCountDao {
 			}
 		}
 	}
-	
+
 	public int getOpenData(int year) {
 		int data = 0;
 		try {

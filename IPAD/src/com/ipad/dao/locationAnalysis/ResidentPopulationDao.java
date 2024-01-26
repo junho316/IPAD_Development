@@ -273,4 +273,28 @@ public class ResidentPopulationDao {
 			}
 		}
 	}
+
+	public String getResentYear() {
+		String year = null;
+		try {
+			con = dataSource.getConnection();
+			String query = "SELECT MAX(year) AS year FROM resident_population";
+			pstmt = con.prepareStatement(query);
+			resultSet = pstmt.executeQuery();
+			while (resultSet.next()) {
+				year = resultSet.getString("year");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return year;
+	}
 }

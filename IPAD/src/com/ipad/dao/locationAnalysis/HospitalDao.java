@@ -64,17 +64,18 @@ public class HospitalDao {
 		ArrayList<HospitalDto> dtos = new ArrayList<HospitalDto>();
 		try {
 			con = dataSource.getConnection();
-			String query = "select hospital_name, region , address, x_coordinate, y_coordinate from hospital";
+			String query = "select hospital_name, region , address, x_coordinate, y_coordinate, business_status from hospital";
 			pstmt = con.prepareStatement(query);
 			resultSet = pstmt.executeQuery();
 			while (resultSet.next()) {
 				String hospital_name = resultSet.getString("hospital_name");
 				String region = resultSet.getString("region");
 				String address = resultSet.getString("address");
+				String business_status = resultSet.getString("business_status");
 				float x_coordinate = resultSet.getFloat("x_coordinate");
 				float y_coordinate = resultSet.getFloat("y_coordinate");
-
-				HospitalDto dto = new HospitalDto(hospital_name, region, address, x_coordinate, y_coordinate);
+				HospitalDto dto = new HospitalDto(hospital_name, region, address, business_status, x_coordinate,
+						y_coordinate);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {
