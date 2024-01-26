@@ -1,0 +1,397 @@
+* {
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+#map3 {
+    height: 94.5vh;
+    padding: 0;
+    margin: 0;
+}
+
+#location {
+    justify-content: center;
+    /* margin-top: 20px; */
+    /* background-color: red; */
+    /* z-index: 10; */
+}
+
+#searchD {
+    height: 50px;
+    position: fixed;
+    /* background-color: red; */
+    z-index: 10;
+    /* border: 3px solid black; */
+    background-color: white;
+    font-size: 1.5rem;
+    opacity: 0.7;
+    text-align: center;
+    border-radius: 50px;
+    font-weight: bold;
+
+}
+
+#backSearch {
+    height: 95%;
+    margin-top: 50px;
+    z-index: 10;
+    position: absolute;
+    background-color: white;
+    border-radius: 50px;
+    background-color: #547cdc;
+    opacity: 0.7;
+    display: none;
+}
+
+#searchInfo {
+    height: 800px;
+    z-index: 10;
+    position: fixed;
+    margin-top: 50px;
+    background-color: white;
+    padding: 30px 50px;
+    border-radius: 50px;
+    /* background-color: green; */
+}
+
+#infoSection {
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#selectSection {
+    width: 30%;
+    height: 50px;
+    /* background-color: red; */
+    justify-content: center center;
+    text-align: center;
+    display: inline-grid;
+    align-content: center;
+    vertical-align: middle;
+    font-size: 1.2rem;
+    border: 3px solid #547cdc;
+    border-radius: 5px;
+}
+
+#regionSearch {
+    text-align: center;
+    margin-top: 2%;
+    width: 100%;
+    height: 50px;
+}
+
+#regionSearch input {
+    height: 80%;
+    font-size: 1rem;
+    text-indent: 5%;
+    border-radius: 2%;
+    border: 1px solid black
+}
+
+#firstLow {
+    display: flex;
+    justify-content: space-between;
+    /* background: greenyellow; */
+    margin-top: 20px;
+}
+
+.box {
+    text-align: center;
+}
+
+.box:hover {
+    cursor: pointer;
+}
+
+.box p {
+    margin-top: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    /* display: block; */
+}
+
+.iconBox {
+    border: 3px dotted #ccc;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+.iconBox img {
+    margin-top: 10px;
+    width: 80%;
+    height: 80%;
+}
+
+.iconBox img:hover {
+    scale: 1.2;
+    overflow: hidden;
+    transition: 1s;
+}
+
+#secondLow {
+    display: flex;
+    justify-content: space-between;
+    /* background: greenyellow; */
+    margin-top: 50px;
+}
+
+/* 
+#selectSection p{
+    background-color: blue;
+} */
+
+#pickSubject {
+    margin-top: 60px;
+    height: 40px;
+    padding: 0;
+}
+
+#subject {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+#simpleSearch {
+    height: 50px;
+    margin-top: 20px;
+    /* background-color: red; */
+    text-align: center;
+}
+
+#searchButton {
+    height: 100%;
+    width: 80%;
+    border-radius: 15px;
+    /* background-color: blue; */
+}
+
+#detailButton {
+    height: 100%;
+    width: 80%;
+    border-radius: 15px;
+    /* background-color: blue; */
+}
+
+#detailSearch {
+    height: 50px;
+    margin-top: 20px;
+    /* background-color: red; */
+    text-align: center;
+}
+
+#simpleInfo {
+    height: 95%;
+    margin-top: 50px;
+    z-index: 10;
+    position: absolute;
+    background-color: white;
+    border-radius: 50px;
+    /* background-color: red; */
+    /* display: block; */
+    margin-left: 26%;
+    /* display: none; */
+    transition: 0.5s;
+}
+
+#detailInfo {
+    height: 95%;
+    margin-top: 50px;
+    z-index: 10;
+    position: absolute;
+    background-color: white;
+    border-radius: 50px;
+    /* background-color: red; */
+    /* display: block; */
+    margin-left: 25%;
+    /* display: none; */
+    transition: 0.5s;
+}
+
+
+#simpleClose {
+    height: 50px;
+    width: 50px;
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+#detailClose {
+    height: 50px;
+    width: 50px;
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.searchInfoIcon {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    left: 50px;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.searchInfoIcon button {
+    font-size: 2rem;
+}
+
+.searchInfoIcon:hover {
+    opacity: 1;
+}
+
+#choiceBox {
+    display: flex;
+    border: 1px solid #ccc;
+    margin-top: 100px;
+    width: 80%;
+    height: 50px;
+    justify-content: center;
+    /* align-items: center; */
+    margin-left: 10%;
+}
+
+#regionChoice,
+#subjectChoice {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    /* border: 1px solid red; */
+}
+
+#salePredict {
+    display: flex;
+    margin-top: 50px;
+    margin-left: 10%;
+    width: 80%;
+    border-bottom: 3px solid #ccc;
+    height: 70px;
+}
+
+#population {
+    display: flex;
+    margin-top: 50px;
+    margin-left: 10%;
+    width: 80%;
+    border-bottom: 3px solid #ccc;
+    height: 70px;
+}
+
+#floatingPp {
+    display: flex;
+    margin-top: 50px;
+    margin-left: 10%;
+    width: 80%;
+    border-bottom: 3px solid #ccc;
+    height: 70px;
+}
+
+#countHospital {
+    display: flex;
+    margin-top: 50px;
+    margin-left: 10%;
+    width: 80%;
+    border-bottom: 3px solid #ccc;
+    height: 70px;
+}
+
+.bodyIcon {
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+}
+
+.bodyIcon img {
+    width: 50px;
+    height: 50px;
+}
+
+.textBox {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+}
+
+.chartBox {
+    width: 80%;
+    margin-left: 10%;
+    height: 40%;
+}
+
+.roundChartBox {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 3%;
+}
+
+.blank {
+    width: 100%;
+    height: 5%;
+}
+
+@media (min-width:1501px) {
+    #simpleInfo {
+        width: 30%;
+    }
+
+    #detailInfo {
+        width: 30%;
+    }
+}
+
+
+@media (max-width: 1500px) {
+    #searchInfo {
+        display: none;
+    }
+
+    .searchInfoIcon {
+        display: block;
+    }
+
+    #simpleInfo {
+        width: 50%;
+    }
+
+    #detailInfo {
+        width: 50%;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    #simpleInfo {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    #detailInfo {
+        width: 80%;
+        margin-left: 10%;
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}

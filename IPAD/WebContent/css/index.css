@@ -1,0 +1,262 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Black Han Sans', sans-serif;
+	font-family: 'Do Hyeon', sans-serif;
+	font-family: 'Gothic A1', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+@font-face {
+	font-family: 'GangwonEdu_OTFBoldA';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'JalnanGothic';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+#container {
+	margin: 0 auto;
+	width: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+}
+
+/* nav(header) */
+
+nav {
+	background-color: white;
+	border-bottom: 1px solid lightgray;
+}
+
+#loginBtn {
+	background-color: darkgray;
+}
+
+/* Carousel */
+
+#mainCarousel img {
+	width: 100%;
+	height: 100vh;
+	object-fit: cover;
+	filter: brightness(50%);
+	transform: scale(1.4, 1.4);
+}
+
+#mainCarousel .active img {
+	transform: scale(1, 1);
+	transition-duration: 4.5s, 4.5s;
+}
+
+#mainCarousel .carousel-caption {
+	position: absolute;
+	right: 15%;
+	top: 20%;
+	left: 15%;
+	color: #fff;
+	height: 100%;
+}
+
+#mainCarousel .carousel-caption #title {
+	font-size: 5rem;
+	font-weight: bolder;
+}
+
+#mainCarousel .carousel-caption #detail {
+	margin-top: 20px;
+	margin-left: 20px;
+	font-size: 2rem;
+}
+
+#mainCarousel .carousel-caption button {
+	border-radius: 10px;
+	margin-top: 20px;
+	margin-left: 20px;
+	width: 200px;
+	height: 60px;
+	background-color: rgba(0, 0, 0, 0.4);
+	border: 0px;
+}
+
+#mainCarousel .carousel-caption button:hover {
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+#mainCarousel .carousel-caption button a {
+	text-decoration: none;
+	color: white;
+	font-size: 1.2rem;
+}
+.carousel-indicators [data-bs-target] {
+	position: relative;
+	width: 100px;
+	height: 4px;
+	border: none;
+}
+
+.carousel-indicators [data-bs-target] span {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	background: #A9A9A9;
+}
+
+/* content1 입지분석 */
+#content1 {
+	background-color: #F7F0ED;
+}
+
+#analysisLeft img {
+	width: 100%;
+	margin-bottom: 10%;
+}
+
+#analysisRight img {
+	width: 70%;
+}
+
+#analysisRight div {
+	text-align: center;
+	margin-top: 17%;
+}
+
+#analysisRight H2 {
+	font-family: 'JalnanGothic';
+	font-weight: 300px;
+}
+
+#analysisRight h6 {
+	font-family: 'JalnanGothic';
+}
+
+#analysisRight a {
+	border: 1px solid gray;
+	background-color: white;
+	font-size: 12px;
+	font-family: 'JalnanGothic';
+}
+
+#analysisTitle {
+	text-align: center;
+	margin-top: 5%;
+	font-family: 'JalnanGothic';
+	color: #11295D;
+}
+
+/* content2 매출 분석*/
+#content2 {
+	background-color: #E8F0F9;
+}
+
+#content2 h6 {
+	text-align: center;
+}
+
+#content2 h6 a {
+	color: red;
+}
+
+#content2Bottom {
+	height: 100%;
+	margin-top: 5%;
+}
+
+#content2Left img {
+	width: 90%;
+	margin-bottom: 10%;
+}
+
+#content2Right div {
+	justify-content: center;
+	display: flex;
+}
+
+#content2Right div div img {
+	width: 90%;
+}
+
+/* content3 Q&A */
+
+#boardLeft {
+	margin-top: 50px;
+	height: 600px;
+	padding: 0;
+	overflow: hidden;
+}
+
+#boardLeft img {
+	margin-left: 40px;
+	width: 85%;
+	height: 90%;
+	border-radius: 30%;
+	box-shadow: 10px 10px 10px 10px gray;
+}
+
+#boardRight {
+	margin-top: 70px;
+	height: 600px;
+	padding: 0;
+	overflow: hidden;
+}
+
+#boardRight #title {
+	height: 100px;
+	line-height: 100px;
+	padding-left: 20px;
+	margin: 0;
+	font-size: 2rem;
+}
+
+#boardRight #title a {
+	font-weight: bolder;
+}
+
+#boardRight a {
+	text-decoration: none;
+	color: black;
+}
+
+#boardRight table {
+	table-layout: fixed;
+	margin: 0;
+	padding: 0;
+}
+
+#boardRight table tr {
+	height: 50px;
+}
+
+#boardRight table td {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+#boardRight table th {
+	text-align: center;
+}
+
+#boardRight table td:last-child {
+	text-align: center;
+}
+
+/* footer */
+footer {
+	background-color: white;
+	border-top: 1px lightgray solid;
+}

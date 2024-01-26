@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+#analyzeInfo {
+    overflow-x: hidden;
+    margin-bottom: 100px;
+}
+
+#s_salePredict {
+    border-bottom: 3px solid #ccc;
+    height: 70px;
+}
+
+.s_bodyIcon {
+    margin-left: 5%;
+    align-items: center;
+}
+
+.s_bodyIcon img {
+    width: 50px;
+    height: 50px;
+}
+
+.s_textBox {
+    line-height: 50px;
+    margin-left: 5%;
+}
+
+.s_chartBox {
+    width: 90%;
+    margin-left: 5%;
+    height: 400px;
+}
+
+.list_textBox {
+    line-height: 50px;
+    color: rgb(202, 117, 117);
+}
+
+.list_box {
+    height: 70px;
+    border-bottom: 3px solid #ccc;
+}
+
+.chart_box {
+    border-bottom: 3px solid #ccc;
+    padding-bottom: 50px;
+}
+
+.figurebox {
+    width: 90%;
+    margin-top: 50px;
+    margin-left: 5%;
+}
+
+.figure-caption {
+    color: #a3a3a3;
+}
+
+#income_list {
+    border-bottom: 3px solid rgb(158, 0, 0);
+}
+
+.double_box {
+    width: 90%;
+    margin-left: 5%;
+    border-bottom: 3px solid #ccc;
+    padding-bottom: 50px;
+}
+
+.double_container {
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+}
+
+.double {
+    width: 40%;
+}
+
+.button_box {
+    display: flex;
+    justify-content: center;
+}
+
+.button_box button {
+    margin: 50px;
+}

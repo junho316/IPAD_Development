@@ -1,0 +1,195 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+#container {
+	margin: 0 auto;
+	width: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+}
+
+table tbody th {
+	width: 15%;
+}
+
+
+.boxShadow {
+	background-color: white;
+	border-radius: 50px;
+	box-shadow: 5px 5px 5px 5px lightgray;
+}
+
+.bolder {
+	font-weight: bolder;
+}
+
+#chartArea {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+table th {
+	background-color: black;
+}
+
+/* nav */
+
+nav {
+	background-color: white;
+	border-bottom: 1px solid lightgray;
+}
+
+#loginBtn {
+	background-color: darkgray;
+}
+
+/* content */
+
+/* 병원 현황 */
+
+#openCloseHosChart {
+	margin-top: 50px;
+	font-size: 20px;
+}
+
+#OpenCloseHos h4 {
+	padding-left: 40px;
+}
+
+#OpenCloseHosTable {
+	margin-top: 50px;
+	height: 200px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#OpenCloseHosTable table {
+	width: 1250px;
+}
+
+
+#OpenCloseHosTable table th {
+	background-color: lightgray;
+}
+
+/**********************************  */
+
+#numOfHos h4 {
+	padding-left: 40px;
+}
+
+#numOfHosTable {
+	margin-top: 50px;
+	height: 200px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+
+#numOfHosTable table {
+	width: 1250px;
+}
+
+#numOfHosTable table th {
+	background-color: lightgray;
+}
+
+/**********************************  */
+
+
+#popuDivideHos h4 {
+	padding-left: 40px;
+}
+
+#popuDivideHosTable {
+	margin-top: 50px;
+	height: 200px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#popuDivideHosTable table {
+	width: 1250px;
+}
+
+#popuDivideHosTable table th {
+	background-color: lightgray;
+}
+
+
+/* 콜랩스 */
+
+/* .btn {
+
+	background-image: url(../img/questionIcon.png);
+	width: 30px;
+	height: 30px;
+	background-size: cover;
+	margin: 0 auto;
+
+} */
+
+i {
+	color: gray;
+}
+
+i:hover {}
+
+#firstInfo {
+	position: absolute;
+	border: 1px black solid;
+	margin-left: 220px;
+	padding: 5px;
+	display: none;
+	border-radius: 10px;
+}
+
+#secondInfo {
+	position: absolute;
+	border: 1px black solid;
+	margin-left: 250px;
+	padding: 5px;
+	display: none;
+	border-radius: 10px;
+}
+
+#thirdInfo {
+	position: absolute;
+	border: 1px black solid;
+	margin-left: 180px;
+	padding: 5px;
+	display: none;
+	border-radius: 10px;
+}
+
+.card {
+
+	width: 50%;
+	text-align: center;
+}
+
+.explanation {
+	position: absolute;
+	margin-left: 250px;
+	border: 0px solid blue;
+	width: 500px;
+}
+
+/******************************/
+/* FOOTER                     */
+/******************************/
+
+footer {
+	background-color: white;
+	border-top: 1px lightgray solid;
+}
