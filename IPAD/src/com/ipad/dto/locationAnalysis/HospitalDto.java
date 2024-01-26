@@ -12,10 +12,12 @@ public class HospitalDto {
 	private float x_coordinate;
 	private float y_coordinate;
 
-	public HospitalDto(String hospital_name, String region, String address, float x_coordinate, float y_coordinate) {
+	public HospitalDto(String hospital_name, String region, String address, String business_status, float x_coordinate,
+			float y_coordinate) {
 		this.hospital_name = hospital_name;
 		this.region = region;
 		this.address = address;
+		this.business_status = business_status;
 		this.x_coordinate = x_coordinate;
 		this.y_coordinate = y_coordinate;
 

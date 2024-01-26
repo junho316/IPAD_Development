@@ -41,11 +41,14 @@ public class FootTrafficDao {
 			while (resultSet.next()) {
 				String adm_cd = resultSet.getString("adm_cd");
 				String quater = transformString(resultSet.getString("quater"));
-				String population_total = String.valueOf((int) Double.parseDouble(resultSet.getString("population_total")));
+				String population_total = String
+						.valueOf((int) Double.parseDouble(resultSet.getString("population_total")));
 				String population_mon = String.valueOf((int) Double.parseDouble(resultSet.getString("population_mon")));
-				String population_tues = String.valueOf((int) Double.parseDouble(resultSet.getString("population_tues")));
+				String population_tues = String
+						.valueOf((int) Double.parseDouble(resultSet.getString("population_tues")));
 				String population_wed = String.valueOf((int) Double.parseDouble(resultSet.getString("population_wed")));
-				String population_thur = String.valueOf((int) Double.parseDouble(resultSet.getString("population_thur")));
+				String population_thur = String
+						.valueOf((int) Double.parseDouble(resultSet.getString("population_thur")));
 				String population_fri = String.valueOf((int) Double.parseDouble(resultSet.getString("population_fri")));
 				String population_sat = String.valueOf((int) Double.parseDouble(resultSet.getString("population_sat")));
 				String population_sun = String.valueOf((int) Double.parseDouble(resultSet.getString("population_sun")));

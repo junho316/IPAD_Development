@@ -70,48 +70,67 @@ public class JsonService {
 		}
 
 		for (int i = 0; i < regionSummaryDtos.size(); i++) {
-			for (HospitalPopulationDTO dto2 : hospitalPopulationDTOs) {
-				if (regionSummaryDtos.get(i).getRegion().equals(dto2.getRegion())) {
+			for (HospitalPopulationDTO dto : hospitalPopulationDTOs) {
+				if (regionSummaryDtos.get(i).getRegion().equals(dto.getRegion())) {
 					RegionSummaryDto tem = regionSummaryDtos.get(i);
-					tem.setHospitalPopulation(dto2.getPopulation());
+					tem.setHospitalPopulation(dto.getPopulation());
 				}
 			}
 		}
 
 		// 가장많은 연령
+		int temp10 = 0;
+		int temp20 = 0;
+		int temp30 = 0;
+		int temp40 = 0;
+		int temp50 = 0;
+		int temp60 = 0;
+		int temp70 = 0;
+
 		ArrayList<ResidentPopulationDto> ageGroupfDtos = residentPopulationDao.getAgeGroup();
 		for (int i = 0; i < regionSummaryDtos.size(); i++) {
-			for (ResidentPopulationDto dto2 : ageGroupfDtos) {
-				if (regionSummaryDtos.get(i).getRegion().equals(dto2.getRegion_name_detail())) {
-					int temp = Integer.parseInt(dto2.getPopulation_10());
+			for (ResidentPopulationDto dto : ageGroupfDtos) {
+				if (regionSummaryDtos.get(i).getRegion().equals(dto.getRegion_name_detail())) {
+
+					int temp = Integer.parseInt(dto.getPopulation_10());
 					String ageGroup = "10대";
-					if (temp < Integer.parseInt(dto2.getPopulation_20())) {
-						temp = Integer.parseInt(dto2.getPopulation_20());
+					if (temp < Integer.parseInt(dto.getPopulation_20())) {
+						temp = Integer.parseInt(dto.getPopulation_20());
 						ageGroup = "20대";
 					}
-					if (temp < Integer.parseInt(dto2.getPopulation_30())) {
-						temp = Integer.parseInt(dto2.getPopulation_30());
+					if (temp < Integer.parseInt(dto.getPopulation_30())) {
+						temp = Integer.parseInt(dto.getPopulation_30());
 						ageGroup = "30대";
 					}
-					if (temp < Integer.parseInt(dto2.getPopulation_40())) {
-						temp = Integer.parseInt(dto2.getPopulation_40());
+					if (temp < Integer.parseInt(dto.getPopulation_40())) {
+						temp = Integer.parseInt(dto.getPopulation_40());
 						ageGroup = "40대";
 					}
-					if (temp < Integer.parseInt(dto2.getPopulation_50())) {
-						temp = Integer.parseInt(dto2.getPopulation_50());
+					if (temp < Integer.parseInt(dto.getPopulation_50())) {
+						temp = Integer.parseInt(dto.getPopulation_50());
 						ageGroup = "50대";
 					}
-					if (temp < Integer.parseInt(dto2.getPopulation_60())) {
-						temp = Integer.parseInt(dto2.getPopulation_60());
+					if (temp < Integer.parseInt(dto.getPopulation_60())) {
+						temp = Integer.parseInt(dto.getPopulation_60());
 						ageGroup = "60대";
 					}
-					if (temp < Integer.parseInt(dto2.getPopulation_70())) {
-						temp = Integer.parseInt(dto2.getPopulation_70());
+					if (temp < Integer.parseInt(dto.getPopulation_70())) {
+						temp = Integer.parseInt(dto.getPopulation_70());
 						ageGroup = "70대";
 					}
 					RegionSummaryDto tem = regionSummaryDtos.get(i);
 					tem.setMaxAgeGroup(ageGroup);
 					regionSummaryDtos.set(i, tem);
+
+					// 전체 계산
+					temp10 = temp + Integer.parseInt(dto.getPopulation_10());
+					temp20 = temp + Integer.parseInt(dto.getPopulation_20());
+					temp30 = temp + Integer.parseInt(dto.getPopulation_30());
+					temp40 = temp + Integer.parseInt(dto.getPopulation_40());
+					temp50 = temp + Integer.parseInt(dto.getPopulation_50());
+					temp60 = temp + Integer.parseInt(dto.getPopulation_60());
+					temp70 = temp + Integer.parseInt(dto.getPopulation_70());
+
 				}
 			}
 		}
@@ -140,11 +159,41 @@ public class JsonService {
 				regoinWide.setResidetnPopulation(String.valueOf(Integer.parseInt(dto.getResidetnPopulation())
 						+ Integer.parseInt(regoinWide.getResidetnPopulation())));
 			}
-
 		}
-		
+
+		int population = Integer.parseInt(regoinWide.getResidetnPopulation());
+		int hospitalCount = Integer.parseInt(regoinWide.getHospitalCount());
+
+		regoinWide.setHospitalPopulation(String.valueOf(population / hospitalCount));
 		regionSummaryDtos.add(regoinWide);
 
+		int tempTotal = temp10;
+		String ageGroup = "10대";
+		if (tempTotal < temp20) {
+			tempTotal = temp20;
+			ageGroup = "20대";
+		}
+		if (tempTotal < temp30) {
+			tempTotal = temp30;
+			ageGroup = "30대";
+		}
+		if (tempTotal < temp40) {
+			tempTotal = temp40;
+			ageGroup = "40대";
+		}
+		if (tempTotal < temp50) {
+			tempTotal = temp50;
+			ageGroup = "50대";
+		}
+		if (tempTotal < temp60) {
+			tempTotal = temp60;
+			ageGroup = "60대";
+		}
+		if (tempTotal < temp70) {
+			tempTotal = temp70;
+			ageGroup = "70대";
+		}
+		regoinWide.setMaxAgeGroup(ageGroup);
 		ObjectMapper objectMapper = new ObjectMapper();
 
 		try {
