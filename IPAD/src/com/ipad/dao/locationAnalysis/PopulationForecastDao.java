@@ -27,12 +27,12 @@ public class PopulationForecastDao {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public void saveData(PopulationForecastDto dto) {
 		int numberHouse = 0;
 		try {
 			con = dataSource.getConnection();
-			String query = "insert into Population_forecast (year, region, populaiton, birth, death,number_house,family) values(?,?,?,?,?,?,?)";
+			String query = "insert into Population_forecast (year, region, population, birth, death,number_house,family) values(?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, dto.getYear());
 			pstmt.setString(2, dto.getRegion());
