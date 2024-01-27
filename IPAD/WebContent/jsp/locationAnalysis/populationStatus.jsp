@@ -334,45 +334,37 @@
 					<thead>
 						<tr>
 							<th></th>
-							<th>2019년</th>
-							<th>2020년</th>
-							<th>2021년</th>
-							<th>2022년</th>
-							<th>2023년</th>
-							<th>2024년</th>
-							<th>2025년</th>
+							<c:forEach var="dto" items="${PopulationForecast}">
+								<c:if test="${dto.region eq '송파구'}">
+									<th>${dto.year}년</th>
+								</c:if>
+							</c:forEach>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>송파구 위례동</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<c:forEach var="dto" items="${PopulationForecast}">
+								<c:if test="${dto.region eq '송파구'}">
+									<td>${dto.population}</td>
+								</c:if>
+							</c:forEach>
 						</tr>
 						<tr>
 							<td>성남시 위례동</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<c:forEach var="dto" items="${PopulationForecast}">
+								<c:if test="${dto.region eq '성남시'}">
+									<td>${dto.population}</td>
+								</c:if>
+							</c:forEach>
 						</tr>
 						<tr>
 							<td>하남시 위례동</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<c:forEach var="dto" items="${PopulationForecast}">
+								<c:if test="${dto.region eq '하남시'}">
+									<td>${dto.population}</td>
+								</c:if>
+							</c:forEach>
 						</tr>
 					</tbody>
 				</table>
