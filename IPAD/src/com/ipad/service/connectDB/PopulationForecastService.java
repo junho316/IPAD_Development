@@ -1,4 +1,4 @@
-package com.ipad.service.locationAnalysis;
+package com.ipad.service.connectDB;
 
 import java.util.*;
 
@@ -37,6 +37,7 @@ public class PopulationForecastService {
 			dto.setBirth((int) ((19.18 * (year + i)) - 38579.07));
 			dto.setFamily((int) ((1114 * (year + i)) - 2241879));
 			dto.setNumberHouse(dao.getNumberHouse("하남시"));
+			dto.setFamily(dao.getFamily("하남시"));
 			dto.setPopulation((int) (652.4941 + (-7.9297 * dto.getBirth()) + (1.8553 * dto.getNumberHouse())
 					+ (1.6320 * dto.getFamily())));
 			dao.saveData(dto);
