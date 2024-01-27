@@ -27,7 +27,7 @@ public class PopulationForecastDao {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void saveData(PopulationForecastDto dto) {
 		int numberHouse = 0;
 		try {

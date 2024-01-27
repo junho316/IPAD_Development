@@ -5,7 +5,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import com.ipad.service.locationAnalysis.OpenCloseCountService;
-import com.ipad.service.locationAnalysis.PopulationForecastService;
 
 public class UpdateDBService {
 	private ScheduledExecutorService scheduler;
