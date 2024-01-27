@@ -5,6 +5,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import com.ipad.service.locationAnalysis.OpenCloseCountService;
+import com.ipad.service.locationAnalysis.PopulationForecastService;
 
 public class UpdateDBService {
 	private ScheduledExecutorService scheduler;
@@ -16,6 +17,8 @@ public class UpdateDBService {
 	DetailPopulationAPIService detailPopulationAPIService = new DetailPopulationAPIService();
 	DetailBuildingAPIService detailBuildingAPIService = new DetailBuildingAPIService();
 	ConnectPopulationAPIService connectPopulationService = new ConnectPopulationAPIService();
+	PopulationForecastService populationForecastService = new PopulationForecastService();
+
 	// DB 데이터 업데이트
 	public void updateDB() {
 		scheduler = Executors.newScheduledThreadPool(1);
@@ -31,13 +34,14 @@ public class UpdateDBService {
 
 	// 일정 시간마다 반복해서 실행하는 메소드
 	private void runDailyTask() {
-		connectPopulationService.insertData();
-		detailPopulationAPIService.insertData();
-		detailBuildingAPIService.insertData();
-		connectFootTrafficAPIService.insertData();
-		connectHospitalApiService.insertData();
-		connectResidentPopulationAPIService.insertData();
-		openCloseCountService.saveData();
+//		connectPopulationService.insertData();
+//		detailPopulationAPIService.insertData();
+//		detailBuildingAPIService.insertData();
+//		connectFootTrafficAPIService.insertData();
+//		connectHospitalApiService.insertData();
+//		connectResidentPopulationAPIService.insertData();
+//		openCloseCountService.saveData();
+		populationForecastService.saveData();
 	}
 
 }
