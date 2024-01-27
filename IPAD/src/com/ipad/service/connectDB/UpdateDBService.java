@@ -40,7 +40,7 @@ public class UpdateDBService {
 //		connectHospitalApiService.insertData();
 //		connectResidentPopulationAPIService.insertData();
 //		openCloseCountService.saveData();
-//		populationForecastService.saveData();
+		populationForecastService.saveData();
 	}
 
 }

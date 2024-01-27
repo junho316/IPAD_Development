@@ -132,4 +132,38 @@ public class PopulationForecastDao {
 		return numberHouse;
 	}
 
+	public int getFamily(String region) {
+		int family = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet resultSet = null;
+
+		try {
+			con = dataSource.getConnection();
+			String query = "SELECT family FROM Population_forecast WHERE year = 2022 AND region = ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, region);
+			resultSet = pstmt.executeQuery();
+			while (resultSet.next()) {
+				family = resultSet.getInt("family");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null) {
+					resultSet.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return family;
+	}
 }
