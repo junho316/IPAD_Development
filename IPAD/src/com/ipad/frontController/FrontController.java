@@ -13,16 +13,16 @@ import com.ipad.controller.Controller;
 import com.ipad.controller.JsonController;
 import com.ipad.controller.LocationAnalysisController;
 import com.ipad.controller.SaleAnalysisController;
+import com.ipad.service.connectDB.PopulationForecastService;
 import com.ipad.service.connectDB.UpdateDBService;
 import com.ipad.service.saleAnalysis.SearchService;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
-	
+
 	UpdateDBService updateDBService;
 
 	public void init() throws ServletException {
-
 		updateDBService = new UpdateDBService();
 		updateDBService.updateDB();
 	}
