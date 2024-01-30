@@ -13,7 +13,8 @@
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/index.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap">
@@ -39,13 +40,16 @@
 			data-bs-ride="carousel" data-bs-interval="4000">
 			<!-- 하단 현재위치  -->
 			<div class="carousel-indicators">
-				<button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active">
+				<button type="button" data-bs-target="#mainCarousel"
+					data-bs-slide-to="0" class="active">
 					<span></span>
 				</button>
-				<button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1">
+				<button type="button" data-bs-target="#mainCarousel"
+					data-bs-slide-to="1">
 					<span></span>
 				</button>
-				<button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2">
+				<button type="button" data-bs-target="#mainCarousel"
+					data-bs-slide-to="2">
 					<span></span>
 				</button>
 			</div>
