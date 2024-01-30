@@ -65,20 +65,22 @@
 			<h2>상업 입지 선택</h2>
 
 			<form>
-				<fieldset style="margin-top:1%;">
+				<fieldset style="margin-top: 1%;">
 					<legend>전문 분야</legend>
 
-					<input type="checkbox" name="ageGroup" id="youthRadio" value="youth">
-					<label for="youthRadio">임플란트</label> <input type="checkbox"
-						name="ageGroup" id="middleAgeRadio" value="middleAge"> <label
-						for="middleAgeRadio">교정</label> <input type="submit" value="검색" class="btn btn-primary" style="position:right;">
+					<input type="checkbox" name="ageGroup" id="youthRadio"
+						value="youth"> <label for="youthRadio">임플란트</label> <input
+						type="checkbox" name="ageGroup" id="middleAgeRadio"
+						value="middleAge"> <label for="middleAgeRadio">교정</label>
+					<input type="submit" value="검색" class="btn btn-primary"
+						style="position: right;">
 				</fieldset>
 
-				
-				
-				
+
+
+
 			</form>
-			
+
 			<!-- 추천해주는 수에 따라 최대 3개 div작성 -->
 			<div class="row">
 				<div class="col-md-4">
@@ -96,7 +98,7 @@
 			</div>
 
 			<!-- 한 지역 확인창 -->
-			
+
 
 
 

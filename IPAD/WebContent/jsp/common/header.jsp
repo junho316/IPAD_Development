@@ -23,20 +23,24 @@
 			<!-- sidebar body -->
 			<div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
 				<ul class="navbar-nav justify-content-center fs-5 flex-grow-1 pe-3">
+					<li class="nav-item mx-5"><a class="nav-link"
+						href="${pageContext.request.contextPath}/locationRecommand/recommand.do">지역추천</a></li>
+					<li class="nav-item mx-5"><a class="nav-link"
+						href="${pageContext.request.contextPath}/SaleAnalysis/search.do">매출분석</a></li>
 					<li class="nav-item dropdown mx-5">
 						<div class="dropdown-center">
 							<a class="nav-link dropdown-toggle" href="#" role="button"
 								data-bs-toggle="dropdown">입지분석</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/locationAnalysis/population.do">인구분석</a></li>
-								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/locationAnalysis/hospital.do">치과현황</a></li>
-								<li><a class="dropdown-item" href="${pageContext.request.contextPath}/locationAnalysis/map.do">지도</a></li>
+								<li><a class="dropdown-item"
+									href="${pageContext.request.contextPath}/locationAnalysis/population.do">인구분석</a></li>
+								<li><a class="dropdown-item"
+									href="${pageContext.request.contextPath}/locationAnalysis/hospital.do">치과현황</a></li>
+								<li><a class="dropdown-item"
+									href="${pageContext.request.contextPath}/locationAnalysis/map.do">지도</a></li>
 							</ul>
 						</div>
 					</li>
-
-					<li class="nav-item mx-5"><a class="nav-link"
-						href="${pageContext.request.contextPath}/SaleAnalysis/search.do">매출분석</a></li>
 					<li class="nav-item mx-5"><a class="nav-link" href="#">Q&A</a>
 					</li>
 				</ul>
