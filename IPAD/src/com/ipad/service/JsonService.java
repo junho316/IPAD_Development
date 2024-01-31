@@ -17,6 +17,7 @@ import com.ipad.dto.locationAnalysis.HospitalPopulationDTO;
 import com.ipad.dto.locationAnalysis.OpenCloseCountDto;
 import com.ipad.dto.locationAnalysis.RegionSummaryDto;
 import com.ipad.dto.locationAnalysis.ResidentPopulationDto;
+import com.ipad.dto.locationRecommand.HospitalDetailDto;
 
 public class JsonService {
 
@@ -209,7 +210,7 @@ public class JsonService {
 	public void mapData(HttpServletRequest request, HttpServletResponse response) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		HospitalDao dao = new HospitalDao();
-		ArrayList<HospitalDto> dtos = dao.getHospitalData();
+		ArrayList<HospitalDetailDto> dtos = dao.getHospitalData();
 		try {
 			String json = objectMapper.writeValueAsString(dtos);
 			response.setContentType("application/json");

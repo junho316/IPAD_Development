@@ -67,7 +67,7 @@
 									</tr>
 								</tbody>
 							</table>
-							<input type="button" value="추천 지역 검색" onclick="getRankList(); ">
+							<input type="button" value="추천 지역 검색" onclick="getRankList();">
 						</form>
 					</div>
 				</div>
@@ -80,15 +80,15 @@
 							<tbody>
 								<tr>
 									<td>1.</td>
-									<td id="first">-</td>
+									<td id="first" onclick="selectRegion(event);">-</td>
 								</tr>
 								<tr>
 									<td>2.</td>
-									<td id="second">-</td>
+									<td id="second" onclick="selectRegion(event);">-</td>
 								</tr>
 								<tr>
 									<td>3.</td>
-									<td id="third">-</td>
+									<td id="third" onclick="selectRegion(event);">-</td>
 								</tr>
 							</tbody>
 						</table>
@@ -145,8 +145,7 @@
 
 	<script
 		src="${pageContext.request.contextPath}/js/locationRecommand.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/js/locationAnalysisMap.js"></script>
+
 </body>
 
 </html>

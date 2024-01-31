@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.ipad.dto.locationAnalysis.HospitalCountDto;
 import com.ipad.dto.locationAnalysis.HospitalDto;
+import com.ipad.dto.locationRecommand.HospitalDetailDto;
 
 public class HospitalDao {
 	private Connection con;
@@ -60,22 +61,23 @@ public class HospitalDao {
 	}
 
 	// 차트용 데이터
-	public ArrayList<HospitalDto> getHospitalData() {
-		ArrayList<HospitalDto> dtos = new ArrayList<HospitalDto>();
+	public ArrayList<HospitalDetailDto> getHospitalData() {
+		ArrayList<HospitalDetailDto> dtos = new ArrayList<HospitalDetailDto>();
 		try {
 			con = dataSource.getConnection();
-			String query = "SELECT h.hospital_name, r.adm_cd, h.address, h.x_coordinate, h.y_coordinate, h.business_status FROM hospital h JOIN region r ON h.region = r.region_name";
+			String query = "SELECT h.hospital_name, r.region_name_detail,h.region, h.address, h.x_coordinate, h.y_coordinate, h.business_status FROM hospital h JOIN region r ON h.region = r.region_name";
 			pstmt = con.prepareStatement(query);
 			resultSet = pstmt.executeQuery();
 			while (resultSet.next()) {
 				String hospital_name = resultSet.getString("hospital_name");
 				String region = resultSet.getString("region");
+				String region_name_detail = resultSet.getString("region_name_detail");
 				String address = resultSet.getString("address");
 				String business_status = resultSet.getString("business_status");
 				float x_coordinate = resultSet.getFloat("x_coordinate");
 				float y_coordinate = resultSet.getFloat("y_coordinate");
-				HospitalDto dto = new HospitalDto(hospital_name, region, address, business_status, x_coordinate,
-						y_coordinate);
+				HospitalDetailDto dto = new HospitalDetailDto(hospital_name, region, address, region_name_detail, business_status,
+						x_coordinate, y_coordinate);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {
