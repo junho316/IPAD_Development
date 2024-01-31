@@ -1,4 +1,4 @@
-package com.ipad.dao;
+package com.ipad.dao.saleAnalysis;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

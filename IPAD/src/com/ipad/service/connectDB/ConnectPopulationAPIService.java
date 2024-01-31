@@ -20,12 +20,18 @@ public class ConnectPopulationAPIService implements ConnectAPIService {
 	int year = LocalDate.now().getYear();
 	private ArrayList<SearchDto> dtos = new ArrayList<>();
 	private ArrayList<Integer> ageTypeList = new ArrayList<>();
+	private ArrayList<String> code = dao.selectAdm();
+	
+	
 
 	public ConnectPopulationAPIService() {
 		GetOpenAPITokenServiceIMPL getToken = new GetOpenAPITokenServiceIMPL();
 		token = getToken.getToken();
 		dtos = dao.getDtoS();
 		setAgeType();
+		for (int i = 0; i < code.size(); i++) {
+			dao.updateSale(code.get(i));
+		}
 	}
 
 	@Override

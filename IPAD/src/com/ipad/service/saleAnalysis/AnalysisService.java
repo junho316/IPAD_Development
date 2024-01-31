@@ -1,7 +1,9 @@
-package com.ipad.service;
+package com.ipad.service.saleAnalysis;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ipad.service.Service;
 
 public class AnalysisService implements Service{
 	@Override

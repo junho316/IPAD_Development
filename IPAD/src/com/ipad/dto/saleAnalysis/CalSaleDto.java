@@ -1,4 +1,4 @@
-package com.ipad.dto;
+package com.ipad.dto.saleAnalysis;
 
 public class CalSaleDto {
 	private int sale;

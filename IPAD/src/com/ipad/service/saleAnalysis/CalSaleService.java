@@ -1,4 +1,4 @@
-package com.ipad.service;
+package com.ipad.service.saleAnalysis;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.ipad.dao.CalSaleDao;
+import com.ipad.dao.saleAnalysis.CalSaleDao;
+import com.ipad.service.Service;
 
 public class CalSaleService	implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
