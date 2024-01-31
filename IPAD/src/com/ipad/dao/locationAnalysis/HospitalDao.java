@@ -64,7 +64,7 @@ public class HospitalDao {
 		ArrayList<HospitalDto> dtos = new ArrayList<HospitalDto>();
 		try {
 			con = dataSource.getConnection();
-			String query = "select hospital_name, region , address, x_coordinate, y_coordinate, business_status from hospital";
+			String query = "SELECT h.hospital_name, r.adm_cd, h.address, h.x_coordinate, h.y_coordinate, h.business_status FROM hospital h JOIN region r ON h.region = r.region_name";
 			pstmt = con.prepareStatement(query);
 			resultSet = pstmt.executeQuery();
 			while (resultSet.next()) {

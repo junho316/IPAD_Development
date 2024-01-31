@@ -7,9 +7,7 @@ function writeRankList() {
 
 function showlist() {
     console.log("나주엥 찍히면 좋겠앙")
-
 }
-
 
 var list = [];
 
@@ -39,8 +37,10 @@ function getRankList() {
         .then(jsonArray => {
             console.log("fetch 시작", jsonArray);
             list.length = 0;
+            console.log(jsonArray);
             for (let i = 0; i < jsonArray.length; i++) {
                 list.push(jsonArray[i]["adm_nm"]);
+                
             }
             console.log(list);
             console.log("list삽입끝")

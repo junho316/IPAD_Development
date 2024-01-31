@@ -187,7 +187,8 @@ function fetcData() {
 		})
 		.then(data => {
 			for (let i = 0; i < data.length; i++) {
-				array.push(data[i])
+				array.push(data[i]);
+				console.log(data[i]);
 			}
 		})
 		.catch(error => console.error('에러:', error));
@@ -331,3 +332,6 @@ function deleteArea() {
 	)
 }
 
+function deleteArea(){
+	
+}
