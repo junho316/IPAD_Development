@@ -1,5 +1,7 @@
 package com.ipad.service.saleAnalysis;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,5 +16,11 @@ public class AnalysisService implements Service{
 		request.getSession().setAttribute("regionCode", regionCode);
 		
 		System.out.println("세션저장확인 : " + request.getSession().getAttribute("regionCode"));
+		
+		try {
+			response.sendRedirect("./analyze.jsp");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
