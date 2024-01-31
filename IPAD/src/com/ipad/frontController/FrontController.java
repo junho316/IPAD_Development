@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ipad.controller.Controller;
 import com.ipad.controller.JsonController;
 import com.ipad.controller.LocationAnalysisController;
+import com.ipad.controller.LocationRecommandController;
 import com.ipad.controller.SaleAnalysisController;
 import com.ipad.service.connectDB.PopulationForecastService;
 import com.ipad.service.connectDB.UpdateDBService;
@@ -68,6 +69,9 @@ public class FrontController extends HttpServlet {
 				controller.execute(request, response, com);
 			} else if (pathAfterContext.equals("/json")) {
 				controller = new JsonController();
+				controller.execute(request, response, com);
+			} else if (pathAfterContext.equals("/locationRecommand")) {
+				controller = new LocationRecommandController();
 				controller.execute(request, response, com);
 			}
 
