@@ -45,6 +45,15 @@
                 <figcaption class="figure-caption text-end"></figcaption>
             </figure>
             <figure class="figure figurebox">
+                <div id="patientPredict_list" class="row justify-content-between list_box">
+                    <div class="col-1 s_bodyIcon"><img src="${pageContext.request.contextPath}/img/dentalPatient.png" alt="">
+                    </div>
+                    <p class="col fs-5 text-end list_textBox" id="patientList"></p>
+                </div>
+                <!-- <figcaption class="figure-caption text-end">해당 지역 취위생사들의 평균 임금으로서, 실제임금과 오차가 있을 수 잇으며,<br> 경력, 계약형태 등에
+                    따라 차이가 크므로 참고자료로만 활용하세요.</figcaption> -->
+            </figure>
+            <figure class="figure figurebox">
                 <div id="employee_list" class="row justify-content-between list_box">
                     <div class="col-1 s_bodyIcon"><img src="${pageContext.request.contextPath}/img/people.png" alt="">
                     </div>

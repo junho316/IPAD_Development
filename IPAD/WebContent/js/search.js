@@ -130,6 +130,7 @@ window.onload = function () {
             currentOverlay.addEventListener('click', function () {
 
                 var areaname = document.getElementById("area-name");
+                var areacode = document.getElementById("area-code");
 
                 removePolygon();
                 $.getJSON("/IPAD/json/emdTest.geojson", function (geojson) {
@@ -145,7 +146,8 @@ window.onload = function () {
                             name = val.properties.temp;
                             region = val.properties.adm_nm;
                             regionCode = val.properties.adm_cd;
-
+                            areaname.value = region;
+                            areacode.value = regionCode;
                             regionInfo = regionCode;
 
                             for (var i = 0; i < title.length; i++) {
@@ -161,23 +163,6 @@ window.onload = function () {
                             }
                         }
                     });
-                    console.log(regionCode);
-
-                    var analyzeUrl = "../jsp/saleAnalysis/analyze.jsp?regionCode=" + encodeURIComponent(regionCode);
-                    var newWindow = window.open(analyzeUrl, 'result', 'width=800,height=1200,left=550');
-
-                    // $.ajax({
-                    //     url: './analyze.do',
-                    //     method: 'GET',
-                    //     data: { regionCode: regionCode },
-                    //     success: function (data) {
-
-                    //     },
-                    //     error: function (error) {
-                    //         console.error('Error fetching data from server:', error);
-                    //     }
-                    // });
-
                 });
 
                 function displayArea(coordinates, name, properties) {
@@ -226,44 +211,13 @@ window.onload = function () {
     }
 
     function removePolygon() {
-        // 배열에 있는 모든 폴리곤을 순회하면서 지도에서 제거
+
         polygons.forEach(function (polygon) {
-            polygon.setMap(null); // 지도에서 제거
+            polygon.setMap(null);
         });
 
-        // 배열 비우기
         polygons.length = 0;
     }
-
-    // 지역 검색창
-
-    // searchBtn.onclick = function () {
-    //     var map = abc[0].getMap();
-    //     var inputAddress = selectRegion.value;
-
-    //     var ps = new kakao.maps.services.Places();
-
-
-    //     ps.keywordSearch(inputAddress, placesSearchCB);
-
-
-    //     function placesSearchCB(data, status, pagination) {
-    //         if (status === kakao.maps.services.Status.OK) {
-
-    //             var bounds = new kakao.maps.LatLngBounds();
-
-    //             for (var i = 0; i < data.length; i++) {
-    //                 bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-    //             }
-
-    //             map.setLevel(5);
-    //             map.setBounds(bounds);
-    //         }
-    //     }
-    // }
-
-
-
 
 
 }

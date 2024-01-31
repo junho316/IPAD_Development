@@ -14,9 +14,7 @@ import com.ipad.controller.JsonController;
 import com.ipad.controller.LocationAnalysisController;
 import com.ipad.controller.LocationRecommandController;
 import com.ipad.controller.SaleAnalysisController;
-import com.ipad.service.Service;
 import com.ipad.service.connectDB.UpdateDBService;
-import com.ipad.service.locationRecommand.LocationRecommandService;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -47,13 +45,8 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
-		if(com.equals("/jsp/saleAnalysis/calSale.do")) {
-			com = "/SaleAnalysis/calSale.do";
-		} 
 		String pathAfterContext = extractDesiredPart(com);
 		
-		System.out.println(com);
-		System.out.println(pathAfterContext);
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 

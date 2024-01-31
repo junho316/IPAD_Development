@@ -23,7 +23,7 @@ public class CalSaleDao {
 		}
 	}
 	
-	public String calculateSale(String adm_cd) {
+	public int calculateSale(String adm_cd) {
 		
 		System.out.println("calculatorSale 에서 받은 regionCode : " + adm_cd);
 		
@@ -79,7 +79,6 @@ public class CalSaleDao {
 			}
 		}
 		
-		String calSale = Integer.toString(sale);
-		return calSale;
+		return sale;
 	}
 }

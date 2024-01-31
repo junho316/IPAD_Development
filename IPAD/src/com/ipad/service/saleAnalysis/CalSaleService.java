@@ -8,17 +8,35 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.ipad.dao.saleAnalysis.CalSaleDao;
+import com.ipad.dao.saleAnalysis.PatientDao;
+import com.ipad.dto.saleAnalysis.CalculateDto;
 import com.ipad.service.Service;
 
 public class CalSaleService	implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		String regionCode = request.getParameter("areaCode");
-		System.out.println("받아온 regionCode11 : " + regionCode);
+		String regionCode = request.getParameter("areacode");
+		CalculateDto dto = new CalculateDto();
 		CalSaleDao calSaleDao = new CalSaleDao();
-		String calSale = calSaleDao.calculateSale(regionCode);
-		System.out.println(calSale);
-		String jsonResponse = new Gson().toJson(calSale);
+		PatientDao patientDao = new PatientDao();
+		
+		System.out.println("받아온 regionCode11 : " + regionCode);
+		
+		int calSale = calSaleDao.calculateSale(regionCode);
+		int calPatient = patientDao.patientCal(regionCode);
+		int employee = patientDao.employeeCal(calPatient);
+		
+		
+		dto.setPredictSale(calSale);
+		dto.setPredictPatient(calPatient);
+		dto.setEmployee(employee);
+		
+		System.out.println(dto);
+		
+		String jsonResponse = new Gson().toJson(dto);
+		
+		
+		request.setAttribute("dto", dto);
 		
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
