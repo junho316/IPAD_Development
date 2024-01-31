@@ -14,6 +14,7 @@ import com.ipad.dto.saleAnalysis.SimpleAsDto;
 
 public class SimpleAsDao {
 	private DataSource dataSource;
+	
 
 	public SimpleAsDao() {
 		try {
@@ -21,17 +22,18 @@ public class SimpleAsDao {
 			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/Oracle11g");
 		} catch (Exception e) {
 			e.printStackTrace();
-
+			System.out.println("생성자 오류");
 		}
 	}
 
 	public ArrayList<SimpleAsDto> list(String adm_cd) {
-
+		System.out.println("DAO LiST 입장 ========================");
+		System.out.println("DAO 리전코드 : " + adm_cd + "=====================");
 		ArrayList<SimpleAsDto> dtos = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
+		
 		try {
 			con = dataSource.getConnection();
 
@@ -41,20 +43,21 @@ public class SimpleAsDao {
 			pstmt.setString(1, adm_cd);
 			rs = pstmt.executeQuery();
 
+
 			while (rs.next()) {
 
 				int population = rs.getInt("population");
 				int float_pp = rs.getInt("float_pp");
 				int countClinic = rs.getInt("countclinic");
-
+				
 				SimpleAsDto simpleAsDto = new SimpleAsDto(population, float_pp, countClinic);
 				dtos.add(simpleAsDto);
-
+				
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-
+			System.out.println("dataList 삽입 오류");
 		} finally {
 
 			try {
@@ -108,5 +111,4 @@ public class SimpleAsDao {
 
 		return dtos;
 	}
-
 }
