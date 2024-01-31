@@ -53,7 +53,7 @@ nav {
 	text-align: center;
 }
 
-#accordion-button {
+.subtitle {
 	width: 150px;
 	height: 30px;
 	border: none;
@@ -115,8 +115,17 @@ nav {
 	box-shadow: 5px 5px 5px 5px lightgray;
 }
 
-.vertical {
-	height: 900px;
+.vertical1 {
+	height: 250px;
+	margin-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.vertical2 {
+	height: 600px;
 	margin-bottom: 50px;
 	display: flex;
 	flex-direction: column;
@@ -129,6 +138,10 @@ nav {
 	margin-bottom: 20px;
 	padding: 0;
 	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 input[type="submit"] {

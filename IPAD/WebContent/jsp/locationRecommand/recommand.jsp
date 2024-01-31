@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -47,10 +47,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
-				<div class="boxShadow vertical">
+				<div class="boxShadow vertical1">
 
 					<div class="section">
-						<button id="accordion-button" type="button">전문 분야</button>
+						<div class="subtitle">희망 분야</div>
 						<div style="height: 20px; width: 100px;"></div>
 						<form action="submit.do" method="post">
 							<table id="areaTable" class="table">
@@ -66,23 +66,24 @@
 									</tr>
 								</tbody>
 							</table>
-							<div style="height: 20px; width: 100px;"></div>
-							<input type="submit" value="검색">
+							<input type="submit" value="추천 지역 검색">
 						</form>
 					</div>
+				</div>
+				<div class="boxShadow vertical2">
 					<div style="height: 20px; width: 100px;"></div>
 					<div class="section">
-						<button id="accordion-button" type="button">추천 순위</button>
+						<div class="subtitle">추천 지역</div>
 						<div style="height: 20px; width: 100px;"></div>
 						<table id="areaTable" class="table">
 							<tbody>
-							<c:forEach items ="${rank}" var="rank" varStatus="status">
-								<tr>
-								<td>${status.index+1}.</td>
-							<td>${rank.adm_nm}</td>
-							</tr>
-							</c:forEach>
-							<!-- 	<tr>
+								<c:forEach items="${rank}" var="rank" varStatus="status">
+									<tr>
+										<td>${status.index+1}.</td>
+										<td>${rank.adm_nm}</td>
+									</tr>
+								</c:forEach>
+								<!-- 	<tr>
 									<td>1.</td>
 									<td>-</td>
 								</tr>
@@ -97,22 +98,24 @@
 							</tbody>
 						</table>
 						<div style="height: 100px; width: 100px;"></div>
-						<button id="accordion-button" type="button">예상 매출</button>
+						<div class="subtitle">?</div>
 						<div style="height: 20px; width: 100px;"></div>
 						<table id="forecastTable" class="table">
 							<thead>
 								<tr>
-									<td>예상 매출</td>
+									<td>예상 환자수</td>
 									<td>-</td>
 								</tr>
-							</thead>
-							<tbody>
 								<tr>
-									<td>추천 직원 수</td>
+									<td>추천 직원수</td>
 									<td>-</td>
 								</tr>
 								<tr>
 									<td>추천 평수</td>
+									<td>-</td>
+								</tr>
+								<tr>
+									<td>예상 매출</td>
 									<td>-</td>
 								</tr>
 							</tbody>
@@ -145,7 +148,7 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f622a57db8d51137b80a7e575e09fca&libraries=services"></script>
 
-<script
+	<script
 		src="${pageContext.request.contextPath}/js/locationRecommand.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/js/locationAnalysisMap.js"></script>
