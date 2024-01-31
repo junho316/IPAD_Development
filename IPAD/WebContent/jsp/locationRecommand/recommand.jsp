@@ -63,7 +63,7 @@
 												</tbody>
 											</table>
 											<div style="height: 20px; width: 100px;"></div>
-											<input type="button" value="검색" onclick="getRankList()">
+											<input type="button" value="검색" onclick="getRankList(); writeRankList()">
 										</form>
 									</div>
 									<div style="height: 20px; width: 100px;"></div>

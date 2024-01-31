@@ -1,5 +1,5 @@
 function writeRankList() {
-    getRankList();
+    // getRankList();
 
     document.getElementById('first').innerText = list[0];
     document.getElementById('second').innerText = list[1];
@@ -8,24 +8,30 @@ function writeRankList() {
 var list = [];
 
 function getRankList() {
+
     var checkImpl = document.getElementById('implant').checked;
     var checkOrth = document.getElementById('orthodontics').checked;
-    console.log(checkImpl);
-    console.log(checkOrth);
-    var formData = new FormData();
-    formData.append("checkImpl", checkImpl);
-    formData.append("checkOrth", checkOrth)
+    var data = {
+        checkImpl: checkImpl,
+        checkOrth: checkOrth
+    };
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", contextPath + "/locationRecommand/submit.do", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.status == 200) {
-            var result = JSON.stringify(xhr.responseText);
-            console.log(result);
+            console.log(xhr.response);
+            var jsonArray = JSON.parse(xhr.responseText);
+            console.log(jsonArray);
+            list.length = 0;
+            for (let i = 0; i < jsonArray.length; i++) {
+                list.push(jsonArray[i]["adm_nm"]);
+            }
+            console.log(list);
         }
     };
-    xhr.send(formData);
+    xhr.send(JSON.stringify(data));
     //    var jsonData = new Object();
     //    jsonData.key1 = checkImpl;
     //    jsonData.key2 = checkOrth;
@@ -55,5 +61,4 @@ function getRankList() {
     //         console.error('Error :', error);
     //     });
 }
-
 
