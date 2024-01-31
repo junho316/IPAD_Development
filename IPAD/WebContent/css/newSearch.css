@@ -4,74 +4,12 @@
     list-style: none;
 }
 
-#map3 {
-    height: 94.5vh;
-    padding: 0;
-    margin: 0;
+#titleContainer {
+    margin-top: 2%;
 }
 
-#location {
-    justify-content: center;
-    /* margin-top: 20px; */
-    /* background-color: red; */
-    /* z-index: 10; */
-}
-
-#searchD {
-    height: 50px;
-    position: fixed;
-    /* background-color: red; */
-    z-index: 10;
-    /* border: 3px solid black; */
-    background-color: white;
-    font-size: 1.5rem;
-    opacity: 0.7;
-    text-align: center;
-    border-radius: 50px;
-    font-weight: bold;
-
-}
-
-#backSearch {
-    height: 95%;
-    margin-top: 50px;
-    z-index: 10;
-    position: absolute;
-    background-color: white;
-    border-radius: 50px;
-    background-color: #547cdc;
-    opacity: 0.7;
-    display: none;
-}
-
-#searchInfo {
-    height: 800px;
-    z-index: 10;
-    position: fixed;
-    margin-top: 50px;
-    background-color: white;
-    padding: 30px 50px;
-    border-radius: 50px;
-    /* background-color: green; */
-}
-
-#infoSection {
-    justify-content: center;
-    margin-top: 30px;
-}
-
-#selectSection {
-    width: 30%;
-    height: 50px;
-    /* background-color: red; */
-    justify-content: center center;
-    text-align: center;
-    display: inline-grid;
-    align-content: center;
-    vertical-align: middle;
-    font-size: 1.2rem;
-    border: 3px solid #547cdc;
-    border-radius: 5px;
+#mapContainer {
+    margin-top: 2%;
 }
 
 #regionSearch {
@@ -89,14 +27,101 @@
     border: 1px solid black
 }
 
-#firstLow {
-    display: flex;
-    justify-content: space-between;
-    /* background: greenyellow; */
-    margin-top: 20px;
+#map3 {
+    height: 80vh;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px 5px lightgray;
 }
 
-.box {
+
+
+/* #container {
+    padding: 0.5%;
+} */
+
+/* #sidebar { */
+/* background-color: #f8f9fa; */
+*/
+/* 원하는 배경색 설정 */
+/* padding: 20px;
+    height: 94.5vh;
+    overflow-y: auto;
+    border: 5px solid #4B89DC;
+} */
+
+/* #location {
+    justify-content: center;
+    /* margin-top: 20px; */
+/* background-color: red; */
+/* z-index: 10; 
+} */
+
+/* #searchD {
+    height: 50px;
+    position: fixed;
+    z-index: 10;
+    background-color: white;
+    font-size: 1.5rem;
+    opacity: 0.7;
+    text-align: center;
+    border-radius: 50px;
+    font-weight: bold;
+} */
+
+/* #backSearch {
+    height: 95%;
+    margin-top: 50px;
+    z-index: 10;
+    position: absolute;
+    background-color: white;
+    border-radius: 50px;
+    background-color: #547cdc;
+    opacity: 0.7;
+    display: none;
+} */
+
+/* #searchInfo {
+    height: 80%;
+    z-index: 10;
+    position: fixed;
+    margin-top: 1%;
+    background-color: white;
+    padding: 30px 50px;
+    border-radius: 50px;
+} */
+
+/* #infoSection {
+    justify-content: center;
+    margin-top: 30px;
+} */
+
+/* #selectSection {
+    width: 30%;
+    height: 50px;
+    justify-content: center center;
+    text-align: center;
+    display: inline-grid;
+    align-content: center;
+    vertical-align: middle;
+    font-size: 1.2rem;
+    border: 3px solid #547cdc;
+    border-radius: 5px;
+} */
+
+
+
+/* #firstLow {
+    display: flex;
+    justify-content: space-between; */
+/* background: greenyellow; */
+/* margin-top: 5%;
+} */
+
+/* .box {
     text-align: center;
 }
 
@@ -108,7 +133,7 @@
     margin-top: 5px;
     font-size: 1.2rem;
     font-weight: bold;
-    /* display: block; */
+    
 }
 
 .iconBox {
@@ -116,10 +141,12 @@
     border-radius: 15px;
     width: 100%;
     height: 100%;
+    
 }
 
 .iconBox img {
-    margin-top: 10px;
+    margin-top: 15%;
+    
     width: 80%;
     height: 80%;
 }
@@ -131,20 +158,16 @@
 }
 
 #secondLow {
+    margin-top: 10%;
     display: flex;
     justify-content: space-between;
-    /* background: greenyellow; */
-    margin-top: 50px;
+    
 }
 
-/* 
-#selectSection p{
-    background-color: blue;
-} */
 
 #pickSubject {
-    margin-top: 60px;
-    height: 40px;
+    margin-top: 10%;
+    height: 10%;
     padding: 0;
 }
 
@@ -153,47 +176,40 @@
     width: 100%;
     text-align: center;
     font-size: 1.2rem;
-}
+} */
 
-#simpleSearch {
+/* #simpleSearch {
     height: 50px;
     margin-top: 20px;
-    /* background-color: red; */
     text-align: center;
-}
+} */
 
-#searchButton {
+/* #searchButton {
     height: 100%;
     width: 80%;
     border-radius: 15px;
-    /* background-color: blue; */
 }
 
 #detailButton {
     height: 100%;
     width: 80%;
     border-radius: 15px;
-    /* background-color: blue; */
 }
 
 #detailSearch {
     height: 50px;
     margin-top: 20px;
-    /* background-color: red; */
     text-align: center;
-}
+} */
 
-#simpleInfo {
+/* #simpleInfo {
     height: 95%;
     margin-top: 50px;
     z-index: 10;
     position: absolute;
     background-color: white;
     border-radius: 50px;
-    /* background-color: red; */
-    /* display: block; */
     margin-left: 26%;
-    /* display: none; */
     transition: 0.5s;
 }
 
@@ -204,14 +220,11 @@
     position: absolute;
     background-color: white;
     border-radius: 50px;
-    /* background-color: red; */
-    /* display: block; */
     margin-left: 25%;
-    /* display: none; */
     transition: 0.5s;
-}
+} */
 
-
+/* 
 #simpleClose {
     height: 50px;
     width: 50px;
@@ -243,31 +256,30 @@
 
 .searchInfoIcon:hover {
     opacity: 1;
-}
+} */
 
-#choiceBox {
+/* #choiceBox {
     display: flex;
     border: 1px solid #ccc;
     margin-top: 100px;
     width: 80%;
     height: 50px;
     justify-content: center;
-    /* align-items: center; */
     margin-left: 10%;
-}
+} */
 
-#regionChoice,
+/* #regionChoice,
 #subjectChoice {
-    /* background-color: red; */
+  
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 40%;
-    /* border: 1px solid red; */
-}
+ 
+} */
 
-#salePredict {
+/* #salePredict {
     display: flex;
     margin-top: 50px;
     margin-left: 10%;
@@ -336,7 +348,8 @@
 .blank {
     width: 100%;
     height: 5%;
-}
+} */
+    {}
 
 @media (min-width:1501px) {
     #simpleInfo {
