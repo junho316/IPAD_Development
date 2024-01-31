@@ -20,7 +20,7 @@ public class LocationRecommandController implements Controller {
 		if (com.equals("/locationRecommand/recommand.do")) {			
 			viewPage = "/jsp/locationRecommand/recommand.jsp";
 		} else if(com.equals("/locationRecommand/submit.do")) {
-			System.out.println("RERERE");
+			
 			service = new LocationRecommandService();
 			service.execute(request, response);
 //			viewPage = "/jsp/locationRecommand/recommand.jsp";	

@@ -1,15 +1,9 @@
 function writeRankList() {
-    console.log("write실행")
+
     document.getElementById('first').innerText = list[0];
     document.getElementById('second').innerText = list[1];
     document.getElementById('third').innerText = list[2];
 }
-
-function showlist() {
-    console.log("나주엥 찍히면 좋겠앙")
-
-}
-
 
 var list = [];
 
@@ -37,13 +31,11 @@ function getRankList() {
             return response.json();
         })
         .then(jsonArray => {
-            console.log("fetch 시작", jsonArray);
+            console.log(jsonArray);
             list.length = 0;
             for (let i = 0; i < jsonArray.length; i++) {
                 list.push(jsonArray[i]["adm_nm"]);
             }
-            console.log(list);
-            console.log("list삽입끝")
         })
         .then(() => writeRankList())
         .catch(error => {
