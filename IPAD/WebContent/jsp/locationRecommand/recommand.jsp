@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -50,7 +52,7 @@
 					<div class="section">
 						<button id="accordion-button" type="button">전문 분야</button>
 						<div style="height: 20px; width: 100px;"></div>
-						<form action="submit_form.php" method="post">
+						<form action="submit.do" method="post">
 							<table id="areaTable" class="table">
 								<tbody>
 									<tr>
@@ -74,7 +76,13 @@
 						<div style="height: 20px; width: 100px;"></div>
 						<table id="areaTable" class="table">
 							<tbody>
+							<c:forEach items ="${rank}" var="rank" varStatus="status">
 								<tr>
+								<td>${status.index+1}.</td>
+							<td>${rank.adm_nm}</td>
+							</tr>
+							</c:forEach>
+							<!-- 	<tr>
 									<td>1.</td>
 									<td>-</td>
 								</tr>
@@ -85,7 +93,7 @@
 								<tr>
 									<td>3.</td>
 									<td>-</td>
-								</tr>
+								</tr> -->
 							</tbody>
 						</table>
 						<div style="height: 100px; width: 100px;"></div>
@@ -137,6 +145,8 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f622a57db8d51137b80a7e575e09fca&libraries=services"></script>
 
+<script
+		src="${pageContext.request.contextPath}/js/locationRecommand.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/js/locationAnalysisMap.js"></script>
 </body>
