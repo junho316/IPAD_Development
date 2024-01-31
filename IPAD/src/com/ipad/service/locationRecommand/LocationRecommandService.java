@@ -48,12 +48,13 @@ public class LocationRecommandService implements Service {
 			}
 			List<LocationRecommandDto> rankList = dao.getTop3List(dtos);
 			String jsonResponse = new Gson().toJson(rankList);
-
-			response.setContentType("application/json; charset=utf-8");
-			response.setCharacterEncoding("UTF-8");
+			
+			
 			request.setAttribute("rank", rankList);
 			
 			PrintWriter out = response.getWriter();
+			response.setContentType("application/json; charset=utf-8");
+			response.setCharacterEncoding("UTF-8");
 			out.print(jsonResponse);
 			out.flush();
 		} catch (IOException e1) {
