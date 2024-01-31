@@ -13,9 +13,9 @@ import com.ipad.controller.Controller;
 import com.ipad.controller.JsonController;
 import com.ipad.controller.LocationAnalysisController;
 import com.ipad.controller.SaleAnalysisController;
-import com.ipad.service.connectDB.PopulationForecastService;
+import com.ipad.service.OptionService;
+import com.ipad.service.Service;
 import com.ipad.service.connectDB.UpdateDBService;
-import com.ipad.service.saleAnalysis.SearchService;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -69,8 +69,15 @@ public class FrontController extends HttpServlet {
 			} else if (pathAfterContext.equals("/json")) {
 				controller = new JsonController();
 				controller.execute(request, response, com);
-			}
-
+			} 
+		}
+		
+		if (com.equals("/test.do")) {
+			viewPage = "/jsp/local.jsp";
+			Service service = new OptionService();
+			service.execute(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+			dispatcher.forward(request, response);
 		}
 	}
 
