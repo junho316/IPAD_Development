@@ -34,7 +34,10 @@ public class JsonController implements Controller {
 			service = new InfoService();
 			service.execute(request, response);
 			return;
-		} 
+		} else if(com.equals("/json/locationRecommand.do")) {
+			service = new LocationRecommandService();
+			service.execute(request, response);
+		}
 	}
 
 }

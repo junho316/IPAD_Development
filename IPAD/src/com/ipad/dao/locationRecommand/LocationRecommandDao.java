@@ -109,14 +109,14 @@ public class LocationRecommandDao {
 		dto.setSixtiesScore(score);
 	}
 
-	public void setTotalScore(LocationRecommandDto dto, String opt1, String opt2) {
-		if (opt1 != null && opt2 != null) {
+	public void setTotalScore(LocationRecommandDto dto, boolean opt1, boolean opt2) {
+		if (opt1 == true && opt2 == true) {
 			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 2 + dto.getSixtiesScore() * 2);
-		} else if (opt1 == null && opt2 != null) {
+		} else if (opt1 == false && opt2 == true) {
 			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 4 + dto.getSixtiesScore() * 0);
-		} else if (opt1 != null && opt2 == null) {
+		} else if (opt1 == true && opt2 == false) {
 			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 0 + dto.getSixtiesScore() * 4);
-		} else if (opt1 == null && opt2 == null) {
+		} else if (opt1 == false && opt2 == false) {
 			dto.setTotalScore(dto.getSaleScore() * 10 + dto.getTwentiesScore() * 0 + dto.getSixtiesScore() * 0);
 		}
 
