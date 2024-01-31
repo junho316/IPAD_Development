@@ -47,8 +47,13 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
+		if(com.equals("/jsp/saleAnalysis/calSale.do")) {
+			com = "/SaleAnalysis/calSale.do";
+		} 
 		String pathAfterContext = extractDesiredPart(com);
-
+		
+		System.out.println(com);
+		System.out.println(pathAfterContext);
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 
@@ -74,9 +79,7 @@ public class FrontController extends HttpServlet {
 			} else if (pathAfterContext.equals("/locationRecommand")) {
 				controller = new LocationRecommandController();
 				controller.execute(request, response, com);
-			}
-
-
+			} 
 		}
 	}
 
