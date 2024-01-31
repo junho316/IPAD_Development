@@ -66,7 +66,7 @@
                            </tr>
                         </tbody>
                      </table>
-                     <input type="button" value="추천 지역 검색" onclick="getRankList(); writeRankList();">
+                     <input type="button" value="추천 지역 검색" onclick="getRankList(); ">
                   </form>
                </div>
             </div>
