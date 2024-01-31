@@ -1,6 +1,6 @@
-package com.ipad.dto;
+package com.ipad.dto.locationRecommand;
 
-public class OptionDto {
+public class LocationRecommandDto {
 	String implant;
 	String braces;
 	int option;

@@ -8,6 +8,7 @@ function mapMenuClick(e) {
 
 }
 
+
 function ClickPopUpBtn(e) {
 	document.querySelector('#selectArea').innerHTML = e.innerHTML;
 }
@@ -25,7 +26,7 @@ var t = document.querySelector('#hosLocT');
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 	mapOption = {
 		center: new kakao.maps.LatLng(37.47601668950402, 127.15099417223486), // 지도의
-																				// 중심좌표
+		// 중심좌표
 		level: 6, // 지도의 확대 레벨
 		disableDoubleClickZoom: true,
 		scrollwheel: false,
@@ -70,20 +71,20 @@ function everyHos() {
 	sungnamHos();
 	songpaHos();
 	overlayDel.setMap(null);
-	
-	for (let i = 0; i < array.length; i++){
-		if(regionArray[i].region == '전체'){
+
+	for (let i = 0; i < array.length; i++) {
+		if (regionArray[i].region == '전체') {
 			hospitalCount.innerHTML = regionArray[i].hospitalCount;
 			footTraffic.innerHTML = regionArray[i].footTraffic;
 			residentPopulation.innerHTML = regionArray[i].residetnPopulation;
 			hospitalPopulation.innerHTML = regionArray[i].hospitalPopulation;
 			ageGroup.innerHTML = regionArray[i].maxAgeGroup;
 			break;
-		}else {
+		} else {
 			hospitalCount.innerHTML = "-";
 			footTraffic.innerHTML = "-";
 			residentPopulation.innerHTML = "-";
-			hospitalPopulation.innerHTML ="-";
+			hospitalPopulation.innerHTML = "-";
 			ageGroup.innerHTML = "-";
 		}
 	}
@@ -96,11 +97,11 @@ function songpaHosLoc() {
 	moveLatLon = new kakao.maps.LatLng(37.48274629824583, 127.13696522477319);
 	map.panTo(moveLatLon);
 	deleteMarker();
-	songpaHos(); 
+	songpaHos();
 	overlayDel.setMap(null);
-	
-	for (let i = 0; i < array.length; i++){
-		if(regionArray[i].region == '송파구'){
+
+	for (let i = 0; i < array.length; i++) {
+		if (regionArray[i].region == '송파구') {
 			hospitalCount.innerHTML = regionArray[i].hospitalCount;
 			footTraffic.innerHTML = regionArray[i].footTraffic;
 			residentPopulation.innerHTML = regionArray[i].residetnPopulation;
@@ -111,7 +112,7 @@ function songpaHosLoc() {
 			hospitalCount.innerHTML = "-";
 			footTraffic.innerHTML = "-";
 			residentPopulation.innerHTML = "-";
-			hospitalPopulation.innerHTML ="-";
+			hospitalPopulation.innerHTML = "-";
 			ageGroup.innerHTML = "-";
 		}
 	}
@@ -126,9 +127,9 @@ function sungnamHosLoc() {
 	deleteMarker();
 	sungnamHos();
 	overlayDel.setMap(null);
-	
-	for (let i = 0; i < array.length; i++){
-		if(regionArray[i].region == '성남시'){
+
+	for (let i = 0; i < array.length; i++) {
+		if (regionArray[i].region == '성남시') {
 			hospitalCount.innerHTML = regionArray[i].hospitalCount;
 			footTraffic.innerHTML = regionArray[i].footTraffic;
 			residentPopulation.innerHTML = regionArray[i].residetnPopulation;
@@ -139,7 +140,7 @@ function sungnamHosLoc() {
 			hospitalCount.innerHTML = "-";
 			footTraffic.innerHTML = "-";
 			residentPopulation.innerHTML = "-";
-			hospitalPopulation.innerHTML ="-";
+			hospitalPopulation.innerHTML = "-";
 			ageGroup.innerHTML = "-";
 		}
 	}
@@ -154,20 +155,20 @@ function hanamHosLoc() {
 	deleteMarker();
 	hanamHos();
 	overlayDel.setMap(null);
-	
-	for (let i = 0; i < array.length; i++){
-		if(regionArray[i].region == '하남시'){
+
+	for (let i = 0; i < array.length; i++) {
+		if (regionArray[i].region == '하남시') {
 			hospitalCount.innerHTML = regionArray[i].hospitalCount;
 			footTraffic.innerHTML = regionArray[i].footTraffic;
 			residentPopulation.innerHTML = regionArray[i].residetnPopulation;
 			hospitalPopulation.innerHTML = regionArray[i].hospitalPopulation;
 			ageGroup.innerHTML = regionArray[i].maxAgeGroup;
 			break;
-		}else {
+		} else {
 			hospitalCount.innerHTML = "-";
 			footTraffic.innerHTML = "-";
 			residentPopulation.innerHTML = "-";
-			hospitalPopulation.innerHTML ="-";
+			hospitalPopulation.innerHTML = "-";
 			ageGroup.innerHTML = "-";
 		}
 	}
@@ -178,56 +179,56 @@ function hanamHosLoc() {
 var array = [];
 function fetcData() {
 	fetch(contextPath + '/json/map.do')
-	.then(response => {
-	    if (!response.ok) {
-	        throw new Error('네트워크 응답이 올바르지 않습니다.');
-	    }
-	    return response.json();
-	})
-	.then(data => {
-		for (let i = 0; i < data.length; i++) {
-			array.push(data[i])
-		}
-	})
-	.catch(error => console.error('에러:', error));
+		.then(response => {
+			if (!response.ok) {
+				throw new Error('네트워크 응답이 올바르지 않습니다.');
+			}
+			return response.json();
+		})
+		.then(data => {
+			for (let i = 0; i < data.length; i++) {
+				array.push(data[i])
+			}
+		})
+		.catch(error => console.error('에러:', error));
 }
 
 var regionArray = [];
 function fetcRegionData() {
 	fetch(contextPath + '/json/mapRegion.do')
-	.then(response => {
-	    if (!response.ok) {
-	        throw new Error('네트워크 응답이 올바르지 않습니다.');
-	    }
-	    return response.json();
-	})
-	.then(data => {
-		for (let i = 0; i < data.length; i++) {
-			regionArray.push(data[i])
-		}
-	})
-	.catch(error => console.error('에러:', error));
+		.then(response => {
+			if (!response.ok) {
+				throw new Error('네트워크 응답이 올바르지 않습니다.');
+			}
+			return response.json();
+		})
+		.then(data => {
+			for (let i = 0; i < data.length; i++) {
+				regionArray.push(data[i])
+			}
+		})
+		.catch(error => console.error('에러:', error));
 }
 
 function hanamHos() {
-	for (let i = 0; i < array.length; i++){
-		if(array[i].region == '하남시'){
+	for (let i = 0; i < array.length; i++) {
+		if (array[i].region == '하남시') {
 			displayMarker(array[i]);
 		}
 	}
 }
 
 function sungnamHos() {
-	for (let i = 0; i < array.length; i++){
-		if(array[i].region == '성남시'){
+	for (let i = 0; i < array.length; i++) {
+		if (array[i].region == '성남시') {
 			displayMarker(array[i]);
 		}
 	}
 }
 
 function songpaHos() {
-	for (let i = 0; i < array.length; i++){
-		if(array[i].region == '송파구'){
+	for (let i = 0; i < array.length; i++) {
+		if (array[i].region == '송파구') {
 			displayMarker(array[i]);
 		}
 	}

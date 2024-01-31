@@ -22,8 +22,7 @@ public class SaleAnalysisController implements Controller {
 		Service service = null;
 
 		if (com.equals("/SaleAnalysis/search.do")) {
-			SearchService searchService = new SearchService();
-			searchService.updateData();
+		
 			viewPage = "/jsp/saleAnalysis/search.jsp";			
 			
 		}  else if (com.equals("/SaleAnalysis/simpleChart.do")) {

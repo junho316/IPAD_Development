@@ -1,23 +1,26 @@
-package com.ipad.dao;
+package com.ipad.dao.locationRecommand;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.ipad.dto.OptionDto;
+import com.ipad.dto.locationRecommand.LocationRecommandDto;
 
-public class OptionDao {
+public class LocationRecommandDao {
 	Connection con;
 	PreparedStatement pstmt;
 	DataSource dataSource;
 	ResultSet rs;
 
-	public OptionDao() {
+	public LocationRecommandDao() {
 		try {
 			Context context = new InitialContext();
 			Context envContext = (Context) context.lookup("java:/comp/env");
@@ -53,24 +56,26 @@ public class OptionDao {
 		return average;
 	}
 
-	public ArrayList<Integer> getSale(ArrayList<OptionDto> dto) {
+	public ArrayList<Integer> getSale(ArrayList<LocationRecommandDto> dto) {
 		ArrayList<Integer> dataList = new ArrayList<>();
-		for(int i=0; i<dto.size();i++) {
-		dto.get(i).getSale();
+		for (int i = 0; i < dto.size(); i++) {
+			dto.get(i).getSale();
 		}
 		return dataList;
 	}
-	public ArrayList<Integer> getTwenties(ArrayList<OptionDto> dto) {
+
+	public ArrayList<Integer> getTwenties(ArrayList<LocationRecommandDto> dto) {
 		ArrayList<Integer> dataList = new ArrayList<>();
-		for(int i=0; i<dto.size();i++) {
-		dto.get(i).getTwenties();
+		for (int i = 0; i < dto.size(); i++) {
+			dto.get(i).getTwenties();
 		}
 		return dataList;
 	}
-	public ArrayList<Integer> getSixties(ArrayList<OptionDto> dto) {
+
+	public ArrayList<Integer> getSixties(ArrayList<LocationRecommandDto> dto) {
 		ArrayList<Integer> dataList = new ArrayList<>();
-		for(int i=0; i<dto.size();i++) {
-		dto.get(i).getSixties();
+		for (int i = 0; i < dto.size(); i++) {
+			dto.get(i).getSixties();
 		}
 		return dataList;
 	}
@@ -86,34 +91,36 @@ public class OptionDao {
 //		return standardDeviation;
 //	}
 
-	public void setSaleScore(OptionDto dto) {
+	public void setSaleScore(LocationRecommandDto dto) {
 		double score = 0;
-		score = (dto.getSale()-minData("sale"))*10/(maxData("sale")-minData("sale"));		
+		score = (dto.getSale() - minData("sale")) * 10 / (maxData("sale") - minData("sale"));
 		dto.setSaleScore(score);
 	}
-	public void setTwentiesScore(OptionDto dto) {
+
+	public void setTwentiesScore(LocationRecommandDto dto) {
 		double score = 0;
-		score = (dto.getTwenties()-minData("twenties"))*10/(maxData("twenties")-minData("twenties"));		
+		score = (dto.getTwenties() - minData("twenties")) * 10 / (maxData("twenties") - minData("twenties"));
 		dto.setTwentiesScore(score);
 	}
-	public void setSixtiesScore(OptionDto dto) {
+
+	public void setSixtiesScore(LocationRecommandDto dto) {
 		double score = 0;
-		score = (dto.getSixties()-minData("sixties"))*10/(maxData("sixties")-minData("sixties"));		
+		score = (dto.getSixties() - minData("sixties")) * 10 / (maxData("sixties") - minData("sixties"));
 		dto.setSixtiesScore(score);
 	}
-	public void setTotalScore(OptionDto dto,String opt1, String opt2) {
-		if(opt1!=null && opt2!=null) {
-			dto.setTotalScore(dto.getSaleScore()*6+dto.getTwentiesScore()*2+dto.getSixtiesScore()*2);	
-		} else if(opt1==null && opt2!=null) {
-			dto.setTotalScore(dto.getSaleScore()*6+dto.getTwentiesScore()*4+dto.getSixtiesScore()*0);
-		} else if(opt1!=null && opt2==null) {
-			dto.setTotalScore(dto.getSaleScore()*6+dto.getTwentiesScore()*0+dto.getSixtiesScore()*4);
-		} else if(opt1 ==null && opt2 == null) {
-			dto.setTotalScore(dto.getSaleScore()*10+dto.getTwentiesScore()*0+dto.getSixtiesScore()*0);
+
+	public void setTotalScore(LocationRecommandDto dto, String opt1, String opt2) {
+		if (opt1 != null && opt2 != null) {
+			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 2 + dto.getSixtiesScore() * 2);
+		} else if (opt1 == null && opt2 != null) {
+			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 4 + dto.getSixtiesScore() * 0);
+		} else if (opt1 != null && opt2 == null) {
+			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 0 + dto.getSixtiesScore() * 4);
+		} else if (opt1 == null && opt2 == null) {
+			dto.setTotalScore(dto.getSaleScore() * 10 + dto.getTwentiesScore() * 0 + dto.getSixtiesScore() * 0);
 		}
-		
+
 	}
-	
 
 	public int minData(String option) {
 		int min = 0;
@@ -166,54 +173,62 @@ public class OptionDao {
 		}
 		return max;
 	}
-	public ArrayList<OptionDto> selectRegion(){
-		ArrayList<OptionDto> list = new ArrayList<>();
+
+	public ArrayList<LocationRecommandDto> selectRegion() {
+		ArrayList<LocationRecommandDto> list = new ArrayList<>();
 		try {
-			con=dataSource.getConnection(); 
-			String query = "select data.twenties, data.sixties, region.region_name, region.adm_cd, data.sale from region_data data, region where data.adm_cd = region.adm_cd order by adm_cd";
+			con = dataSource.getConnection();
+			String query = "select data.twenties, data.sixties, region.region_name_detail, region.adm_cd, data.sale from region_data data, region where data.adm_cd = region.adm_cd order by adm_cd";
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				OptionDto dto = new OptionDto();
-				dto.setAdm_nm(rs.getString("region_name"));
+
+			while (rs.next()) {
+				LocationRecommandDto dto = new LocationRecommandDto();
+				dto.setAdm_nm(rs.getString("region_name_detail"));
 				dto.setSale(rs.getInt("sale"));
 				dto.setTwenties(rs.getInt("twenties"));
 				dto.setSixties(rs.getInt("sixties"));
 				dto.setAdm_cd(rs.getString("adm_cd"));
 				list.add(dto);
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				rs.close();
 				pstmt.close();
 				con.close();
-			} catch(Exception e2) {
+			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
 		}
 		return list;
 	}
-	
-	public double getMaxScore(ArrayList<OptionDto> dtos) {
+
+	public double getMaxScore(ArrayList<LocationRecommandDto> dtos) {
 		double max = dtos.get(0).getTotalScore();
-		for(int i=0; i<dtos.size(); i++) {
-			if(dtos.get(i).getTotalScore()>max) {
+		for (int i = 0; i < dtos.size(); i++) {
+			if (dtos.get(i).getTotalScore() > max) {
 				max = dtos.get(i).getTotalScore();
 			}
 		}
 		return max;
 	}
-	public ArrayList<OptionDto> getList(ArrayList<OptionDto> dtos){
-		ArrayList<OptionDto> list = new ArrayList<OptionDto>();
+
+	public ArrayList<LocationRecommandDto> getList(ArrayList<LocationRecommandDto> dtos) {
+		ArrayList<LocationRecommandDto> list = new ArrayList<LocationRecommandDto>();
 		double max = getMaxScore(dtos);
-		for(int i=0; i<dtos.size(); i++) {
-			if(dtos.get(i).getTotalScore()==max) {
+		for (int i = 0; i < dtos.size(); i++) {
+			if (dtos.get(i).getTotalScore() == max) {
 				list.add(dtos.get(i));
 			}
 		}
 		return list;
 	}
+
+	public List<LocationRecommandDto> getTop3List(List<LocationRecommandDto> dtos) {
+		return dtos.stream().sorted(Comparator.comparingDouble(LocationRecommandDto::getTotalScore).reversed()).limit(3)
+				.collect(Collectors.toList());
+	}
+
 }
