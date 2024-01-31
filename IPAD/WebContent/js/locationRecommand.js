@@ -20,7 +20,7 @@ function getRankList() {
     xhr.open("POST", contextPath + "/locationRecommand/submit.do", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
-        if (xhr.status == 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
             console.log(xhr.response);
             var jsonArray = JSON.parse(xhr.responseText);
             console.log(jsonArray);
