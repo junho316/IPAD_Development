@@ -17,7 +17,7 @@ public class CalSaleService	implements Service {
 		System.out.println("받아온 regionCode11 : " + regionCode);
 		CalSaleDao calSaleDao = new CalSaleDao();
 		String calSale = calSaleDao.calculateSale(regionCode);
-		
+		System.out.println(calSale);
 		String jsonResponse = new Gson().toJson(calSale);
 		
 		response.setContentType("application/json");

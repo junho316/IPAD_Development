@@ -17,10 +17,10 @@ public class AnalysisService implements Service{
 		
 		System.out.println("세션저장확인 : " + request.getSession().getAttribute("regionCode"));
 		
-		try {
-			response.sendRedirect("./analyze.jsp");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			response.sendRedirect("./analyze.jsp");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 }

@@ -5,8 +5,8 @@ function windowclose() {
     window.close();
 }
 var urlParams = new URLSearchParams(window.location.search);
-// var areaCode = urlParams.get('regionCode');
-var areaCode = '<%= session.getAttribute("regionCode") %>';
+var areaCode = urlParams.get('regionCode');
+// var areaCode = '<%= session.getAttribute("regionCode") %>';
 var areaname;
 var monthSale;
 
@@ -19,10 +19,11 @@ window.onload = function () {
     }
 
     $.ajax({
-        url: '../SaleAnalysis/calSale.do',
+        url: './calSale.do',
         method: 'GET',
         data: { areaCode: areaCode },
         success: function (data) {
+            console.log(data);
             monthSale = NumberComma(data);
             monthSaleData();
             console.log("아작스는 돌아가냐");

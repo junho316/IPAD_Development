@@ -25,6 +25,7 @@ public class CalSaleDao {
 	
 	public String calculateSale(String adm_cd) {
 		
+		System.out.println("calculatorSale 에서 받은 regionCode : " + adm_cd);
 		
 		int sale = 0;
 		try {

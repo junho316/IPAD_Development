@@ -36,8 +36,8 @@ public class SaleAnalysisController implements Controller {
 			System.out.println("분석 화면 이동 쩜두 @@@@@@@@@@@@@");
 			service = new AnalysisService();
 			service.execute(request, response);
-//			viewPage = "/jsp/saleAnalysis/analyze.jsp";
-//			System.out.println(viewPage);
+			viewPage = "/jsp/saleAnalysis/analyze.jsp";
+			System.out.println(viewPage);
 			return;
 		} 
 

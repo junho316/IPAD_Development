@@ -123,8 +123,11 @@
 					</div>
 				</div>
 			</div> -->
+			<!-------------------------------------- ------------------------------------------------------->
 
-			<script src="${pageContext.request.contextPath}/js/search.js"></script>
+			<%@ include file="/jsp/common/footer.jsp" %>
+
+				<script src="${pageContext.request.contextPath}/js/search.js"></script>
 	</body>
 
 	</html>

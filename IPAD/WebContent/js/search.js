@@ -163,20 +163,20 @@ window.onload = function () {
                     });
                     console.log(regionCode);
 
-                    // var analyzeUrl = "../jsp/saleAnalysis/analyze.jsp?regionCode=" + encodeURIComponent(regionCode);
-                    // var newWindow = window.open(analyzeUrl, 'result', 'width=800,height=1200,left=550');
+                    var analyzeUrl = "../jsp/saleAnalysis/analyze.jsp?regionCode=" + encodeURIComponent(regionCode);
+                    var newWindow = window.open(analyzeUrl, 'result', 'width=800,height=1200,left=550');
 
-                    $.ajax({
-                        url: './analyze.do',
-                        method: 'GET',
-                        data: { regionCode: regionCode },
-                        success: function (data) {
+                    // $.ajax({
+                    //     url: './analyze.do',
+                    //     method: 'GET',
+                    //     data: { regionCode: regionCode },
+                    //     success: function (data) {
 
-                        },
-                        error: function (error) {
-                            console.error('Error fetching data from server:', error);
-                        }
-                    });
+                    //     },
+                    //     error: function (error) {
+                    //         console.error('Error fetching data from server:', error);
+                    //     }
+                    // });
 
                 });
 
