@@ -20,7 +20,7 @@
     </head>
 
     <body>
-        
+
         <div class="container-fluid" id="analyzeInfo">
             <!-- <figure class="figure">
             <div id="s_salePredict" class="row justify-content-between">
@@ -79,49 +79,6 @@
                 </div>
                 <figcaption class="figure-caption text-end"></figcaption>
             </figure>
-            <figure class="figure figurebox">
-                <div class="row chart_box">
-                    <div class="col-12" id="livingChart1box"><canvas id="livingChart"></canvas></div>
-                </div>
-                <figcaption class="figure-caption text-center" id="livingCap">여기에 주석 달것임. 비교 차트에 비해 몇 % 높다.</figcaption>
-            </figure>
-
-
-            <div class="row">
-                <figure class="figure col">
-                    <div class="row double_box">
-                        <div class="col" id="genderChartbox"><canvas id="genderChart"></canvas></div>
-                    </div>
-                    <figcaption class="figure-caption text-center" id="genderCap">성비율 차트 들어갈것</figcaption>
-                </figure>
-                <figure class="figure col">
-                    <div class="row double_box">
-                        <div class="col" id="ageChartbox"><canvas id="ageChart"></canvas></div>
-                    </div>
-                    <figcaption class="figure-caption text-center" id="ageCap">연령별 차트 들어갈것</figcaption>
-                </figure>
-            </div>
-
-            <figure class="figurebox">
-                <div class="row chart_box">
-                    <div class="col" id="householdChartbox"><canvas id="householdChart"></canvas></div>
-                </div>
-                <figcaption class="figure-caption text-center" id="householdCap">세대수 차트 들어갈 곳</figcaption>
-            </figure>
-
-            <figure class="figurebox">
-                <div class="row chart_box">
-                    <div class="col" id="schoolChartbox">
-                        <canvas id="schoolChart"></canvas>
-                    </div>
-                </div>
-                <figcaption class="figure-caption text-center" id="schoolCap">학교 차트 들어갈 자리</figcaption>
-            </figure>
-
-            <div class="button_box">
-                <button type="button" class="btn btn-primary btn-lg" onclick="printPage()">출력</button>
-                <button type="button" class="btn btn-secondary btn-lg" onclick="windowclose()">닫기</button>
-            </div>
         </div>
         <script src="${pageContext.request.contextPath}/js/analyze.js"></script>
     </body>

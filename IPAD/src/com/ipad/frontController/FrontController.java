@@ -79,9 +79,7 @@ public class FrontController extends HttpServlet {
 			} else if (pathAfterContext.equals("/locationRecommand")) {
 				controller = new LocationRecommandController();
 				controller.execute(request, response, com);
-			}
-
-
+			} 
 		}
 	}
 
