@@ -92,8 +92,8 @@
 								</tr>
 							</tbody>
 						</table>
-						<div style="height: 100px; width: 100px;"></div>
-						<div class="subtitle">?</div>
+						<div style="height: 50px; width: 100px;"></div>
+						<div class="subtitle" id="regionDetail">?</div>
 						<div style="height: 20px; width: 100px;"></div>
 						<table id="forecastTable" class="table">
 							<thead>

@@ -146,7 +146,8 @@ nav {
 
 input[type="submit"] {
 	width: 200px;
-	background-color: #4CAF50; /* 배경색 */
+	background-color: #4CAF50;
+	/* 배경색 */
 	color: white;
 	padding: 10px 20px;
 	border: none;
@@ -158,6 +159,22 @@ input[type="submit"] {
 input[type="submit"]:hover {
 	background-color: #45a049;
 }
+
+#first:hover {
+	font-weight: bolder;
+	cursor: pointer;
+}
+
+#second:hover {
+	font-weight: bolder;
+	cursor: pointer;
+}
+
+#third:hover {
+	font-weight: bolder;
+	cursor: pointer;
+}
+
 /******************************/
 /* FOOTER                     */
 /******************************/

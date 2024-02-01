@@ -5,16 +5,16 @@ import java.sql.Date;
 public class HospitalDetailDto {
 	private String hospital_name;
 	private String region;
-	private Date license_date;
+	private String license_date;
 	private String business_status;
 	private String region_name_detail;
 	private String address;
-	private Date close_date;
+	private String close_date;
 	private float x_coordinate;
 	private float y_coordinate;
 
 	public HospitalDetailDto(String hospital_name, String region, String address, String region_name_detail,
-			String business_status, float x_coordinate, float y_coordinate) {
+			String business_status, float x_coordinate, float y_coordinate, String license_date, String close_date) {
 		this.hospital_name = hospital_name;
 		this.region = region;
 		this.address = address;
@@ -22,6 +22,8 @@ public class HospitalDetailDto {
 		this.x_coordinate = x_coordinate;
 		this.y_coordinate = y_coordinate;
 		this.region_name_detail = region_name_detail;
+		this.license_date = license_date;
+		this.close_date = close_date;
 
 	}
 
@@ -49,11 +51,11 @@ public class HospitalDetailDto {
 		this.region = region;
 	}
 
-	public Date getLicense_date() {
+	public String getLicense_date() {
 		return license_date;
 	}
 
-	public void setLicense_date(Date license_date) {
+	public void setLicense_date(String license_date) {
 		this.license_date = license_date;
 	}
 
@@ -73,11 +75,11 @@ public class HospitalDetailDto {
 		this.address = address;
 	}
 
-	public Date getClose_date() {
+	public String getClose_date() {
 		return close_date;
 	}
 
-	public void setClose_date(Date close_date) {
+	public void setClose_date(String close_date) {
 		this.close_date = close_date;
 	}
 
