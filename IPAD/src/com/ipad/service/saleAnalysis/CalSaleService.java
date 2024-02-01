@@ -15,26 +15,19 @@ import com.ipad.service.Service;
 public class CalSaleService	implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		String regionCode = request.getParameter("areacode");
+		String regionCode = request.getParameter("regionCode");
+		
 		CalculateDto dto = new CalculateDto();
-		CalSaleDao calSaleDao = new CalSaleDao();
+		
 		PatientDao patientDao = new PatientDao();
 		
-		System.out.println("받아온 regionCode11 : " + regionCode);
-		
-		int calSale = calSaleDao.calculateSale(regionCode);
 		int calPatient = patientDao.patientCal(regionCode);
 		int employee = patientDao.employeeCal(calPatient);
 		
-		
-		dto.setPredictSale(calSale);
 		dto.setPredictPatient(calPatient);
 		dto.setEmployee(employee);
 		
-		System.out.println(dto);
-		
 		String jsonResponse = new Gson().toJson(dto);
-		
 		
 		request.setAttribute("dto", dto);
 		

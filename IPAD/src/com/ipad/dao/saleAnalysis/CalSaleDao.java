@@ -25,18 +25,16 @@ public class CalSaleDao {
 	
 	public int calculateSale(String adm_cd) {
 		
-		System.out.println("calculatorSale 에서 받은 regionCode : " + adm_cd);
-		
 		int sale = 0;
 		try {
 			con = dataSource.getConnection();
-			String query = "select twenties, thirties, sixties, over70s, floatPp, income, dentalClinic, subway from region_data where adm_cd=?";
+			String query = "SELECT twenties, thirties, sixties, over70s, floatPp, income, dentalClinic, subway FROM region_data WHERE adm_cd=?";
 			
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, adm_cd);
 			rs = pstmt.executeQuery();
 			
-			String query2 = "select * from sale_point";
+			String query2 = "SELECT * FROM sale_point";
 			pstmt = con.prepareStatement(query2);
 			calRs = pstmt.executeQuery();
 			while(rs.next()) {

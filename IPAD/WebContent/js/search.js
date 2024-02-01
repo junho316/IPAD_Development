@@ -4,6 +4,9 @@ var regionCode = "";
 const infoData = [];
 var chartData = [];
 var roundChartData = [];
+var seniorEmployees;
+var juniorEmployees;
+var sizes;
 
 function newpage() {
     window.open('../jsp/saleAnalysis/analyze.jsp', 'result', 'width=800, height=1200, left=550');
@@ -163,6 +166,37 @@ window.onload = function () {
                             }
                         }
                     });
+
+                    $.ajax({
+                        url: './calculate.do',
+                        method: 'GET',
+                        data: { regionCode: regionCode },
+                        success: function (data) {
+                            sizes = 20;
+                            employees = data["employee"];
+                            seniorEmployees = 1;
+                            juniorEmployees = employees - seniorEmployees;
+                            modalText(sizes, seniorEmployees, juniorEmployees);
+                        },
+                        error: function (error) {
+                            console.error('Error fetching data from server:', error);
+                        }
+                    });
+
+                    var areaSize = document.getElementById('area-size');
+                    var seniorEmployeeCount = document.getElementById('senior-employee-count');
+                    var juniorEmployeeCount = document.getElementById('junior-employee-count');
+
+                    function modalText(sizes, seniorEmployees, juniorEmployees) {
+
+                        var areaSizeText = "선택 지역의 평균 개업 평수는 " + sizes + "평 입니다.";
+                        var seniorEmployeeText = "선택 지역의 주임급 간호사 평균 수는 " + seniorEmployees + "명 입니다.";
+                        var juniorEmployeeText = "선택 지역의 신입급 간호사 평균 수는 " + juniorEmployees + "명 입니다.";
+
+                        areaSize.placeholder = areaSizeText;
+                        seniorEmployeeCount.placeholder = seniorEmployeeText;
+                        juniorEmployeeCount.placeholder = juniorEmployeeText;
+                    }
                 });
 
                 function displayArea(coordinates, name, properties) {
@@ -204,10 +238,11 @@ window.onload = function () {
 
     function clearModal() {
         $('#area-size').val('');
-        $('#employee-count').val('');
+        $('#senior-employee-count').val('');
+        $('#junior-employee-count').val('');
         $('#dept-amount').val('');
         $('#area-name').val('');
-        $('#cal').val('');
+        $('#area-code').val('');
     }
 
     function removePolygon() {

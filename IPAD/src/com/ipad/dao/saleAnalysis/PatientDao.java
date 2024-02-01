@@ -76,11 +76,12 @@ public class PatientDao {
             coefResultSet = pstmt2.executeQuery();
 
             while (coefResultSet.next()) {
-               patient = (int) Math.round(
-                     (coefResultSet.getInt("constant") + (population * coefResultSet.getInt("population_point")
-                           + floatpp * coefResultSet.getInt("float_point")
-                           + income * coefResultSet.getInt("income_point")
-                           + dentalclinic * coefResultSet.getInt("dentist_point") / 120)));
+            	 patient = (int) ((int) Math.round(coefResultSet.getInt("constant") 
+                         + Math.log10(population) * coefResultSet.getInt("population_point")
+                         + Math.log10(floatpp) * coefResultSet.getInt("float_point")
+                         + Math.log10(income) * coefResultSet.getInt("income_point")
+                         + Math.log10(dentalclinic) * coefResultSet.getInt("dentist_point")) / dentalclinic);
+
             }
 
             coefResultSet.close();
@@ -102,10 +103,11 @@ public class PatientDao {
    }
 
    public int employeeCal(int patient) {
-      int employee = 0;
-      employee = (int) (Math.ceil((patient/12)/2.5)+1);
-      return employee;
-   }
+	   	  patient = (int) Math.round(patient / 30.0);
+	      int employee = 0;
+	      employee = (int) Math.ceil(((double)patient / 12)/2.5)+1;
+	      return employee;
+	   }
 
    public int areaSizeCal(String adm_cd) {
       int areaSize = 0;
