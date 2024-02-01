@@ -52,8 +52,6 @@ public class FrontController extends HttpServlet {
 		} 
 		String pathAfterContext = extractDesiredPart(com);
 		
-		System.out.println(com);
-		System.out.println(pathAfterContext);
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 

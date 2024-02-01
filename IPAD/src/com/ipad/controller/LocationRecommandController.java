@@ -23,7 +23,7 @@ public class LocationRecommandController implements Controller {
 			
 			service = new LocationRecommandService();
 			service.execute(request, response);
-//			viewPage = "/jsp/locationRecommand/recommand.jsp";	
+				
 			return;
 			
 		}
