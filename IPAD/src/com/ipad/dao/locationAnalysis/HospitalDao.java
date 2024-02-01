@@ -1,9 +1,11 @@
 package com.ipad.dao.locationAnalysis;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.naming.Context;
@@ -63,9 +65,10 @@ public class HospitalDao {
 	// 차트용 데이터
 	public ArrayList<HospitalDetailDto> getHospitalData() {
 		ArrayList<HospitalDetailDto> dtos = new ArrayList<HospitalDetailDto>();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			con = dataSource.getConnection();
-			String query = "SELECT h.hospital_name, r.region_name_detail,h.region, h.address, h.x_coordinate, h.y_coordinate, h.business_status FROM hospital h JOIN region r ON h.region = r.region_name";
+			String query = "SELECT h.hospital_name, r.region_name_detail,h.region,h.license_date,h.close_date, h.address, h.x_coordinate, h.y_coordinate, h.business_status FROM hospital h JOIN region r ON h.region = r.region_name";
 			pstmt = con.prepareStatement(query);
 			resultSet = pstmt.executeQuery();
 			while (resultSet.next()) {
@@ -76,8 +79,12 @@ public class HospitalDao {
 				String business_status = resultSet.getString("business_status");
 				float x_coordinate = resultSet.getFloat("x_coordinate");
 				float y_coordinate = resultSet.getFloat("y_coordinate");
-				HospitalDetailDto dto = new HospitalDetailDto(hospital_name, region, address, region_name_detail, business_status,
-						x_coordinate, y_coordinate);
+				Date license_date = resultSet.getDate("license_date");
+				Date close_date = resultSet.getDate("close_date");
+				String license_dateString = dateFormat.format(license_date);
+				String close_dateString = dateFormat.format(license_date);
+				HospitalDetailDto dto = new HospitalDetailDto(hospital_name, region, address, region_name_detail,
+						business_status, x_coordinate, y_coordinate, license_dateString, close_dateString);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {

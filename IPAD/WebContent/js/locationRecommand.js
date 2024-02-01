@@ -267,23 +267,7 @@ function fetcData() {
 			for (let i = 0; i < data.length; i++) {
 				array.push(data[i])
 			}
-		})
-		.catch(error => console.error('에러:', error));
-}
-
-var regionArray = [];
-function fetcRegionData() {
-	fetch(contextPath + '/json/mapRegion.do')
-		.then(response => {
-			if (!response.ok) {
-				throw new Error('네트워크 응답이 올바르지 않습니다.');
-			}
-			return response.json();
-		})
-		.then(data => {
-			for (let i = 0; i < data.length; i++) {
-				regionArray.push(data[i])
-			}
+			console.log(array);
 		})
 		.catch(error => console.error('에러:', error));
 }
@@ -363,7 +347,6 @@ var polygon = [];
 
 window.onload = function () {
 	fetcData();
-	fetcRegionData();
 	$.getJSON(contextPath + "/json/emd.geojson", function (geojson) {
 		var data = geojson.features;
 
