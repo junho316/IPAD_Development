@@ -82,7 +82,10 @@ public class HospitalDao {
 				Date license_date = resultSet.getDate("license_date");
 				Date close_date = resultSet.getDate("close_date");
 				String license_dateString = dateFormat.format(license_date);
-				String close_dateString = dateFormat.format(license_date);
+				String close_dateString = null;
+				if (close_date != null) {
+					close_dateString = dateFormat.format(close_date);
+				}
 				HospitalDetailDto dto = new HospitalDetailDto(hospital_name, region, address, region_name_detail,
 						business_status, x_coordinate, y_coordinate, license_dateString, close_dateString);
 				dtos.add(dto);
