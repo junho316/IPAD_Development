@@ -26,16 +26,16 @@ function getModalData() {
             areaSize: areaSizeValue,
             employeeCount: employeeCountValue,
             proemployeeCount: proemployeeCountValue,
-            deptAmout: deptAmoutValue,
+            deptAmount: deptAmoutValue,
         }),
     })
         .then(response => response.json())
         .then(data => {
             // 서버 응답 처리
-            document.getElementById("area-size-display").innerText = `Area Size: ${data.areaSize}`;
-            document.getElementById("employee-count-display").innerText = `Employee Count: ${data.employeeCount}`;
-            document.getElementById("proemployee-count-display").innerText = `Professional Employee Count: ${data.proemployeeCount}`;
-            document.getElementById("dept-amout-display").innerText = `Department Amount: ${data.deptAmout}`;
+            document.getElementById("area-size-display").innerText = `Area Size: ${data.area}`;
+            document.getElementById("employee-count-display").innerText = `Employee Count: ${data.employee}`;
+            document.getElementById("proemployee-count-display").innerText = `Professional Employee Count: ${data.proEmployee}`;
+            document.getElementById("dept-amout-display").innerText = `Department Amount: ${data.dept}`;
 
         })
         .catch(error => {

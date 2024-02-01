@@ -106,22 +106,80 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+						<button class="btn btn-primary" data-bs-target="#modalData" data-bs-toggle="modal"
 							onclick="getModalData();">입력</button>
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-			tabindex="-1">
+		<div class="modal fade" id="modalData" aria-hidden="true" aria-labelledby="modalDataLabel" tabindex="-1">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="exampleModalToggleLabel2">분석 결과</h1>
+						<h1 class="modal-title fs-5" id="modalDataLabel">분석 결과</h1>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
-					<div class="modal-body">
+					<div class="modal-body" id="analyzeInfo">
+						<figure class="figure figurebox">
+							<div id="s_salePredict_list" class="row justify-content-between list_box">
+								<div class="col s_bodyIcon"><img src="${pageContext.request.contextPath}/img/won.png"
+										alt=""></div>
+								<div class="col fs-5 text-end list_textBox" id="salePredictList"></div>
+							</div>
+							<figcaption class="figure-caption text-end"></figcaption>
+						</figure>
+						<figure class="figure figurebox">
+							<div id="patientPredict_list" class="row justify-content-between list_box">
+								<div class="col-1 s_bodyIcon"><img
+										src="${pageContext.request.contextPath}/img/dentalPatient.png" alt="">
+								</div>
+								<p class="col fs-5 text-end list_textBox" id="patientList"></p>
+							</div>
+							<!-- <figcaption class="figure-caption text-end">해당 지역 취위생사들의 평균 임금으로서, 실제임금과 오차가 있을 수 잇으며,<br> 경력, 계약형태 등에
+								따라 차이가 크므로 참고자료로만 활용하세요.</figcaption> -->
+						</figure>
+						<figure class="figure figurebox">
+							<div id="employee_list" class="row justify-content-between list_box">
+								<div class="col-1 s_bodyIcon"><img
+										src="${pageContext.request.contextPath}/img/people.png" alt="">
+								</div>
+								<p class="col fs-5 text-end list_textBox" id="employeeList"></p>
+							</div>
+							<figcaption class="figure-caption text-end">해당 지역 취위생사들의 평균 임금으로서, 실제와 오차가 있을 수 잇으며,<br>
+								경력, 계약형태 등에
+								따라 차이가 크므로 참고자료로만 활용하세요.</figcaption>
+						</figure>
+						<figure class="figure figurebox">
+							<div id="area-size_list" class="row list_box">
+								<div class="col-1 s_bodyIcon"><img
+										src="${pageContext.request.contextPath}/img/hospital.png" alt="">
+								</div>
+								<div class="col fs-5 text-end list_textBox" id="areasizeList"></div>
+							</div>
+							<figcaption class="figure-caption text-end">임대료는 표본데이터 부족으로 실제시세와 오차가 있을 수 있으며,<br> 입지,
+								건물상태,
+								인지성에 따라 차이가
+								크므로 참고자료로만 활용하세요.</figcaption>
+						</figure>
+						<figure class="figure figurebox">
+							<div id="dept-amount_list" class="row list_box">
+								<div class="col-1 s_bodyIcon"><img src="${pageContext.request.contextPath}/img/dept.png"
+										alt="">
+								</div>
+								<div class="col fs-5 text-end list_textBox" id="deptamountList"></div>
+							</div>
+							<figcaption class="figure-caption text-end"></figcaption>
+						</figure>
+						<figure class="figure figurebox">
+							<div id="income_list" class="row list_box">
+								<div class="col-1 s_bodyIcon"><img
+										src="${pageContext.request.contextPath}/img/income.png" alt="">
+								</div>
+								<div class="col fs-4 text-end list_textBox" id="incomeList"></div>
+							</div>
+							<figcaption class="figure-caption text-end"></figcaption>
+						</figure>
 						<span id="area-size-display"></span>
 						<span id="employee-count-display"></span>
 						<span id="proemployee-count-display"></span>

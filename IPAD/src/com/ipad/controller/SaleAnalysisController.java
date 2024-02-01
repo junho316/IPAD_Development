@@ -11,6 +11,7 @@ import com.ipad.service.Service;
 import com.ipad.service.saleAnalysis.AnalysisService;
 import com.ipad.service.saleAnalysis.CalSaleService;
 import com.ipad.service.saleAnalysis.GetCustomOverlayDataService;
+import com.ipad.service.saleAnalysis.ModalDataService;
 
 public class SaleAnalysisController implements Controller {
 
@@ -41,6 +42,8 @@ public class SaleAnalysisController implements Controller {
 			return;
 		} else if(com.equals("/SaleAnalysis/submit.do")) {
 			System.out.println("모달데이터 전송@@@@");
+			service = new ModalDataService();
+			service.execute(request, response);
 			return;
 		}
 

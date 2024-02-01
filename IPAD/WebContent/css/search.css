@@ -57,8 +57,9 @@
     width: 100%;
     border-radius: 20px;
     margin-top: 20px;
-    
+
 }
+
 .form-select {
     text-align: center;
 }
@@ -126,7 +127,7 @@
     text-indent: 100%;
     overflow: hidden;
     white-space: nowrap;
-    
+
 }
 
 #nav li {
@@ -141,6 +142,5 @@
 #nav li a {
     text-decoration-line: none;
     color: black;
-    
-}
 
+}
