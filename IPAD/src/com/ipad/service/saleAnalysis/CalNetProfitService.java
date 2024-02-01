@@ -34,7 +34,7 @@ public class CalNetProfitService implements Service {
 		int employment_cost = a.get(0);
 		int seniorEmployment_cost = a.get(1);
 		int juniorEmployment_cost = a.get(2);
-		int deptAmount = Integer.parseInt(deptamount);
+		int deptAmount = Integer.parseInt(deptamount) * 10000;
 		int netProfit = predictSale - rentFee - employment_cost - deptAmount;
 		
 		dto.setPredictPatient(predictPatient);
