@@ -49,9 +49,6 @@ public class LocationRecommandService implements Service {
 			List<LocationRecommandDto> rankList = dao.getTop3List(dtos);
 			String jsonResponse = new Gson().toJson(rankList);
 			
-			
-			request.setAttribute("rank", rankList);
-			
 			PrintWriter out = response.getWriter();
 			response.setContentType("application/json; charset=utf-8");
 			response.setCharacterEncoding("UTF-8");
@@ -61,9 +58,6 @@ public class LocationRecommandService implements Service {
 			 
 			e1.printStackTrace();
 		}
-
-		
-		
 
 	}
 

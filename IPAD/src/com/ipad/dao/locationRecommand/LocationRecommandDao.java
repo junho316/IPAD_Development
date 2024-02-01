@@ -94,17 +94,6 @@ public class LocationRecommandDao {
 		return dataList;
 	}
 
-//	public double standardDeviation(ArrayList<Integer> dataList, String data) {
-//		double sum = 0;
-//		for (int i = 0; i < dataList.size(); i++) {
-//			sum = sum + Math.pow((dataList.get(i) - avgData(data)), 2);
-//		}
-//
-//		double variance = sum / dataList.size();
-//		double standardDeviation = Math.sqrt(variance);
-//		return standardDeviation;
-//	}
-
 	public void setSaleScore(LocationRecommandDto dto) {
 		double score = 0;
 		score = (dto.getSale() - minData("sale")) * 10 / (maxData("sale") - minData("sale"));
@@ -202,7 +191,9 @@ public class LocationRecommandDao {
 		ArrayList<LocationRecommandDto> list = new ArrayList<>();
 		try {
 			con = dataSource.getConnection();
+
 			String query = "select data.twenties, data.teens, data.over70s, data.sixties, region.region_name_detail, region.adm_cd, data.sale from region_data data, region where data.adm_cd = region.adm_cd order by adm_cd";
+
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 
