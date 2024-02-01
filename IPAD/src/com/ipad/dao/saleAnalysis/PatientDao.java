@@ -109,7 +109,7 @@ public class PatientDao {
 
 	public int areaSizeCal(int employee) {
 		int areaSize = 0;
-		areaSize = (int) Math.round((employee+1)*28.2);
+		areaSize = (int) Math.round(((employee+1)*28.2)/3.3);
 		return areaSize;
 	}
 	

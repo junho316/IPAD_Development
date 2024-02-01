@@ -456,7 +456,7 @@
 
 .figurebox {
     width: 90%;
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 5%;
 }
 
@@ -472,7 +472,7 @@
     width: 90%;
     margin-left: 5%;
     border-bottom: 3px solid #ccc;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 
 .double_container {
@@ -491,5 +491,5 @@
 }
 
 .button_box button {
-    margin: 50px;
+    margin: 20px;
 }

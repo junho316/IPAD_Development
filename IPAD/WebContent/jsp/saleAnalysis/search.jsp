@@ -127,7 +127,7 @@
 										alt=""></div>
 								<div class="col fs-5 text-end list_textBox" id="salePredictList"></div>
 							</div>
-							<figcaption class="figure-caption text-end"></figcaption>
+							<!-- <figcaption class="figure-caption text-end"></figcaption> -->
 						</figure>
 						<figure class="figure figurebox">
 							<div id="patientPredict_list" class="row justify-content-between list_box">
@@ -146,9 +146,9 @@
 								</div>
 								<p class="col fs-5 text-end list_textBox" id="employeeList"></p>
 							</div>
-							<figcaption class="figure-caption text-end">해당 지역 취위생사들의 평균 임금으로서, 실제와 오차가 있을 수 잇으며,<br>
+							<!-- <figcaption class="figure-caption text-end">해당 지역 취위생사들의 평균 임금으로서, 실제와 오차가 있을 수 잇으며,<br>
 								경력, 계약형태 등에
-								따라 차이가 크므로 참고자료로만 활용하세요.</figcaption>
+								따라 차이가 크므로 참고자료로만 활용하세요.</figcaption> -->
 						</figure>
 						<figure class="figure figurebox">
 							<div id="area-size_list" class="row list_box">
@@ -157,10 +157,10 @@
 								</div>
 								<div class="col fs-5 text-end list_textBox" id="areasizeList"></div>
 							</div>
-							<figcaption class="figure-caption text-end">임대료는 표본데이터 부족으로 실제시세와 오차가 있을 수 있으며,<br> 입지,
+							<!-- <figcaption class="figure-caption text-end">임대료는 표본데이터 부족으로 실제시세와 오차가 있을 수 있으며,<br> 입지,
 								건물상태,
 								인지성에 따라 차이가
-								크므로 참고자료로만 활용하세요.</figcaption>
+								크므로 참고자료로만 활용하세요.</figcaption> -->
 						</figure>
 						<figure class="figure figurebox">
 							<div id="dept-amount_list" class="row list_box">
@@ -169,7 +169,7 @@
 								</div>
 								<div class="col fs-5 text-end list_textBox" id="deptamountList"></div>
 							</div>
-							<figcaption class="figure-caption text-end"></figcaption>
+							<!-- <figcaption class="figure-caption text-end"></figcaption> -->
 						</figure>
 						<figure class="figure figurebox">
 							<div id="income_list" class="row list_box">
@@ -178,12 +178,12 @@
 								</div>
 								<div class="col fs-4 text-end list_textBox" id="incomeList"></div>
 							</div>
-							<figcaption class="figure-caption text-end"></figcaption>
+							<!-- <figcaption class="figure-caption text-end"></figcaption> -->
 						</figure>
-						<span id="area-size-display"></span>
+						<!-- <span id="area-size-display"></span>
 						<span id="employee-count-display"></span>
 						<span id="proemployee-count-display"></span>
-						<span id="dept-amout-display"></span>
+						<span id="dept-amout-display"></span> -->
 					</div>
 					<div class="modal-footer">
 						<button class="btn btn-primary" data-bs-target="#detailModal"
