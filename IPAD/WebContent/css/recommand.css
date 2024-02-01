@@ -54,12 +54,18 @@ nav {
 }
 
 .subtitle {
-	width: 150px;
-	height: 30px;
+	font-size: 20px;
+	width: 180px;
+	height: 40px;
 	border: none;
-	border-radius: 15px;
+	border-radius: 18px;
 	background-color: #A9A9A9;
 	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	/* 텍스트 수평 가운데 정렬 */
 }
 
 #maplocalInfoAll {
@@ -97,15 +103,16 @@ nav {
 }
 
 #areaTable td:first-child {
-	width: 110px;
-	text-align: center;
-}
-
-#forecastTable td {
-	text-align: center;
+	text-align: right;
 }
 
 #areaTable td {
+	width: 33%;
+	text-align: center;
+	font-size: 17px;
+}
+
+#forecastTable td {
 	text-align: center;
 }
 
@@ -173,6 +180,41 @@ input[type="submit"]:hover {
 #third:hover {
 	font-weight: bolder;
 	cursor: pointer;
+}
+
+#searchBtn {
+	width: 150px;
+	height: 40px;
+	background-color: #3498DB;
+	/* 버튼 배경색 */
+	color: white;
+	/* 버튼 텍스트 색상 */
+	font-size: 15px;
+	/* 버튼 텍스트 크기 */
+	border: none;
+	/* 테두리 없음 */
+	border-radius: 15px;
+	/* 버튼 테두리 둥글게 */
+	cursor: pointer;
+	/* 커서를 손가락으로 변경 */
+}
+
+#searchBtn:hover {
+	background-color: #217DBB;
+	/* 마우스 호버 시 배경색 변경 */
+}
+
+#infoWindow {
+	padding: 10px;
+	width: 300px;
+	height: 70px;
+	border-radius: 10px;
+
+	/* 기타 스타일 지정 */
+}
+
+.bold {
+	font-weight: bold;
 }
 
 /******************************/
