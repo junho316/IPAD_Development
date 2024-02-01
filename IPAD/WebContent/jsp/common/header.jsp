@@ -3,8 +3,7 @@
 <nav class="navbar fixed-top navbar-expand-lg">
 	<div class="container">
 		<!-- LOGO -->
-		<a class="navbar-brand fs-4" href="/IPAD/index.jsp">LOGO</a>
-
+		<a class="navbar-brand fs-4" href="/IPAD/index.jsp"><img src="${pageContext.request.contextPath}/img/logo.png" alt=""></a>
 		<!-- Toggle BTN(모바일 비율 아이콘) -->
 		<button class="navbar-toggler shadow-none border-0 " type="button"
 			data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
@@ -16,7 +15,7 @@
 			id="offcanvasNavbar">
 			<!-- sidebar header -->
 			<div class="offcanvas-header border-bottom">
-				<h5 class="offcanvas-title" id="offcanvasNavbarLabel">LOGO</h5>
+				<h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img src="${pageContext.request.contextPath}/img/logo.png" alt=""></h5>
 				<button type="button" class="btn-close shadow-none"
 					data-bs-dismiss="offcanvas"></button>
 			</div>
