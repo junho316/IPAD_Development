@@ -39,7 +39,7 @@ window.onload = function () {
             predictPatient = data["predictPatient"];
             employment_cost = NumberComma(data["employment_cost"]);
             rentFee = NumberComma(data["rentFee"]);
-            deptAmount = NumberComma(data["deptAmount"]);
+            dept = NumberComma(data["deptAmount"]);
             netProfit = NumberComma(data["netProfit"]);
             seniorEmployment_cost = NumberComma(data["seniorEmployment_cost"]);
             juniorEmployment_cost = NumberComma(data["juniorEmployment_cost"]);
@@ -62,7 +62,7 @@ window.onload = function () {
         patientPredictList.innerText = "월 평균 방문환자 = " + predictPatient + " 명";
         employeeList.innerText = "월 고용 간호사 임금 = " + employment_cost + " 원";
         areaSizeList.innerText = "월 납부 임대료 = " + rentFee + " 원";
-        deptamountList.innerText = "월 납입 이자 = " + deptAmount + " 원";
+        deptamountList.innerText = "월 납입 이자 = " + dept + " 원";
         incomeList.innerText = "월 평균 추정 순이익 = " + netProfit + " 원";
     };
 }

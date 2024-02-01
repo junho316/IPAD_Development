@@ -51,17 +51,18 @@
 									class="form-control" name="area-size" id="area-size">
 							</div>
 							<div>
-								<label for="employee-count" class="col-form-label">고용 예정 간호사</label> 
+								<label for="senior-employee-count" class="col-form-label">주임급 고용 예정 간호사</label> 
 								<input type="text" class="form-control" name="senior-employee-count" id="senior-employee-count">								
 							</div>
 							<div>
+								<label for="junior-employee-count" class="col-form-label">신입급 고용 예정 간호사</label>
 								<input type="text" class="form-control" name="junior-employee-count" id="junior-employee-count">
 							</div>
 							<div>
 								<label for="dept-amount" class="col-form-label">월 대출 상환
 									금액</label> <input type="text" class="form-control" name="dept-amount"
 									id="dept-amount">
-								<!-- <div class="form-text" id="dept-amountHelp">만 원단위로 입력해 주세요.</div> -->
+								<div class="form-text" id="dept-amountHelp">만 원단위로 입력해 주세요.</div>
 							</div>
 							<div>
 								<input type="hidden" name="area-name" value="" id="area-name">

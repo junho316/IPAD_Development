@@ -109,11 +109,6 @@ public class PatientDao {
 	      return employee;
 	   }
 
-   public int areaSizeCal(String adm_cd) {
-      int areaSize = 0;
-      return areaSize;
-
-   }
 
    public CalculateDto getPatientDto(String adm_cd) {
       CalculateDto dto = new CalculateDto();
@@ -122,4 +117,10 @@ public class PatientDao {
       dto.setPredictPatient(patient);
       return dto;
    }
+   
+   public int areaSizeCal(int employee) {
+	      int areaSize = 0;
+	      areaSize = (int) Math.round(((double)(employee+1)*28.2)/3.3);
+	      return areaSize;
+	   }
 }
