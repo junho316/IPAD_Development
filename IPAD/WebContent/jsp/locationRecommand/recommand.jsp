@@ -88,7 +88,7 @@
 											</tbody>
 										</table>
 										<div style="height: 100px; width: 100px;"></div>
-										<div class="subtitle">?</div>
+										<div class="subtitle" id="regionDetail"></div>
 										<div style="height: 20px; width: 100px;"></div>
 										<table id="forecastTable" class="table">
 											<thead>
@@ -126,9 +126,9 @@
 					<!-- 설명 -->
 					<div class="container">
 						<div class="boxShadow" style="height: 200px; margin-bottom: 50px;">
-							<h3>설명</h3>
-							<div>※선택된 옵션을 기반으로 가중치가 부여되고, 가중치에 따라 종합적인 점수가 계산됩니다. 최종 결과는
-								종합점수를 반영하여 산출됩니다.<br>※종합점수 순위 상위 3개를 나타냅니다.<br></div>
+							<!-- <h3>설명</h3> -->
+							<div id="explain"><p>※회귀식을 사용하여 구한 예상 매출과 선택된 옵션에 따라 타겟 연령층에 가중치가 부여되며 , 이를 기반으로 종합적인 점수가 계산됩니다.<br>※계산된 종합점수를 기준으로 상위 3개를 나타냅니다.<br>※회귀식을 사용하여 환자수를 예상하고 이를 기반으로 필요한 직원 수와 평수를 추천합니다.<br>※
+회귀식을 활용하여 얻은 예상 매출에 선택된 옵션에 따라 타겟 연령층에 가중치를 부여하며, 이를 기반으로 종합적인 점수를 계산합니다.</p></div>
 						</div>
 					</div>
 
