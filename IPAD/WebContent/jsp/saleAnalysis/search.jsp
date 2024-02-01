@@ -27,6 +27,9 @@
 			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0983003a235a4d3c0ae25870de9c471a&libraries=services"></script>
 
 		<title>지역 조회 페이지</title>
+		<script>
+			var contextPath = "${pageContext.request.contextPath}";
+		</script>
 	</head>
 
 	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
@@ -119,17 +122,20 @@
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
-						Hide this modal and show the first with the button below.
+						<span id="area-size-display"></span>
+						<span id="employee-count-display"></span>
+						<span id="proemployee-count-display"></span>
+						<span id="dept-amout-display"></span>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back
-							to first</button>
+						<button class="btn btn-primary" data-bs-target="#detailModal"
+							data-bs-toggle="modal">재입력</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first
-			modal</button>
+
 
 		<!--nav------------------------------------------------------------------------------------------->
 		<%@ include file="/jsp/common/header.jsp" %>

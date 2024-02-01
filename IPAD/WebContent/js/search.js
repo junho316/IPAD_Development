@@ -15,9 +15,9 @@ function getModalData() {
     const areaSizeValue = document.getElementById("area-size").value;
     const employeeCountValue = document.getElementById("employee-count").value;
     const proemployeeCountValue = document.getElementById("proemployee-count").value;
-    const deptAmoutValue = document.getElementById("dept-amout").value;
+    const deptAmoutValue = document.getElementById("dept-amount").value;
 
-    fetch('/your-server-endpoint', {
+    fetch(contextPath + '/SaleAnalysis/submit.do', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -29,17 +29,21 @@ function getModalData() {
             deptAmout: deptAmoutValue,
         }),
     })
-    .then(response => response.json())
-    .then(data => {
-        // 서버 응답 처리
-        console.log('서버 응답:', data);
-        
-    })
-    .catch(error => {
-        console.error('서버 요청 에러:', error);
-    });
+        .then(response => response.json())
+        .then(data => {
+            // 서버 응답 처리
+            document.getElementById("area-size-display").innerText = `Area Size: ${data.areaSize}`;
+            document.getElementById("employee-count-display").innerText = `Employee Count: ${data.employeeCount}`;
+            document.getElementById("proemployee-count-display").innerText = `Professional Employee Count: ${data.proemployeeCount}`;
+            document.getElementById("dept-amout-display").innerText = `Department Amount: ${data.deptAmout}`;
+
+        })
+        .catch(error => {
+            console.error('서버 요청 에러:', error);
+        });
 
 };
+
 
 window.onload = function () {
 
@@ -178,8 +182,8 @@ window.onload = function () {
                             regionCode = val.properties.adm_cd;
                             regionInfo = regionCode;
 
-                            areaname.value = region;
-                            areacode.value = regionCode;
+                            // areaname.value = region;
+                            // areacode.value = regionCode;
 
                             for (var i = 0; i < title.length; i++) {
                                 if (coordinates.length === 0) return;

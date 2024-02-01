@@ -39,7 +39,10 @@ public class SaleAnalysisController implements Controller {
 			viewPage = "/jsp/saleAnalysis/analyze.jsp";
 			System.out.println(viewPage);
 			return;
-		} 
+		} else if(com.equals("/SaleAnalysis/submit.do")) {
+			System.out.println("모달데이터 전송@@@@");
+			return;
+		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
