@@ -35,45 +35,7 @@
 	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
 	<body class="vh-100 overflow-hiddden">
-		<!-- modal -->
-		<!-- <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<form action="analyze.do" method="get" target="result" onsubmit="newpage();">
-						<div class="modal-header">
-							<h5 class="modal-title" id="detailModalLabel">상세 분석</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<div>
-								<label for="area-size" class="col-form-label">예정 평 수</label> <input type="text"
-									class="form-control" name="area-size" id="area-size">
-							</div>
-							<div>
-								<label for="employee-count" class="col-form-label">예정 종업원
-									수</label> <input type="text" class="form-control" name="employee-count"
-									id="employee-count">
-							</div>
-							<div>
-								<label for="dept-amount" class="col-form-label">월 대출 상환
-									금액</label> <input type="text" class="form-control" name="dept-amount"
-									id="dept-amount">
-								<div class="form-text" id="dept-amountHelp">만 원단위로 입력해 주세요.</div>
-							</div>
-							<div>
-								<input type="hidden" name="area-name" value="" id="area-name">
-								<input type="hidden" name="cal" value="">
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary">입력</button>
-							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div> -->
-
+		
 		<!-- modal -->
 		<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">

@@ -12,7 +12,6 @@ import com.ipad.dao.locationAnalysis.HospitalDao;
 import com.ipad.dao.locationAnalysis.OpenCloseCountDao;
 import com.ipad.dao.locationAnalysis.ResidentPopulationDao;
 import com.ipad.dto.locationAnalysis.HospitalCountDto;
-import com.ipad.dto.locationAnalysis.HospitalDto;
 import com.ipad.dto.locationAnalysis.HospitalPopulationDTO;
 import com.ipad.dto.locationAnalysis.OpenCloseCountDto;
 import com.ipad.dto.locationAnalysis.RegionSummaryDto;
