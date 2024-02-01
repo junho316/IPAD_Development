@@ -59,7 +59,7 @@
 							</div>
 							<div>
 								<input type="hidden" name="area-name" value="" id="area-name">
-								<input type="hidden" name="cal" value="">
+								<input type="hidden" name="area-code" value="" id="area">
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -70,6 +70,66 @@
 				</div>
 			</div>
 		</div> -->
+
+		<!-- 모달에서 모달로  -->
+
+		<div class="modal fade" id="detailModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+			tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalToggleLabel">상세 분석</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div>
+							<label for="area-size" class="col-form-label">예정 평 수</label> <input type="text"
+								class="form-control" name="area-size" id="area-size">
+						</div>
+						<div>
+							<label for="employee-count" class="col-form-label">예정 종업원
+								수</label> <input type="text" class="form-control" name="employee-count"
+								id="employee-count">
+							<input type="text" class="form-control" name="proemployee-count" id="proemployee-count">
+						</div>
+						<div>
+							<label for="dept-amount" class="col-form-label">월 대출 상환
+								금액</label> <input type="text" class="form-control" name="dept-amount" id="dept-amount">
+							<div class="form-text" id="dept-amountHelp">만 원단위로 입력해 주세요.</div>
+						</div>
+						<div>
+							<input type="hidden" name="area-name" value="" id="area-name">
+							<input type="hidden" name="area-code" value="" id="area">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+							onclick="getModalData();">입력</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+			tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalToggleLabel2">분석 결과</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						Hide this modal and show the first with the button below.
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back
+							to first</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first
+			modal</button>
 
 		<!--nav------------------------------------------------------------------------------------------->
 		<%@ include file="/jsp/common/header.jsp" %>

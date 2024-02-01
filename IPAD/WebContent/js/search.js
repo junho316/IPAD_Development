@@ -8,7 +8,38 @@ var roundChartData = [];
 function newpage() {
     window.open('../jsp/saleAnalysis/analyze.jsp', 'result', 'width=800, height=1200, left=550');
     return true;
-}
+};
+
+function getModalData() {
+
+    const areaSizeValue = document.getElementById("area-size").value;
+    const employeeCountValue = document.getElementById("employee-count").value;
+    const proemployeeCountValue = document.getElementById("proemployee-count").value;
+    const deptAmoutValue = document.getElementById("dept-amout").value;
+
+    fetch('/your-server-endpoint', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            areaSize: areaSizeValue,
+            employeeCount: employeeCountValue,
+            proemployeeCount: proemployeeCountValue,
+            deptAmout: deptAmoutValue,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // 서버 응답 처리
+        console.log('서버 응답:', data);
+        
+    })
+    .catch(error => {
+        console.error('서버 요청 에러:', error);
+    });
+
+};
 
 window.onload = function () {
 
@@ -130,7 +161,7 @@ window.onload = function () {
             currentOverlay.addEventListener('click', function () {
 
                 var areaname = document.getElementById("area-name");
-
+                var areacode = document.getElementById("area-code");
                 removePolygon();
                 $.getJSON("/IPAD/json/emdTest.geojson", function (geojson) {
                     var data = geojson.features;
@@ -145,8 +176,10 @@ window.onload = function () {
                             name = val.properties.temp;
                             region = val.properties.adm_nm;
                             regionCode = val.properties.adm_cd;
-
                             regionInfo = regionCode;
+
+                            areaname.value = region;
+                            areacode.value = regionCode;
 
                             for (var i = 0; i < title.length; i++) {
                                 if (coordinates.length === 0) return;
@@ -163,8 +196,8 @@ window.onload = function () {
                     });
                     console.log(regionCode);
 
-                    var analyzeUrl = "../jsp/saleAnalysis/analyze.jsp?regionCode=" + encodeURIComponent(regionCode);
-                    var newWindow = window.open(analyzeUrl, 'result', 'width=800,height=1200,left=550');
+                    // var analyzeUrl = "../jsp/saleAnalysis/analyze.jsp?regionCode=" + encodeURIComponent(regionCode);
+                    // var newWindow = window.open(analyzeUrl, 'result', 'width=800,height=1200,left=550');
 
                     // $.ajax({
                     //     url: './analyze.do',
