@@ -172,7 +172,7 @@ window.onload = function () {
                         method: 'GET',
                         data: { regionCode: regionCode },
                         success: function (data) {
-                            sizes = 20;
+                            sizes = data["size"];
                             employees = data["employee"];
                             seniorEmployees = 1;
                             juniorEmployees = employees - seniorEmployees;

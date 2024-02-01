@@ -23,6 +23,26 @@ public class CalSaleDao {
 		}
 	}
 	
+	public String getResionCode(String regionName) {
+		
+		String regionCode= "";
+		try {
+			con = dataSource.getConnection();
+			String query = "SELECT adm_cd FROM region WHERE region_name = ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, regionName);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				regionCode = rs.getString("adm_cd");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return regionCode;
+	};
+	
 	public int calculateSale(String adm_cd) {
 		
 		int sale = 0;
