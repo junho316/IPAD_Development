@@ -94,19 +94,19 @@
 											<thead>
 												<tr>
 													<td>예상 환자수</td>
-													<td>-</td>
+													<td id="patient">-</td>
 												</tr>
 												<tr>
 													<td>추천 직원수</td>
-													<td>-</td>
+													<td id="employee">-</td>
 												</tr>
 												<tr>
 													<td>추천 평수</td>
-													<td>-</td>
+													<td id="size">-</td>
 												</tr>
 												<tr>
 													<td>예상 매출</td>
-													<td>-</td>
+													<td id="predictSale">-</td>
 												</tr>
 												</tbody>
 										</table>
@@ -127,7 +127,10 @@
 					<div class="container">
 						<div class="boxShadow" style="height: 200px; margin-bottom: 50px;">
 							<!-- <h3>설명</h3> -->
-							<div id="explain"><p>※회귀식을 사용하여 얻은 예상 매출과 선택된 옵션에 따라 타겟 연령층에 가중치가 부여하며 , 이를 기반으로 종합적인 점수가 계산됩니다.<br>※계산된 종합점수를 기준으로 상위 3개를 나타냅니다.<br>※회귀식을 사용하여 예상 환자 수를 얻고 이를 기반으로 필요한 직원 수와 평수를 추천합니다.</p></div>
+							<div id="explain">
+								<p>※회귀식을 사용하여 얻은 예상 매출과 선택된 옵션에 따른 타겟 연령층에 가중치를 부여하며, 이를 기반으로 종합적인 점수가 계산됩니다.<br>※계산된
+									종합점수를 기준으로 상위 3개를 나타냅니다.<br>※회귀식을 사용하여 예상 환자 수를 얻고 이를 기반으로 필요한 직원 수와 평수를 추천합니다.</p>
+							</div>
 						</div>
 					</div>
 

@@ -1,7 +1,7 @@
 package com.ipad.dto.locationRecommand;
 
-public class LocationRecommandDto {	
-	int option;
+public class LocationRecommandDto {
+	
 	int teens;	
 	int twenties;
 	int sixties;
@@ -96,12 +96,6 @@ public class LocationRecommandDto {
 	}
 	public void setSale(int sale) {
 		this.sale = sale;
-	}
-	public int getOption() {
-		return option;
-	}
-	public void setOption(int option) {
-		this.option = option;
 	}
 	
 }

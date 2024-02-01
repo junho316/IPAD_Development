@@ -14,8 +14,8 @@ import javax.sql.DataSource;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.ipad.dto.locationAnalysis.HospitalCountDto;
-import com.ipad.dto.locationAnalysis.HospitalDto;
 import com.ipad.dto.locationRecommand.HospitalDetailDto;
+
 
 public class HospitalDao {
 	private Connection con;
