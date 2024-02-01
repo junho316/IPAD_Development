@@ -75,15 +75,15 @@
 											<tbody>
 												<tr>
 													<td>1.</td>
-													<td id="first" onclick="selectRegion(event);">-</td>
+													<td id="first" onclick="selectRegion(event); getRegionCode(event);">-</td>
 												</tr>
 												<tr>
 													<td>2.</td>
-													<td id="second" onclick="selectRegion(event);">-</td>
+													<td id="second" onclick="selectRegion(event); getRegionCode(event);">-</td>
 												</tr>
 												<tr>
 													<td>3.</td>
-													<td id="third" onclick="selectRegion(event);">-</td>
+													<td id="third" onclick="selectRegion(event); getRegionCode(event);">-</td>
 												</tr>
 											</tbody>
 										</table>

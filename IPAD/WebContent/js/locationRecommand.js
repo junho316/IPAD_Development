@@ -45,6 +45,12 @@ function showMapData(tdContent) {
 }
 var list = [];
 
+function predictWrite() {
+	document.getElementById('patient').innerText = predictData[0];
+	document.getElementById('employee').innerText = predictData[1];
+	document.getElementById('size').innerText = predictData[2];
+	document.getElementById('predictSale').innerText = predictData[3]
+}
 
 function getRankList() {
 
@@ -245,11 +251,16 @@ function fetcPredictData(name) {
 	})
 		.then(response => response.json)
 		.then(jsonArray => {
+			predictData.length = 0;
+			console.log(jsonArray);
 			for (let i = 0; i < jsonArray.length; i++) {
 				predictData.push(jsonArray[i])
 			}
+			console.log(predictData);
 		})
-		.then(() =>)
+		.then(() => {
+			predictWrite();
+		})
 		.catch(error => console.error('에러 :', error))
 }
 function getRegionCode(event) {
