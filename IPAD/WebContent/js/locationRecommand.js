@@ -180,6 +180,10 @@ function songpaHosLoc() {
 	deleteMarker();
 	songpaHos();
 	overlayDel.setMap(null);
+    if (currentInfoWindow) {
+        currentInfoWindow.close();
+    }
+
 }
 
 function sungnamHosLoc() {
@@ -191,6 +195,10 @@ function sungnamHosLoc() {
 	deleteMarker();
 	sungnamHos();
 	overlayDel.setMap(null);
+    if (currentInfoWindow) {
+        currentInfoWindow.close();
+    }
+
 }
 
 function hanamHosLoc() {
@@ -202,6 +210,10 @@ function hanamHosLoc() {
 	deleteMarker();
 	hanamHos();
 	overlayDel.setMap(null);
+    if (currentInfoWindow) {
+        currentInfoWindow.close();
+    }
+
 }
 
 
@@ -268,27 +280,43 @@ var imageSize = new kakao.maps.Size(20, 20);
 var hos = document.getElementById('hos');
 var hosLoc = document.getElementById('hosLoc');
 
+var currentInfoWindow = null;
+
 function displayMarker(data, img) {
-	var markerImage = new kakao.maps.MarkerImage(img, imageSize);
-	var position = new kakao.maps.LatLng(Number(data.x_coordinate), Number(data.y_coordinate));
+    // 마커 이미지 및 위치 설정
+    var markerImage = new kakao.maps.MarkerImage(img, imageSize);
+    var position = new kakao.maps.LatLng(Number(data.x_coordinate), Number(data.y_coordinate));
 
-	var marker = new kakao.maps.Marker({
-		map: map,
-		position: position,
-		image: markerImage,
-	});
+    // 마커 생성
+    var marker = new kakao.maps.Marker({
+        map: map,
+        position: position,
+        image: markerImage,
+    });
+    markerArr.push(marker);
 
-	markerArr.push(marker);
+    if(img == closeHosImg){
+    	var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="padding:10px;min-width:250px;">' +
+                     '<strong>' + data.hospital_name + '</strong><br>' +
+                     '폐업일 : ' + data.close_date 
+        });
 
-	var overlay = new kakao.maps.CustomOverlay({
-		yAnchor: 3,
-		position: marker.getPosition(),
-	});
+    } else {
+    	   var infowindow = new kakao.maps.InfoWindow({
+    	        content: '<div style="padding:10px;min-width:250px;">' +
+    	                 '<strong>' + data.hospital_name + '</strong><br>' +
+    	                 '개업일 : ' + data.license_date 
+    	    });
+    }
 
-	kakao.maps.event.addListener(marker, 'click', function () {
-		hos.innerHTML = data.hospital_name;
-		hosLoc.innerHTML = data.address;
-	});
+    kakao.maps.event.addListener(marker, 'click', function () {
+        if (currentInfoWindow) {
+            currentInfoWindow.close();
+        }
+        infowindow.open(map, marker);
+        currentInfoWindow = infowindow;
+    });
 }
 
 function deleteMarker() {
