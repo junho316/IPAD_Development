@@ -53,7 +53,7 @@
 						<div class="subtitle">희망 분야</div>
 						<div style="height: 20px; width: 100px;"></div>
 						<form action="submit.do" method="post">
-							<table id="areaTable" class="table">
+							<table class="table">
 								<tbody>
 									<tr>
 										<td>임플란트</td>
@@ -67,7 +67,8 @@
 									</tr>
 								</tbody>
 							</table>
-							<input type="button" value="추천 지역 검색" onclick="getRankList();">
+							<input id="searchBtn" type="button" value="추천 지역 검색"
+								onclick="getRankList();">
 						</form>
 					</div>
 				</div>
@@ -81,14 +82,17 @@
 								<tr>
 									<td>1.</td>
 									<td id="first" onclick="selectRegion(event);">-</td>
+									<td></td>
 								</tr>
 								<tr>
 									<td>2.</td>
 									<td id="second" onclick="selectRegion(event);">-</td>
+									<td></td>
 								</tr>
 								<tr>
 									<td>3.</td>
 									<td id="third" onclick="selectRegion(event);">-</td>
+									<td></td>
 								</tr>
 							</tbody>
 						</table>
@@ -100,6 +104,7 @@
 								<tr>
 									<td>예상 환자수</td>
 									<td>-</td>
+
 								</tr>
 								<tr>
 									<td>추천 직원수</td>
