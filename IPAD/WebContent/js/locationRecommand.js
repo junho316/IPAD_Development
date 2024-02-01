@@ -1,5 +1,5 @@
 window.onload = function () {
-	fetcData();
+	fetchData();
 	$.getJSON(contextPath + "/json/emd.geojson", function (geojson) {
 		var data = geojson.features;
 
@@ -26,9 +26,35 @@ function writeRankList() {
 
 function selectRegion(event) {
 	var clickedTd = event.target;
+
+	if (selectedTd) {
+		selectedTd.classList.remove('bold');
+	}
+	clickedTd.classList.add('bold');
+
+	selectedTd = clickedTd;
 	var tdContent = clickedTd.innerText;
 	showMapData(tdContent);
+	fetcPredictData(tdContent);
+}
 
+function showMapData(tdContent) {
+	switch (tdContent) {
+		case '송파구 위례':
+			songpaHosLoc();
+			document.getElementById('regionDetail').innerText = '송파구 위례';
+			break;
+		case '성남시 위례':
+			sungnamHosLoc();
+			document.getElementById('regionDetail').innerText = '성남시 위례';
+			break;
+		case '하남시 위례':
+			hanamHosLoc();
+			document.getElementById('regionDetail').innerText = '하남시 위례';
+			break;
+		default:
+			break;
+	}
 }
 
 function showMapData(tdContent) {
@@ -53,7 +79,6 @@ function predictWrite() {
 }
 
 function getRankList() {
-
 	var checkImpl = document.getElementById('implant').checked;
 	var checkOrth = document.getElementById('orthodontics').checked;
 	var data = {
@@ -75,7 +100,7 @@ function getRankList() {
 			return response.json();
 		})
 		.then(jsonArray => {
-
+			console.log(jsonArray);
 			list.length = 0;
 
 			for (let i = 0; i < jsonArray.length; i++) {
@@ -94,6 +119,7 @@ function getRankList() {
 		.catch(error => {
 			console.error('에러 발생:', error);
 		});
+
 }
 
 function mapMenuClick(e) {
@@ -103,15 +129,13 @@ function mapMenuClick(e) {
 	for (let i = 0; i < selall.length; i++) {
 		selall[i].innerHTML = e.innerHTML;
 	}
-
 }
 
-
-function ClickPopUpBtn(e) {
+function clickPopUpBtn(e) {
 	document.querySelector('#selectArea').innerHTML = e.innerHTML;
 }
 
-function ClickHosCnt() {
+function clickHosCnt() {
 	document.querySelector('#areaMenu').style.display = 'block';
 }
 
@@ -149,7 +173,6 @@ var marker3 = new kakao.maps.Marker({
 	position: markerPosition3
 });
 
-
 // 지도에 표시 -------------------------------------------------------------
 var moveLatLon;
 
@@ -160,18 +183,8 @@ function addArea() {
 	displayArea(sungnamPoly);
 }
 
-function everyHos() {
-	map.setLevel(6);
-	moveLatLon = new kakao.maps.LatLng(37.47601668950402, 127.15099417223486);
-	map.panTo(moveLatLon);
-	deleteMarker();
-	hanamHos();
-	sungnamHos();
-	songpaHos();
-	overlayDel.setMap(null);
-}
-
 function songpaHosLoc() {
+
 	map.setLevel(5);
 	deleteArea();
 	displayArea(songpaPoly);
@@ -183,7 +196,6 @@ function songpaHosLoc() {
 	if (currentInfoWindow) {
 		currentInfoWindow.close();
 	}
-
 }
 
 function sungnamHosLoc() {
@@ -198,7 +210,6 @@ function sungnamHosLoc() {
 	if (currentInfoWindow) {
 		currentInfoWindow.close();
 	}
-
 }
 
 function hanamHosLoc() {
@@ -216,10 +227,10 @@ function hanamHosLoc() {
 
 }
 
-
 // json으로 가져오기----------------------------------------------------------------
 var array = [];
-function fetcData() {
+
+function fetchData() {
 	fetch(contextPath + '/json/map.do')
 		.then(response => {
 			if (!response.ok) {
@@ -228,20 +239,18 @@ function fetcData() {
 			return response.json();
 		})
 		.then(data => {
-			for (let i = 0; i < data.length; i++) {
-				array.push(data[i])
-			}
-			console.log(array);
+			array = data;
+
 		})
 		.catch(error => console.error('에러:', error));
 }
 
 //예상 환자수 등등 가져오기
 var predictData = [];
-function fetcPredictData(name) {
-	var data = {
-		name: name
-	};
+function fetcPredictData(regionName) {
+	var data =
+		{ name: regionName }
+
 	fetch(contextPath + '/json/predict.do', {
 		method: 'POST',
 		headers: {
@@ -249,13 +258,18 @@ function fetcPredictData(name) {
 		},
 		body: JSON.stringify(data)
 	})
-		.then(response => response.json)
-		.then(jsonArray => {
-			predictData.length = 0;
-			console.log(jsonArray);
-			for (let i = 0; i < jsonArray.length; i++) {
-				predictData.push(jsonArray[i])
+		.then(response => {
+			if (!response.ok) {
+				throw new Error('Network response was not ok');
 			}
+			return response.json();
+		})
+		.then(data => {
+			predictData.length = 0;
+			predictData.push(data.predictPatient);
+			predictData.push(data.employee);
+			predictData.push(data.size);
+			predictData.push(data.predictSale);
 			console.log(predictData);
 		})
 		.then(() => {
@@ -272,34 +286,35 @@ function getRegionCode(event) {
 
 
 function hanamHos() {
-	for (let i = 0; i < array.length; i++) {
-		if (array[i].region == '하남시' && array[i].business_status == '영업/정상') {
-			displayMarker(array[i], openHosImg);
-		} else if (array[i].region == '하남시' && array[i].business_status != '영업/정상') {
-			displayMarker(array[i], closeHosImg);
-		}
 
-	}
+	array.forEach(data => {
+		if (data.region == '하남시' && data.business_status == '영업/정상') {
+			displayMarker(data, openHosImg);
+		} else if (data.region == '하남시' && data.business_status != '영업/정상') {
+			displayMarker(data, closeHosImg);
+		}
+	});
 }
 
 function sungnamHos() {
-	for (let i = 0; i < array.length; i++) {
-		if (array[i].region == '성남시' && array[i].business_status == '영업/정상') {
-			displayMarker(array[i], openHosImg);
-		} else if (array[i].region == '성남시' && array[i].business_status != '영업/정상') {
-			displayMarker(array[i], closeHosImg);
+	array.forEach(data => {
+		if (data.region == '성남시' && data.business_status == '영업/정상') {
+			displayMarker(data, openHosImg);
+		} else if (data.region == '성남시' && data.business_status != '영업/정상') {
+			displayMarker(data, closeHosImg);
 		}
-	}
+	});
 }
 
 function songpaHos() {
-	for (let i = 0; i < array.length; i++) {
-		if (array[i].region == '송파구' && array[i].business_status == '영업/정상') {
-			displayMarker(array[i], openHosImg);
-		} else if (array[i].region == '송파구' && array[i].business_status != '영업/정상') {
-			displayMarker(array[i], closeHosImg);
+	array.forEach(data => {
+		if (data.region == '송파구' && data.business_status == '영업/정상') {
+			displayMarker(data, openHosImg);
+		} else if (data.region == '송파구' && data.business_status != '영업/정상') {
+			displayMarker(data, closeHosImg);
 		}
-	}
+	});
+
 }
 
 // 오버레이 ----------------------------------------
@@ -307,10 +322,10 @@ const markerArr = [];
 var overlayDel = new kakao.maps.CustomOverlay({
 	yAnchor: 3,
 	position: null
-});;
+});
 
-var openHosImg = contextPath + "/img/hosMark.png"
-var closeHosImg = contextPath + "/img/closeHosMark.png"
+var openHosImg = contextPath + "/img/hosMark.png";
+var closeHosImg = contextPath + "/img/closeHosMark.png";
 var imageSize = new kakao.maps.Size(20, 20);
 var hos = document.getElementById('hos');
 var hosLoc = document.getElementById('hosLoc');
@@ -330,20 +345,21 @@ function displayMarker(data, img) {
 	});
 	markerArr.push(marker);
 
-	if (img == closeHosImg) {
-		var infowindow = new kakao.maps.InfoWindow({
-			content: '<div style="padding:10px;min-width:250px;">' +
-				'<strong>' + data.hospital_name + '</strong><br>' +
-				'폐업일 : ' + data.close_date
-		});
+	var infoContent = img == closeHosImg ?
+		'폐업일: ' + data.close_date :
+		'개업일: ' + data.license_date;
 
-	} else {
-		var infowindow = new kakao.maps.InfoWindow({
-			content: '<div style="padding:10px;min-width:250px;">' +
-				'<strong>' + data.hospital_name + '</strong><br>' +
-				'개업일 : ' + data.license_date
-		});
-	}
+	var infowindow = new kakao.maps.InfoWindow({
+		content: '<div id="infoWindow">' +
+			'<strong>' + data.hospital_name + '</strong><br>' +
+			infoContent +
+			'</div>',
+		removable: true  // 기본 InfoWindow 디자인 사용
+	});
+
+
+
+
 
 	kakao.maps.event.addListener(marker, 'click', function () {
 		if (currentInfoWindow) {
@@ -355,9 +371,7 @@ function displayMarker(data, img) {
 }
 
 function deleteMarker() {
-	for (let i = 0; i < markerArr.length; i++) {
-		markerArr[i].setMap(null);
-	}
+	markerArr.forEach(marker => marker.setMap(null));
 }
 
 // 폴리곤 ----------------------------------------
@@ -369,11 +383,7 @@ var polygon = [];
 function displayArea(coordinates) {
 	var path = [];
 	coordinates.forEach(coordinate => {
-		var point = {
-			x: coordinate[1],
-			y: coordinate[0]
-		};
-		path.push(new kakao.maps.LatLng(coordinate[1], coordinate[0]))
+		path.push(new kakao.maps.LatLng(coordinate[1], coordinate[0]));
 	});
 
 	polygon.push(new kakao.maps.Polygon({
@@ -387,10 +397,36 @@ function displayArea(coordinates) {
 		fillOpacity: 0.05
 	}));
 }
+
 function deleteArea() {
-	polygon.forEach(coordinate => {
-		coordinate.setMap(null)
-	}
-	)
+	polygon.forEach(coordinate => coordinate.setMap(null));
 }
 
+function showCustomOverlay(data, infoContent) {
+	document.getElementById('hospitalName').innerText = data.hospital_name;
+	document.getElementById('infoContent').innerText = infoContent;
+
+	var customOverlay = document.getElementById('customOverlay');
+	customOverlay.style.display = 'block';
+
+	// 팝업 위치 설정 (예시로 임의의 위치)
+	var position = new kakao.maps.LatLng(Number(data.x_coordinate), Number(data.y_coordinate));
+
+	// CustomOverlay 추가
+	var customOverlayOptions = {
+		content: customOverlay,
+		position: position,
+		zIndex: 1
+	};
+
+	var customOverlayObj = new kakao.maps.CustomOverlay(customOverlayOptions);
+	customOverlayObj.setMap(map);
+
+	// 팝업을 클릭하면 닫기
+	customOverlay.onclick = function () {
+		customOverlay.style.display = 'none';
+		customOverlayObj.setMap(null);
+	};
+}
+
+var selectedTd = null;

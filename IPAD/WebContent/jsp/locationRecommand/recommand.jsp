@@ -31,6 +31,7 @@
 				<%@ include file="/jsp/common/header.jsp" %>
 					<div style="height: 60px; width: 100px;"></div>
 
+
 					<!-- map 과 메뉴 ------------------------------------------------------------------------------------->
 					<div class="container">
 						<div style="height: 50px; width: 100px;"></div>
@@ -47,23 +48,24 @@
 									<div class="section">
 										<div class="subtitle">희망 분야</div>
 										<div style="height: 20px; width: 100px;"></div>
-
-										<table id="areaTable" class="table">
-											<tbody>
-												<tr>
-													<td>임플란트</td>
-													<td><input type="checkbox" name="implant" value="implant"
-															id="implant"></td>
-												</tr>
-												<tr>
-													<td>교정</td>
-													<td><input type="checkbox" name="orthodontics" value="orthodontics"
-															id="orthodontics"></td>
-												</tr>
-											</tbody>
-										</table>
-										<input type="button" value="추천 지역 검색" onclick="getRankList();">
-
+										<form action="submit.do" method="post">
+											<table class="table">
+												<tbody>
+													<tr>
+														<td>임플란트</td>
+														<td><input type="checkbox" name="implant" value="implant"
+																id="implant"></td>
+													</tr>
+													<tr>
+														<td>교정</td>
+														<td><input type="checkbox" name="orthodontics"
+																value="orthodontics" id="orthodontics"></td>
+													</tr>
+												</tbody>
+											</table>
+											<input id="searchBtn" type="button" value="추천 지역 검색"
+												onclick="getRankList();">
+										</form>
 									</div>
 								</div>
 								<div class="boxShadow vertical2">
@@ -75,26 +77,30 @@
 											<tbody>
 												<tr>
 													<td>1.</td>
-													<td id="first" onclick="selectRegion(event); getRegionCode(event);">-</td>
+													<td id="first" onclick="selectRegion(event);">-</td>
+													<td></td>
 												</tr>
 												<tr>
 													<td>2.</td>
-													<td id="second" onclick="selectRegion(event); getRegionCode(event);">-</td>
+													<td id="second" onclick="selectRegion(event);">-</td>
+													<td></td>
 												</tr>
 												<tr>
 													<td>3.</td>
-													<td id="third" onclick="selectRegion(event); getRegionCode(event);">-</td>
+													<td id="third" onclick="selectRegion(event);">-</td>
+													<td></td>
 												</tr>
 											</tbody>
 										</table>
-										<div style="height: 100px; width: 100px;"></div>
-										<div class="subtitle" id="regionDetail"></div>
+										<div style="height: 50px; width: 100px;"></div>
+										<div class="subtitle" id="regionDetail">?</div>
 										<div style="height: 20px; width: 100px;"></div>
 										<table id="forecastTable" class="table">
 											<thead>
 												<tr>
 													<td>예상 환자수</td>
 													<td id="patient">-</td>
+
 												</tr>
 												<tr>
 													<td>추천 직원수</td>
@@ -133,6 +139,7 @@
 							</div>
 						</div>
 					</div>
+
 
 
 					<!--------------------------------------푸터 ------------------------------------------------------->
