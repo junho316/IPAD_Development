@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipad.service.Service;
-import com.ipad.service.saleAnalysis.AnalysisService;
+//import com.ipad.service.saleAnalysis.AnalysisService;
 import com.ipad.service.saleAnalysis.CalSaleService;
 import com.ipad.service.saleAnalysis.GetCustomOverlayDataService;
 
@@ -31,14 +31,15 @@ public class SaleAnalysisController implements Controller {
 			service = new CalSaleService();
 			service.execute(request, response);
 			return;
-		} else if (com.equals("/SaleAnalysis/analyze.do")) {
-		
-			service = new AnalysisService();
-			service.execute(request, response);
-			viewPage = "/jsp/saleAnalysis/analyze.jsp";
-		
-			return;
 		} 
+//		else if (com.equals("/SaleAnalysis/analyze.do")) {
+//		
+//			service = new AnalysisService();
+//			service.execute(request, response);
+//			viewPage = "/jsp/saleAnalysis/analyze.jsp";
+//		
+//			return;
+//		} 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
