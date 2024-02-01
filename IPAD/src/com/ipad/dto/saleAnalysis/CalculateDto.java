@@ -1,6 +1,6 @@
 package com.ipad.dto.saleAnalysis;
 
-public class AnalysisDto {
+public class CalculateDto {
 	private String adm_cd;
 	private String region_name;
 	private int predictSale;
