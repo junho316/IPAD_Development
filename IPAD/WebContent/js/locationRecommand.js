@@ -18,7 +18,6 @@ window.onload = function () {
 }
 
 function writeRankList() {
-
 	document.getElementById('first').innerText = list[0];
 	document.getElementById('second').innerText = list[1];
 	document.getElementById('third').innerText = list[2];
@@ -114,6 +113,7 @@ function getRankList() {
 			// 이제 writeRankList가 실행된 이후에 아래 코드가 실행됩니다.
 			var tempcon = document.getElementById('first').innerText;
 			showMapData(tempcon);
+			fetcPredictData(tempcon);
 		})
 
 		.catch(error => {
