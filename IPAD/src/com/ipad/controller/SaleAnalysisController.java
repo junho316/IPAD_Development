@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipad.service.Service;
-
 import com.ipad.service.saleAnalysis.CalNetProfitService;
-
 import com.ipad.service.saleAnalysis.CalSaleService;
 import com.ipad.service.saleAnalysis.GetCustomOverlayDataService;
 
@@ -24,7 +22,6 @@ public class SaleAnalysisController implements Controller {
 		if (com.equals("/SaleAnalysis/search.do")) {
 			viewPage = "/jsp/saleAnalysis/search.jsp";
 		} else if (com.equals("/SaleAnalysis/customOverlay.do")) {
-
 			service = new GetCustomOverlayDataService();
 			service.execute(request, response);
 			return;
@@ -39,7 +36,6 @@ public class SaleAnalysisController implements Controller {
 			service.execute(request, response);
 			return;
 		}
-
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

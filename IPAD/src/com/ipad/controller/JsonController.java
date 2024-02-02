@@ -10,7 +10,6 @@ import com.ipad.service.JsonService;
 import com.ipad.service.Service;
 import com.ipad.service.locationRecommand.GetPredictDataService;
 import com.ipad.service.locationRecommand.LocationRecommandService;
-import com.ipad.service.saleAnalysis.CalSaleService;
 import com.ipad.service.saleAnalysis.InfoService;
 
 public class JsonController implements Controller {
@@ -35,7 +34,7 @@ public class JsonController implements Controller {
 		} else if (com.equals("/json/info.do")) {
 			service = new InfoService();
 			service.execute(request, response);
-			
+			return;
 		} else if(com.equals("/json/locationRecommand.do")) {
 			service = new LocationRecommandService();
 			service.execute(request, response);

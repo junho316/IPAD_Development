@@ -98,7 +98,7 @@ nav {
 }
 
 #forecastTable td:first-child {
-	width: 140px;
+	width: 110px;
 	text-align: center;
 }
 
@@ -182,8 +182,6 @@ input[type="submit"]:hover {
 	cursor: pointer;
 }
 
-
-
 #searchBtn {
 	width: 150px;
 	height: 40px;
@@ -218,15 +216,6 @@ input[type="submit"]:hover {
 .bold {
 	font-weight: bold;
 }
-
-#explain {
-	padding-top: 30px;
-	padding-bottom: 30px;
-	padding-left: 50px;
-	padding-right: 50px;
-	line-height: 200%;
-}
-
 
 /******************************/
 /* FOOTER                     */

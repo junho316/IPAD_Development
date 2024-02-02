@@ -18,6 +18,7 @@ public class CalNetProfitService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String regionCode = request.getParameter("rgCode");
 		String areaSize = request.getParameter("arSize");
+
 		String seniorEmployeeCount = request.getParameter("seEmple");
 		String juniorEmployeeCount = request.getParameter("juEmple");
 		String deptamount = request.getParameter("deptAm");

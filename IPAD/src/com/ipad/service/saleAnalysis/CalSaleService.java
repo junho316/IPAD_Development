@@ -14,7 +14,9 @@ import com.ipad.service.Service;
 
 public class CalSaleService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+
 		String regionCode = null;
+
 		String regionName = request.getParameter("name");
 		CalculateDto dto = new CalculateDto();
 
@@ -29,7 +31,7 @@ public class CalSaleService implements Service {
 
 		int calPatient = patientDao.patientCal(regionCode);
 		int employee = patientDao.employeeCal(calPatient);
-		int size = patientDao.areaSizeCal(calPatient);
+		int size = patientDao.areaSizeCal(employee);
 		int calSale = calSaleDao.calculateSale(regionCode);
 
 		dto.setPredictPatient(calPatient);

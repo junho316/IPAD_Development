@@ -28,7 +28,7 @@ public class CalSaleDao {
 		String regionCode= "";
 		try {
 			con = dataSource.getConnection();
-			String query = "SELECT adm_cd FROM region WHERE region_name_detail = ?";
+			String query = "SELECT adm_cd FROM region WHERE region_name = ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, regionName);
 			rs = pstmt.executeQuery();
