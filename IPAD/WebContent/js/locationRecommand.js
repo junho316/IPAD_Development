@@ -72,10 +72,10 @@ function showMapData(tdContent) {
 var list = [];
 
 function predictWrite() {
-	document.getElementById('patient').innerText = predictData[0];
-	document.getElementById('employee').innerText = predictData[1];
-	document.getElementById('size').innerText = predictData[2];
-	document.getElementById('predictSale').innerText = predictData[3]
+	document.getElementById('patient').innerText = predictData[0].toLocaleString()+" 명";
+	document.getElementById('employee').innerText = predictData[1]+" 명";
+	document.getElementById('size').innerText = predictData[2]+" 평";
+	document.getElementById('predictSale').innerText = Number(String(predictData[3]).slice(0, 4)).toLocaleString()+" 만원"
 }
 
 function getRankList() {
@@ -100,7 +100,7 @@ function getRankList() {
 			return response.json();
 		})
 		.then(jsonArray => {
-			console.log(jsonArray);
+			
 			list.length = 0;
 
 			for (let i = 0; i < jsonArray.length; i++) {
@@ -270,7 +270,6 @@ function fetcPredictData(regionName) {
 			predictData.push(data.employee);
 			predictData.push(data.size);
 			predictData.push(data.netProfit);
-			console.log(predictData);
 		})
 		.then(() => {
 			predictWrite();

@@ -60,7 +60,7 @@
 					<img src="img/carousel1.jpg" alt="">
 					<div class="container">
 						<div class="carousel-caption text-start">
-							<div id="title">치과의원 입지분석 서비스</div>
+							<div id="title"></div>
 							<div id="detail" class="col-xs-12 col-sm-12 col-lg-6">
 								치과 개원을 준비하는 의사를 위한 입지 분석<br>
 								<!-- 유동인구, 치과 현황을 통한 입지분석 -->
