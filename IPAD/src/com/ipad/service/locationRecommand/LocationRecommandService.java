@@ -36,14 +36,14 @@ public class LocationRecommandService implements Service {
 			JSONObject jsonData = new JSONObject(sb.toString());
 			boolean checkImpl = jsonData.getBoolean("checkImpl");
 			boolean checkOrth = jsonData.getBoolean("checkOrth");
+			System.out.println(checkImpl);
+			System.out.println(checkOrth);
 			ArrayList<LocationRecommandDto> dtos = dao.selectRegion();
 
 			for (int i = 0; i < dtos.size(); i++) {
 				dao.setSaleScore(dtos.get(i));
-				dao.setTeensScore(dtos.get(i));
 				dao.setTwentiesScore(dtos.get(i));
 				dao.setSixtiesScore(dtos.get(i));
-				dao.setOver70sScore(dtos.get(i));
 				dao.setTotalScore(dtos.get(i), checkOrth, checkImpl);
 			}
 			List<LocationRecommandDto> rankList = dao.getTop3List(dtos);
@@ -55,7 +55,7 @@ public class LocationRecommandService implements Service {
 			out.print(jsonResponse);
 			out.flush();
 		} catch (IOException e1) {
-			 
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 

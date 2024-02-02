@@ -1,27 +1,14 @@
 package com.ipad.dto.locationRecommand;
 
 public class LocationRecommandDto {
-	
-	int teens;	
+	String implant;
+	String braces;
+	int option;
 	int twenties;
 	int sixties;
-	int over70s;
 	int sale;
 	String adm_cd;
 	String adm_nm;
-	
-	public int getTeens() {
-		return teens;
-	}
-	public void setTeens(int teens) {
-		this.teens = teens;
-	}
-	public int getOver70s() {
-		return over70s;
-	}
-	public void setOver70s(int over70s) {
-		this.over70s = over70s;
-	}
 	public String getAdm_nm() {
 		return adm_nm;
 	}
@@ -29,26 +16,10 @@ public class LocationRecommandDto {
 		this.adm_nm = adm_nm;
 	}
 	double saleScore;
-	double teensScore;
 	double twentiesScore;
 	double sixtiesScore;
-	double over70sScore;
 	double totalScore;
 	
-	
-	
-	public double getTeensScore() {
-		return teensScore;
-	}
-	public void setTeensScore(double teensScore) {
-		this.teensScore = teensScore;
-	}
-	public double getOver70sScore() {
-		return over70sScore;
-	}
-	public void setOver70sScore(double over70sScore) {
-		this.over70sScore = over70sScore;
-	}
 	public double getTotalScore() {
 		return totalScore;
 	}
@@ -97,5 +68,22 @@ public class LocationRecommandDto {
 	public void setSale(int sale) {
 		this.sale = sale;
 	}
-	
+	public int getOption() {
+		return option;
+	}
+	public void setOption(int option) {
+		this.option = option;
+	}
+	public String getImplant() {
+		return implant;
+	}
+	public void setImplant(String implant) {
+		this.implant = implant;
+	}
+	public String getBraces() {
+		return braces;
+	}
+	public void setBraces(String braces) {
+		this.braces = braces;
+	}	
 }
