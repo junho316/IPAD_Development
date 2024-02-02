@@ -18,7 +18,6 @@ window.onload = function () {
 }
 
 function writeRankList() {
-
 	document.getElementById('first').innerText = list[0];
 	document.getElementById('second').innerText = list[1];
 	document.getElementById('third').innerText = list[2];
@@ -72,11 +71,11 @@ function showMapData(tdContent) {
 var list = [];
 
 function predictWrite() {
-	document.getElementById('patient').innerText = predictData[0];
-	document.getElementById('employee').innerText = predictData[1];
-	document.getElementById('size').innerText = predictData[2];
-	document.getElementById('predictSale').innerText = predictData[3]
-}
+	   document.getElementById('patient').innerText = predictData[0].toLocaleString()+" 명";
+	   document.getElementById('employee').innerText = predictData[1]+" 명";
+	   document.getElementById('size').innerText = predictData[2]+" 평";
+	   document.getElementById('predictSale').innerText = Number(String(predictData[3]).slice(0, 4)).toLocaleString()+" 만원"
+	}
 
 function getRankList() {
 	var checkImpl = document.getElementById('implant').checked;
@@ -114,6 +113,7 @@ function getRankList() {
 			// 이제 writeRankList가 실행된 이후에 아래 코드가 실행됩니다.
 			var tempcon = document.getElementById('first').innerText;
 			showMapData(tempcon);
+			fetcPredictData(tempcon);
 		})
 
 		.catch(error => {
