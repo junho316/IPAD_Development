@@ -1,4 +1,4 @@
-package com.ipad.service.saleAnalysis;
+package com.ipad.service.locationRecommand;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,44 +16,64 @@ import com.ipad.dao.saleAnalysis.PatientDao;
 import com.ipad.dto.saleAnalysis.CalculateDto;
 import com.ipad.service.Service;
 
-public class CalSaleService implements Service {
-	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String regionCode = "";
-		String regionName = request.getParameter("name");
-		CalculateDto dto = new CalculateDto();
+public class GetPredictDataService implements Service {
 
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		String regionCode = null;
+		BufferedReader reader;
+		try {
+			reader = request.getReader();
+
+			StringBuilder sb = new StringBuilder();
+			String line;
+
+			while ((line = reader.readLine()) != null) {
+				sb.append(line);
+
+			}
+			JSONObject jsonData = new JSONObject(sb.toString());
+		String regionName = jsonData.getString("name");
+		CalculateDto dto = new CalculateDto();
+		
 		PatientDao patientDao = new PatientDao();
 		CalSaleDao calSaleDao = new CalSaleDao();
-
+		CalNetProfitDao calNetProfit = new CalNetProfitDao();
 		if (regionName != null) {
 			regionCode = calSaleDao.getResionCode(regionName);
 		} else {
 			regionCode = request.getParameter("regionCode");
 		}
-
+		
 		int calPatient = patientDao.patientCal(regionCode);
 		int employee = patientDao.employeeCal(calPatient);
-		int size = patientDao.areaSizeCal(employee);
+		int size = patientDao.areaSizeCal(calPatient);
 		int calSale = calSaleDao.calculateSale(regionCode);
+		int rentFee = calNetProfit.CalRentFee(regionCode,  Integer.toString(size));
+		int employment_cost = calNetProfit.CalEmploymentAvgFee(regionCode);
+		int netProfit = calSale - rentFee-employment_cost;
 
 		dto.setPredictPatient(calPatient);
 		dto.setEmployee(employee);
 		dto.setSize(size);
 		dto.setPredictSale(calSale);
+		dto.setNetProfit(netProfit);
 
 		String jsonResponse = new Gson().toJson(dto);
 
 		request.setAttribute("dto", dto);
-
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-
-		try (PrintWriter out = response.getWriter()) {
+		
+		PrintWriter out = response.getWriter(); 
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
 			out.print(jsonResponse);
 			out.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+	}
 		
 	}
-}
+
+

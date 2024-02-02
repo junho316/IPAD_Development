@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipad.service.JsonService;
 import com.ipad.service.Service;
+import com.ipad.service.locationRecommand.GetPredictDataService;
 import com.ipad.service.locationRecommand.LocationRecommandService;
 import com.ipad.service.saleAnalysis.CalSaleService;
 import com.ipad.service.saleAnalysis.InfoService;
@@ -39,7 +40,7 @@ public class JsonController implements Controller {
 			service = new LocationRecommandService();
 			service.execute(request, response);
 		} else if(com.equals("/json/predict.do")) {
-			service = new CalSaleService();
+			service = new GetPredictDataService();
 			service.execute(request, response);
 		}
 	}
