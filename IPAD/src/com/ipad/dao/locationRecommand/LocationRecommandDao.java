@@ -124,7 +124,7 @@ public class LocationRecommandDao {
 
 	public void setTotalScore(LocationRecommandDto dto, boolean opt1, boolean opt2) {
 		if (opt1 == true && opt2 == true) {
-			dto.setTotalScore(dto.getSaleScore() * 4 + dto.getTwentiesScore() * 1.5+dto.getTeensScore()*1.5 + dto.getSixtiesScore() * 1.5+dto.getOver70sScore()*1.5);
+			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 1+dto.getTeensScore()*1 + dto.getSixtiesScore() * 1+dto.getOver70sScore()*1);
 		} else if (opt1 == false && opt2 == true) {
 			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 0+dto.getTeensScore()*0 + dto.getSixtiesScore() * 2+dto.getOver70sScore()*2);
 		} else if (opt1 == true && opt2 == false) {

@@ -71,11 +71,11 @@ function showMapData(tdContent) {
 var list = [];
 
 function predictWrite() {
-	document.getElementById('patient').innerText = predictData[0];
-	document.getElementById('employee').innerText = predictData[1];
-	document.getElementById('size').innerText = predictData[2];
-	document.getElementById('predictSale').innerText = predictData[3]
-}
+	   document.getElementById('patient').innerText = predictData[0].toLocaleString()+" 명";
+	   document.getElementById('employee').innerText = predictData[1]+" 명";
+	   document.getElementById('size').innerText = predictData[2]+" 평";
+	   document.getElementById('predictSale').innerText = Number(String(predictData[3]).slice(0, 4)).toLocaleString()+" 만원"
+	}
 
 function getRankList() {
 	var checkImpl = document.getElementById('implant').checked;
