@@ -18,6 +18,9 @@ function validateForm() {
     var seniorEmployeeCount = document.getElementById('senior-employee-count').value;
     var juniorEmployeeCount = document.getElementById('junior-employee-count').value;
     var deptAmount = document.getElementById('dept-amount').value;
+    var regionCodeCheck = document.getElementById('area-name').value;
+
+    console.log(regionCodeCheck);
 
     if (areaSize < 15 || areaSize > 150 ||
         seniorEmployeeCount < 0 || seniorEmployeeCount > 10 ||
@@ -26,9 +29,14 @@ function validateForm() {
         alert("입력 값이 유효하지 않습니다. 올바른 값을 입력하세요.");
         return false;
     } else {
-        return true;
+        if (regionCodeCheck.trim() !== "") {
+            $('#modalData').modal('show');
+            return true;
+        } else {
+            alert("지도에서 지역을 선택해주세요");
+            return false;
+        }
     }
-
 }
 
 window.onload = function () {

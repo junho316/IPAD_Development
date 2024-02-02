@@ -166,8 +166,7 @@
 											</tr>
 										</tbody>
 									</table>
-									<button type="submit" class="btn btn-primary" id="submitButton"
-										data-bs-toggle="modal" data-bs-target="#modalData">입력</button>
+									<button type="submit" class="btn btn-primary" id="submitButton">입력</button>
 								</form>
 							</div>
 						</div>
