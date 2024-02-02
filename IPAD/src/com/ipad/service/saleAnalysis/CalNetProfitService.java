@@ -16,11 +16,16 @@ import com.ipad.service.Service;
 public class CalNetProfitService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String regionCode = request.getParameter("regionCode");
-		String areaSize = request.getParameter("areaSize");
-		String seniorEmployeeCount = request.getParameter("seniorEmployeeCount");
-		String juniorEmployeeCount = request.getParameter("juniorEmployeeCount");
-		String deptamount = request.getParameter("deptamount");
+		String regionCode = request.getParameter("rgCode");
+		String areaSize = request.getParameter("arSize");
+	    String seniorEmployeeCount = request.getParameter("seEmple");
+		String juniorEmployeeCount = request.getParameter("juEmple");
+		String deptamount = request.getParameter("deptAm");
+			
+		System.out.println("리전코드 " + regionCode);
+		
+		System.out.println(seniorEmployeeCount);
+		System.out.println("주니어" + juniorEmployeeCount);
 		
 		CalNetProfitDto dto = new CalNetProfitDto();
 		CalSaleDao calSaleDao = new CalSaleDao();

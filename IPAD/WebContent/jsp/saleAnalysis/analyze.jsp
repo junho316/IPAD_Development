@@ -20,7 +20,6 @@
     </head>
 
     <body>
-
         <div class="container-fluid" id="analyzeInfo">
             <!-- <figure class="figure">
             <div id="s_salePredict" class="row justify-content-between">
