@@ -18,20 +18,15 @@ public class CalNetProfitService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String regionCode = request.getParameter("rgCode");
 		String areaSize = request.getParameter("arSize");
-	    String seniorEmployeeCount = request.getParameter("seEmple");
+		String seniorEmployeeCount = request.getParameter("seEmple");
 		String juniorEmployeeCount = request.getParameter("juEmple");
 		String deptamount = request.getParameter("deptAm");
-			
-		System.out.println("리전코드 " + regionCode);
-		
-		System.out.println(seniorEmployeeCount);
-		System.out.println("주니어" + juniorEmployeeCount);
-		
+
 		CalNetProfitDto dto = new CalNetProfitDto();
 		CalSaleDao calSaleDao = new CalSaleDao();
 		PatientDao patientDao = new PatientDao();
 		CalNetProfitDao calNetProfitDao = new CalNetProfitDao();
-		
+
 		ArrayList<Integer> a = calNetProfitDao.CalEmploymentFee(regionCode, seniorEmployeeCount, juniorEmployeeCount);
 		int predictSale = calSaleDao.calculateSale(regionCode);
 		int predictPatient = patientDao.patientCal(regionCode);
@@ -41,7 +36,7 @@ public class CalNetProfitService implements Service {
 		int juniorEmployment_cost = a.get(2);
 		int deptAmount = Integer.parseInt(deptamount) * 10000;
 		int netProfit = predictSale - rentFee - employment_cost - deptAmount;
-		
+
 		dto.setPredictPatient(predictPatient);
 		dto.setPredictSale(predictSale);
 		dto.setRentFee(rentFee);
@@ -50,16 +45,16 @@ public class CalNetProfitService implements Service {
 		dto.setJuniorEmployment_cose(juniorEmployment_cost);
 		dto.setDeptAmount(deptAmount);
 		dto.setNetProfit(netProfit);
-		
+
 		String jsonResponse = new Gson().toJson(dto);
-		
+
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		
-		try(PrintWriter out = response.getWriter()){
+
+		try (PrintWriter out = response.getWriter()) {
 			out.print(jsonResponse);
-			out.flush();	
-		} catch(Exception e) {
+			out.flush();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
