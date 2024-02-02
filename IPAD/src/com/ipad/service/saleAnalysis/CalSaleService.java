@@ -29,7 +29,7 @@ public class CalSaleService implements Service {
 
 		int calPatient = patientDao.patientCal(regionCode);
 		int employee = patientDao.employeeCal(calPatient);
-		int size = patientDao.areaSizeCal(employee);
+		int size = patientDao.areaSizeCal(calPatient);
 		int calSale = calSaleDao.calculateSale(regionCode);
 
 		dto.setPredictPatient(calPatient);
