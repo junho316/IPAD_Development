@@ -35,45 +35,76 @@
 	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
 	<body class="vh-100 overflow-hiddden">
-		
+
 		<!-- modal -->
-		<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+
+		<div class="modal fade" id="modalData" aria-hidden="true" aria-labelledby="modalDataLabel" tabindex="-1">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
-					<form action="analyze.do" method="get" target="result" onsubmit="newpage();">
-						<div class="modal-header">
-							<h5 class="modal-title" id="detailModalLabel">상세 분석</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<div>
-								<label for="area-size" class="col-form-label">개원예정 규모</label> <input type="text"
-									class="form-control" name="area-size" id="area-size">
+					<div class="modal-header">
+						<div class="col fs-3 text-end" style="color: #8f8f8f;" id="listname"></div>
+						<h1 class="modal-title fs-6" id="modalDataLabel">분석 결과</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body" id="analyzeInfo">
+						<figure class="figure figurebox">
+							<div id="s_salePredict_list" class="row justify-content-between list_box">
+								<div class="col-1 s_bodyIcon"><img src="${pageContext.request.contextPath}/img/won.png"
+										alt=""></div>
+								<div class="col fs-6 text-end list_textBox" id="salePredictList"></div>
 							</div>
-							<div>
-								<label for="senior-employee-count" class="col-form-label">주임급 고용 예정 간호사</label> 
-								<input type="text" class="form-control" name="senior-employee-count" id="senior-employee-count">								
+						</figure>
+						<figure class="figure figurebox">
+							<div id="patientPredict_list" class="row justify-content-between list_box">
+								<div class="col-1 s_bodyIcon"><img
+										src="${pageContext.request.contextPath}/img/dentalPatient.png" alt="">
+								</div>
+								<p class="col fs-6 text-end list_textBox" id="patientList"></p>
 							</div>
-							<div>
-								<label for="junior-employee-count" class="col-form-label">신입급 고용 예정 간호사</label>
-								<input type="text" class="form-control" name="junior-employee-count" id="junior-employee-count">
+							<figcaption class="figure-caption text-end">해당 지역 취위생사들의 평균 임금으로서, 실제임금과 오차가 있을 수 잇으며,<br>
+								경력, 계약형태 등에
+								따라 차이가 크므로 참고자료로만 활용하세요.</figcaption>
+						</figure>
+						<figure class="figure figurebox">
+							<div id="employee_list" class="row justify-content-between list_box">
+								<div class="col-1 s_bodyIcon"><img
+										src="${pageContext.request.contextPath}/img/people.png" alt="">
+								</div>
+								<p class="col fs-6 text-end list_textBox" id="employeeList"></p>
 							</div>
-							<div>
-								<label for="dept-amount" class="col-form-label">월 대출 상환
-									금액</label> <input type="text" class="form-control" name="dept-amount"
-									id="dept-amount">
-								<div class="form-text" id="dept-amountHelp">만 원단위로 입력해 주세요.</div>
+							<!-- <figcaption class="figure-caption text-end">해당 지역 취위생사들의 평균 임금으로서, 실제와 오차가 있을 수 잇으며,<br>
+						   경력, 계약형태 등에
+						   따라 차이가 크므로 참고자료로만 활용하세요.</figcaption> -->
+						</figure>
+						<figure class="figure figurebox">
+							<div id="area-size_list" class="row list_box">
+								<div class="col-1 s_bodyIcon"><img
+										src="${pageContext.request.contextPath}/img/hospital.png" alt="">
+								</div>
+								<div class="col fs-6 text-end list_textBox" id="areasizeList"></div>
 							</div>
-							<div>
-								<input type="hidden" name="area-name" value="" id="area-name">
-								<input type="hidden" name="area-code" value="" id="area-code">
+
+						</figure>
+						<figure class="figure figurebox">
+							<div id="dept-amount_list" class="row list_box">
+								<div class="col-1 s_bodyIcon"><img src="${pageContext.request.contextPath}/img/dept.png"
+										alt="">
+								</div>
+								<div class="col fs-6 text-end list_textBox" id="deptamountList"></div>
 							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary">입력</button>
-							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-						</div>
-					</form>
+						</figure>
+						<figure class="figure figurebox">
+							<div id="income_list" class="row list_box">
+								<div class="col-1 s_bodyIcon"><img
+										src="${pageContext.request.contextPath}/img/income.png" alt="">
+								</div>
+								<div class="col fs-5 text-end list_textBox" id="incomeList"></div>
+							</div>
+						</figure>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -85,11 +116,73 @@
 			<!--------------------- M a p  ----------------------->
 			<div class="container" id="titleContainer">
 				<h1 style="font-weight: bolder;">매출 분석</h1>
+				<div style="height: 50px; width: 100px;"></div>
 			</div>
-
-			<div class="container" id="mapContainer">
+			<div class="container">
 				<div class="row">
-					<div id="map3" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+					<div class="col-lg-3">
+						<div class="boxShadow vertical1">
+							<div class="inputSection">
+								<div class="subtitle">희망 정보</div>
+								<form action="netprofit.do" method="POST" target="result" id="infoForm"
+									enctype="application/x-www-form-urlencoded" onsubmit="return validateForm();">
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													<label for="area-size" class="col-form-label">개원예정 규모</label>
+													<input type="number" class="form-control" name="areaSize"
+														id="area-size" min="15" max="150">
+													<p id="sizePredictText" style="font-size: 0.8rem;"></p>
+												</td>
+											<tr>
+											<tr>
+												<td>
+													<label for="senior-employee-count" class="col-form-label">주임급 고용 예정
+														간호사</label>
+													<input type="number" class="form-control" name="seniorEmployeeCount"
+														id="senior-employee-count" min="0" max="10">
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<label for="junior-employee-count" class="col-form-label">신입급 고용 예정
+														간호사</label>
+													<input type="number" class="form-control" name="juniorEmployeeCount"
+														id="junior-employee-count" min="0" max="10">
+													<p id="employeePredictText" style="font-size: 0.8rem;">
+													</p>
+												</td>
+											<tr>
+											<tr>
+												<td>
+													<label for="dept-amount" class="col-form-label">월 대출 상환 금액</label>
+													<input type="number" class="form-control" name="deptamount"
+														id="dept-amount" min="0" max="10000">
+													<div class="form-text" id="dept-amountHelp">만 원단위로 입력해 주세요.</div>
+													<input type="hidden" name="area-name" value="" id="area-name">
+													<input type="hidden" name="regionCode" value="" id="area-code">
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<button type="submit" class="btn btn-primary" id="submitButton">입력</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- 지도 -->
+					<div class="col-lg-9">
+						<div>
+							<div id="map3" class="boxShadow"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 설명 -->
+			<div class="container">
+				<div class="boxShadow" style="height: 200px; margin-bottom: 50px;">
+					<h3>설명</h3>
 				</div>
 			</div>
 

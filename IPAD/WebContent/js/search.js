@@ -13,6 +13,32 @@ function newpage() {
     return true;
 }
 
+function validateForm() {
+    var areaSize = document.getElementById('area-size').value;
+    var seniorEmployeeCount = document.getElementById('senior-employee-count').value;
+    var juniorEmployeeCount = document.getElementById('junior-employee-count').value;
+    var deptAmount = document.getElementById('dept-amount').value;
+    var regionCodeCheck = document.getElementById('area-name').value;
+
+    console.log(regionCodeCheck);
+
+    if (areaSize < 15 || areaSize > 150 ||
+        seniorEmployeeCount < 0 || seniorEmployeeCount > 10 ||
+        juniorEmployeeCount < 0 || juniorEmployeeCount > 10 ||
+        deptAmount < 0 || deptAmount > 10000) {
+        alert("입력 값이 유효하지 않습니다. 올바른 값을 입력하세요.");
+        return false;
+    } else {
+        if (regionCodeCheck.trim() !== "") {
+            $('#modalData').modal('show');
+            return true;
+        } else {
+            alert("지도에서 지역을 선택해주세요");
+            return false;
+        }
+    }
+}
+
 window.onload = function () {
 
     function setMap() {
@@ -176,26 +202,23 @@ window.onload = function () {
                             employees = data["employee"];
                             seniorEmployees = 1;
                             juniorEmployees = employees - seniorEmployees;
-                            modalText(sizes, seniorEmployees, juniorEmployees);
+                            modalText(sizes, employees);
                         },
                         error: function (error) {
                             console.error('Error fetching data from server:', error);
                         }
                     });
 
-                    var areaSize = document.getElementById('area-size');
-                    var seniorEmployeeCount = document.getElementById('senior-employee-count');
-                    var juniorEmployeeCount = document.getElementById('junior-employee-count');
+                    var predictSize = document.getElementById('sizePredictText');
+                    var predictEmp = document.getElementById('employeePredictText');
 
-                    function modalText(sizes, seniorEmployees, juniorEmployees) {
+                    function modalText(sizes, employees) {
 
-                        var areaSizeText = "선택 지역의 평균 개업 평수는 " + sizes + "평 입니다.";
-                        var seniorEmployeeText = "선택 지역의 주임급 간호사 평균 수는 " + seniorEmployees + "명 입니다.";
-                        var juniorEmployeeText = "선택 지역의 신입급 간호사 평균 수는 " + juniorEmployees + "명 입니다.";
+                        var areaSizeText = "선택 지역의 적정 개업 평수는 " + sizes + " 평 입니다.";
+                        var employeeText = "선택 지역의 간호사 고용 적정 수는 " + employees + " 명 입니다."
 
-                        areaSize.placeholder = areaSizeText;
-                        seniorEmployeeCount.placeholder = seniorEmployeeText;
-                        juniorEmployeeCount.placeholder = juniorEmployeeText;
+                        predictSize.innerText = areaSizeText;
+                        predictEmp.innerText = employeeText;
                     }
                 });
 
@@ -254,6 +277,61 @@ window.onload = function () {
         polygons.length = 0;
     }
 
+    function NumberComma(number) {
+        return new Intl.NumberFormat().format(number);
+    }
+
+    var infoForm = document.getElementById('infoForm');
+
+    infoForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var rgCode = document.getElementById('area-code').value;
+        console.log(rgCode);
+        var seEmple = document.getElementById('senior-employee-count').value;
+        var juEmple = document.getElementById('junior-employee-count').value;
+        var arSize = document.getElementById('area-size').value;
+        var deptAm = document.getElementById('dept-amount').value;
+
+        $.ajax({
+            url: './netprofit.do',
+            method: 'POST',
+            data: { rgCode: rgCode, seEmple: seEmple, juEmple: juEmple, arSize: arSize, deptAm: deptAm },
+            //processData: false, // 필수: FormData 사용 시 false로 설정
+            //contentType: false, // 필수: FormData 사용 시 false로 설정
+            success: function (data) {
+                predictSale = NumberComma(data["predictSale"]);
+                predictPatient = data["predictPatient"];
+                employment_cost = NumberComma(data["employment_cost"]);
+                rentFee = NumberComma(data["rentFee"]);
+                dept = NumberComma(data["deptAmount"]);
+                netProfit = NumberComma(data["netProfit"]);
+                seniorEmployment_cost = NumberComma(data["seniorEmployment_cost"]);
+                juniorEmployment_cost = NumberComma(data["juniorEmployment_cost"]);
+                monthSaleData();
+                console.log("netprofit.do 실행완료")
+            },
+            error: function (error) {
+                console.error('Error fetching data from server:', error);
+            }
+        });
+
+        var salePredictList = document.getElementById("salePredictList");
+        var patientPredictList = document.getElementById("patientList");
+        var employeeList = document.getElementById("employeeList");
+        var areaSizeList = document.getElementById("areasizeList");
+        var deptamountList = document.getElementById("deptamountList");
+        var incomeList = document.getElementById("incomeList");
+
+        function monthSaleData() {
+            salePredictList.innerText = "월 평균 추정매출 = " + predictSale + " 원";
+            patientPredictList.innerText = "월 평균 방문환자 = " + predictPatient + " 명";
+            employeeList.innerText = "월 고용 간호사 임금 = " + employment_cost + " 원";
+            areaSizeList.innerText = "월 납부 임대료 = " + rentFee + " 원";
+            deptamountList.innerText = "월 납입 이자 = " + dept + " 원";
+            incomeList.innerText = "월 평균 추정 순이익 = " + netProfit + " 원";
+        };
+    })
 
 }
 
