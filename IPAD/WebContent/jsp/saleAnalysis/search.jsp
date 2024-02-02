@@ -86,23 +86,31 @@
 					</div>
 					<div class="modal-body">
 						<div>
-							<label for="area-size" class="col-form-label">예정 평 수</label> <input type="text"
-								class="form-control" name="area-size" id="area-size">
+							<label for="area-size" class="col-form-label">개원예정 규모</label>
+							<input type="number" class="form-control" name="area-size" id="area-size" min="15"
+								max="150">
 						</div>
 						<div>
-							<label for="employee-count" class="col-form-label">예정 종업원
-								수</label> <input type="text" class="form-control" name="employee-count"
-								id="employee-count">
-							<input type="text" class="form-control" name="proemployee-count" id="proemployee-count">
+							<label for="senior-employee-count" class="col-form-label">주임급 고용 예정
+								간호사</label>
+							<input type="number" class="form-control" name="senior-employee-count"
+								id="senior-employee-count" min="0" max="10">
 						</div>
 						<div>
-							<label for="dept-amount" class="col-form-label">월 대출 상환
-								금액</label> <input type="text" class="form-control" name="dept-amount" id="dept-amount">
+							<label for="junior-employee-count" class="col-form-label">신입급 고용 예정
+								간호사</label>
+							<input type="number" class="form-control" name="junior-employee-count"
+								id="junior-employee-count" min="0" max="10">
+						</div>
+						<div>
+							<label for="dept-amount" class="col-form-label">월 대출 상환 금액</label>
+							<input type="number" class="form-control" name="dept-amount" id="dept-amount" min="0"
+								max="10000">
 							<div class="form-text" id="dept-amountHelp">만 원단위로 입력해 주세요.</div>
 						</div>
 						<div>
 							<input type="hidden" name="area-name" value="" id="area-name">
-							<input type="hidden" name="area-code" value="" id="area">
+							<input type="hidden" name="area-code" value="" id="area-code">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -117,6 +125,7 @@
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 					<div class="modal-header">
+						<div class="col fs-3 text-end" style="color: #8f8f8f;" id="listname"></div>
 						<h1 class="modal-title fs-5" id="modalDataLabel">분석 결과</h1>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>

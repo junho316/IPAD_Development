@@ -6,10 +6,12 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
+import com.ipad.dao.saleAnalysis.PatientDao;
 import com.ipad.dto.saleAnalysis.ModalDataDto;
 import com.ipad.service.Service;
 
@@ -18,7 +20,9 @@ public class ModalDataService implements Service {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+//		HttpSession session = request.getSession();
 		ModalDataDto dto = new ModalDataDto();
+		PatientDao dao = new PatientDao();
 		BufferedReader reader;
 		
 		try {
@@ -29,16 +33,20 @@ public class ModalDataService implements Service {
 			while((line = reader.readLine()) !=null) {
 				sb.append(line);
 			}
-			JSONObject jsonData = new JSONObject(sb.toString());
-			String area = jsonData.getString("areaSize");
-			String employee = jsonData.getString("employeeCount");
-			String proEmployee = jsonData.getString("proemployeeCount");
-			String dept = jsonData.getString("deptAmount");
+//			String adm_cd = (String) session.getAttribute("regionCode");
 			
-			dto.setArea(area);
-			dto.setDept(dept);
-			dto.setEmployee(employee);
-			dto.setProEmployee(proEmployee);
+			JSONObject jsonData = new JSONObject(sb.toString());
+//			int adm_cd = jsonData.get("regionCode");
+			String areaSize = jsonData.getString("areaSize");
+			String juniorEmployeeCount = jsonData.getString("juniorEmployeeCount");
+			String seniorEmployeeCount = jsonData.getString("seniorEmployeeCount");
+			String deptamount = jsonData.getString("deptamount");
+			
+			dto.setAreaSize(areaSize);
+			dto.setJuniorEmployeeCount(juniorEmployeeCount);
+			dto.setSeniorEmployeeCount(seniorEmployeeCount);
+			dto.setDeptamount(deptamount);
+			
 			
 			String jsonResponse = new Gson().toJson(dto);
 			

@@ -4,18 +4,30 @@ var regionCode = "";
 const infoData = [];
 var chartData = [];
 var roundChartData = [];
+var areaname = "";
+var areacode = "";
 
-function newpage() {
-    window.open('../jsp/saleAnalysis/analyze.jsp', 'result', 'width=800, height=1200, left=550');
-    return true;
-};
+// function newpage() {
+//     window.open('../jsp/saleAnalysis/analyze.jsp', 'result', 'width=800, height=1200, left=550');
+//     return true;
+// };
 
 function getModalData() {
 
     const areaSizeValue = document.getElementById("area-size").value;
-    const employeeCountValue = document.getElementById("employee-count").value;
-    const proemployeeCountValue = document.getElementById("proemployee-count").value;
+    const juniorEmployeeCountValue = document.getElementById("junior-employee-count").value;
+    const seniorEmployeeCountValue = document.getElementById("senior-employee-count").value;
     const deptAmoutValue = document.getElementById("dept-amount").value;
+    var listname = document.getElementById("listname");
+    listname.innerText = areaname;
+
+    var salePredictList = document.getElementById("salePredictList");
+    var patientPredictList = document.getElementById("patientList");
+    var employeeList = document.getElementById("employeeList");
+    var areaSizeList = document.getElementById("areasizeList");
+    var deptamountList = document.getElementById("deptamountList");
+    var incomeList = document.getElementById("incomeList");
+
 
     fetch(contextPath + '/SaleAnalysis/submit.do', {
         method: 'POST',
@@ -23,19 +35,20 @@ function getModalData() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+            regionCode: areacode,
             areaSize: areaSizeValue,
-            employeeCount: employeeCountValue,
-            proemployeeCount: proemployeeCountValue,
-            deptAmount: deptAmoutValue,
+            juniorEmployeeCount: juniorEmployeeCountValue,
+            seniorEmployeeCount: seniorEmployeeCountValue,
+            deptamount: deptAmoutValue,
         }),
     })
         .then(response => response.json())
         .then(data => {
             // 서버 응답 처리
-            document.getElementById("area-size-display").innerText = `Area Size: ${data.area}`;
-            document.getElementById("employee-count-display").innerText = `Employee Count: ${data.employee}`;
-            document.getElementById("proemployee-count-display").innerText = `Professional Employee Count: ${data.proEmployee}`;
-            document.getElementById("dept-amout-display").innerText = `Department Amount: ${data.dept}`;
+            // document.getElementById("area-size-display").innerText = `Area Size: ${data.areaSize}`;
+            // document.getElementById("employee-count-display").innerText = `Employee Count: ${data.juniorEmployeeCount}`;
+            // document.getElementById("proemployee-count-display").innerText = `Professional Employee Count: ${data.seniorEmployeeCount}`;
+            // document.getElementById("dept-amout-display").innerText = `Department Amount: ${data.deptamount}`;
 
         })
         .catch(error => {
@@ -164,8 +177,8 @@ window.onload = function () {
 
             currentOverlay.addEventListener('click', function () {
 
-                var areaname = document.getElementById("area-name");
-                var areacode = document.getElementById("area-code");
+                areaname = document.getElementById("area-name");
+                areacode = document.getElementById("area-code");
                 removePolygon();
                 $.getJSON("/IPAD/json/emdTest.geojson", function (geojson) {
                     var data = geojson.features;
@@ -181,9 +194,10 @@ window.onload = function () {
                             region = val.properties.adm_nm;
                             regionCode = val.properties.adm_cd;
                             regionInfo = regionCode;
+                            sessionStorage.setItem('regionCode', regionCode);
 
-                            // areaname.value = region;
-                            // areacode.value = regionCode;
+                            areaname.value = region;
+                            areacode.value = regionCode;
 
                             for (var i = 0; i < title.length; i++) {
                                 if (coordinates.length === 0) return;

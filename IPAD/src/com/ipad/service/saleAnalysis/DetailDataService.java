@@ -21,7 +21,7 @@ public class DetailDataService implements Service {
 		String region_name = pdao.getRegionName(adm_cd);
 		int patient = pdao.patientCal(adm_cd);
 		int employee = pdao.employeeCal(patient);
-		int areaSize = pdao.areaSizeCal(employee);
+		int areaSize = pdao.areaSizeCal(patient);
 		int sale = pdao.calculateSale(adm_cd);
 		
 		dto.setRegion_name(region_name);

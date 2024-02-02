@@ -1,32 +1,34 @@
 package com.ipad.dto.saleAnalysis;
 
 public class ModalDataDto {
-	private String area;
-	private String employee;
-	private String proEmployee;
-	private String dept;
-	public String getArea() {
-		return area;
+	private String areaSize;
+	private String juniorEmployeeCount;
+	private String seniorEmployeeCount;
+	private String deptamount;
+	
+	public String getAreaSize() {
+		return areaSize;
 	}
-	public void setArea(String area) {
-		this.area = area;
+	public void setAreaSize(String areaSize) {
+		this.areaSize = areaSize;
 	}
-	public String getEmployee() {
-		return employee;
+	public String getJuniorEmployeeCount() {
+		return juniorEmployeeCount;
 	}
-	public void setEmployee(String employee) {
-		this.employee = employee;
+	public void setJuniorEmployeeCount(String juniorEmployeeCount) {
+		this.juniorEmployeeCount = juniorEmployeeCount;
 	}
-	public String getProEmployee() {
-		return proEmployee;
+	public String getSeniorEmployeeCount() {
+		return seniorEmployeeCount;
 	}
-	public void setProEmployee(String proEmployee) {
-		this.proEmployee = proEmployee;
+	public void setSeniorEmployeeCount(String seniorEmployeeCount) {
+		this.seniorEmployeeCount = seniorEmployeeCount;
 	}
-	public String getDept() {
-		return dept;
+	public String getDeptamount() {
+		return deptamount;
 	}
-	public void setDept(String dept) {
-		this.dept = dept;
+	public void setDeptamount(String deptamount) {
+		this.deptamount = deptamount;
 	}
+	
 }
