@@ -25,12 +25,12 @@ function writeRankList() {
 }
 
 function selectRegion(event) {
-	var clickedTd = event.target;
+    var clickedTd = event.target;
     if (selectedTd) {
         selectedTd.classList.remove('bold');
     }
     clickedTd.classList.add('bold');
-    
+
     selectedTd = clickedTd;
     var tdContent = clickedTd.innerText;
     showMapData(tdContent);
@@ -61,6 +61,15 @@ function showList() {
 
 var list = [];
 
+function predictWrite() {
+
+    document.getElementById('patient').innerText = predictData[0].toLocaleString() + " 명";
+    document.getElementById('employee').innerText = predictData[1] + " 명";
+    document.getElementById('size').innerText = predictData[2] + " 평";
+    document.getElementById('predictSale').innerText = Number(String(predictData[3]).slice(0, 4)).toLocaleString() + " 만원"
+}
+
+
 function getRankList() {
     var checkImpl = document.getElementById('implant').checked;
     var checkOrth = document.getElementById('orthodontics').checked;
@@ -69,6 +78,41 @@ function getRankList() {
         checkOrth: checkOrth
     };
 
+    fetch(contextPath + "/json/locationRecommand.do", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(jsonArray => {
+
+            list.length = 0;
+
+            for (let i = 0; i < jsonArray.length; i++) {
+                list.push(jsonArray[i]["adm_nm"]);
+
+            }
+        })
+        .then(() => {
+            writeRankList();
+
+            // 이제 writeRankList가 실행된 이후에 아래 코드가 실행됩니다.
+            var tempcon = document.getElementById('first').innerText;
+            showMapData(tempcon);
+            fetcPredictData(tempcon);
+        })
+
+        .catch(error => {
+            console.error('에러 발생:', error);
+        });
+
     fetch(contextPath + "/locationRecommand/submit.do", {
         method: 'POST',
         headers: {
@@ -76,31 +120,31 @@ function getRankList() {
         },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(jsonArray => {
-        console.log("fetch 시작", jsonArray);
-        list.length = 0;
-        console.log(jsonArray);
-        for (let i = 0; i < jsonArray.length; i++) {
-            list.push(jsonArray[i]["adm_nm"]);
-        }
-        console.log(list);
-        console.log("list삽입끝");
-    })
-    .then(() => {
-        writeRankList();
-        var tempcon = document.getElementById('first').innerText;
-   
-        showMapData(tempcon);
-    })
-    .catch(error => {
-        console.error('에러 발생:', error);
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(jsonArray => {
+            console.log("fetch 시작", jsonArray);
+            list.length = 0;
+            console.log(jsonArray);
+            for (let i = 0; i < jsonArray.length; i++) {
+                list.push(jsonArray[i]["adm_nm"]);
+            }
+            console.log(list);
+            console.log("list삽입끝");
+        })
+        .then(() => {
+            writeRankList();
+            var tempcon = document.getElementById('first').innerText;
+
+            showMapData(tempcon);
+        })
+        .catch(error => {
+            console.error('에러 발생:', error);
+        });
 }
 
 function mapMenuClick(e) {
@@ -211,18 +255,53 @@ var array = [];
 
 function fetchData() {
     fetch(contextPath + '/json/map.do')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('네트워크 응답이 올바르지 않습니다.');
-        }
-        return response.json();
-    })
-    .then(data => {
-        array = data;
-        console.log(array);
-    })
-    .catch(error => console.error('에러:', error));
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('네트워크 응답이 올바르지 않습니다.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            array = data;
+            console.log(array);
+        })
+        .catch(error => console.error('에러:', error));
 }
+
+
+var predictData = [];
+function fetcPredictData(regionName) {
+    var data =
+        { name: regionName }
+
+    fetch(contextPath + '/json/predict.do', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            predictData.length = 0;
+            predictData.push(data.predictPatient);
+            predictData.push(data.employee);
+            predictData.push(data.size);
+            predictData.push(data.netProfit);
+        })
+        .then(() => {
+            predictWrite();
+        })
+        .catch(error => console.error('에러 :', error))
+}
+
+
+
 
 function hanamHos() {
     array.forEach(data => {

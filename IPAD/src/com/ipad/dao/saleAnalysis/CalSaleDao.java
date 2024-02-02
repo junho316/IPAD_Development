@@ -38,6 +38,14 @@ public class CalSaleDao {
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				con.close();
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		
 		return regionCode;

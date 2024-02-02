@@ -118,9 +118,14 @@ public class PatientDao {
       return dto;
    }
    
-   public int areaSizeCal(int employee) {
+   public int areaSizeCal(int patient) {
 	      int areaSize = 0;
-	      areaSize = (int) Math.round(((double)(employee+1)*28.2)/3.3);
+
+	      areaSize = (int) Math.round(((double)patient/30)*1.56);
+	      if (areaSize < 15) {
+	         areaSize = 15;
+	      }
+
 	      return areaSize;
 	   }
 }

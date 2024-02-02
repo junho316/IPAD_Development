@@ -14,7 +14,9 @@ import com.ipad.service.Service;
 
 public class CalSaleService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String regionCode = "";
+
+		String regionCode = null;
+
 		String regionName = request.getParameter("name");
 		CalculateDto dto = new CalculateDto();
 
