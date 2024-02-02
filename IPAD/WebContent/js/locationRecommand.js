@@ -269,7 +269,7 @@ function fetcPredictData(regionName) {
 			predictData.push(data.predictPatient);
 			predictData.push(data.employee);
 			predictData.push(data.size);
-			predictData.push(data.predictSale);
+			predictData.push(data.netProfit);
 			console.log(predictData);
 		})
 		.then(() => {

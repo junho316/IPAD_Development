@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
+import com.ipad.dao.saleAnalysis.CalNetProfitDao;
 import com.ipad.dao.saleAnalysis.CalSaleDao;
 import com.ipad.dao.saleAnalysis.PatientDao;
 import com.ipad.dto.saleAnalysis.CalculateDto;
@@ -35,7 +36,7 @@ public class CalSaleService implements Service {
 		
 		PatientDao patientDao = new PatientDao();
 		CalSaleDao calSaleDao = new CalSaleDao();
-
+		CalNetProfitDao calNetProfit = new CalNetProfitDao();
 		if (regionName != null) {
 			regionCode = calSaleDao.getResionCode(regionName);
 		} else {
@@ -44,13 +45,17 @@ public class CalSaleService implements Service {
 		
 		int calPatient = patientDao.patientCal(regionCode);
 		int employee = patientDao.employeeCal(calPatient);
-		int size = patientDao.areaSizeCal(employee);
+		int size = patientDao.areaSizeCal(calPatient);
 		int calSale = calSaleDao.calculateSale(regionCode);
+		int rentFee = calNetProfit.CalRentFee(regionCode,  Integer.toString(size));
+		int employment_cost = calNetProfit.CalEmploymentAvgFee(regionCode);
+		int netProfit = calSale - rentFee-employment_cost;
 
 		dto.setPredictPatient(calPatient);
 		dto.setEmployee(employee);
 		dto.setSize(size);
 		dto.setPredictSale(calSale);
+		dto.setNetProfit(netProfit);
 
 		String jsonResponse = new Gson().toJson(dto);
 
