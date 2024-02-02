@@ -245,7 +245,7 @@ function fetchData() {
 		.catch(error => console.error('에러:', error));
 }
 
-//예상 환자수 등등 가져오기
+
 var predictData = [];
 function fetcPredictData(regionName) {
 	var data =
@@ -277,12 +277,8 @@ function fetcPredictData(regionName) {
 		})
 		.catch(error => console.error('에러 :', error))
 }
-function getRegionCode(event) {
-	var regionName = event.target;
-	var name = regionName.innerText;
-	fetcPredictData(name);
-}
-//여기까지
+
+
 
 
 function hanamHos() {

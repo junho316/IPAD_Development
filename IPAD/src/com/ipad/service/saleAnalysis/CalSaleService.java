@@ -32,7 +32,7 @@ public class CalSaleService implements Service {
 			JSONObject jsonData = new JSONObject(sb.toString());
 		String regionName = jsonData.getString("name");
 		CalculateDto dto = new CalculateDto();
-		System.out.println(regionName);
+		
 		PatientDao patientDao = new PatientDao();
 		CalSaleDao calSaleDao = new CalSaleDao();
 
@@ -41,7 +41,7 @@ public class CalSaleService implements Service {
 		} else {
 			regionCode = request.getParameter("regionCode");
 		}
-		System.out.println(regionCode);
+		
 		int calPatient = patientDao.patientCal(regionCode);
 		int employee = patientDao.employeeCal(calPatient);
 		int size = patientDao.areaSizeCal(employee);
@@ -55,7 +55,6 @@ public class CalSaleService implements Service {
 		String jsonResponse = new Gson().toJson(dto);
 
 		request.setAttribute("dto", dto);
-
 		
 		PrintWriter out = response.getWriter(); 
 			response.setContentType("application/json");
