@@ -7,7 +7,14 @@ public class CalculateDto {
 	private int predictPatient;
 	private int size;
 	private int employee;
+	private int netProfit;
 	
+	public int getNetProfit() {
+		return netProfit;
+	}
+	public void setNetProfit(int netProfit) {
+		this.netProfit = netProfit;
+	}
 	public String getAdm_cd() {
 		return adm_cd;
 	}

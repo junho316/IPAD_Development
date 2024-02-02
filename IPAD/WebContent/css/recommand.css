@@ -182,6 +182,12 @@ input[type="submit"]:hover {
 	cursor: pointer;
 }
 
+#explain p {
+	padding-top:30px;
+	margin-left:10px;
+}
+
+
 #searchBtn {
 	width: 150px;
 	height: 40px;
@@ -216,6 +222,7 @@ input[type="submit"]:hover {
 .bold {
 	font-weight: bold;
 }
+
 
 /******************************/
 /* FOOTER                     */
