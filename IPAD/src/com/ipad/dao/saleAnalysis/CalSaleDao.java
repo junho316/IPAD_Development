@@ -43,7 +43,7 @@ public class CalSaleDao {
 				rs.close();
 				pstmt.close();
 				con.close();
-			} catch (Exception e2){
+			} catch(Exception e2) {
 				e2.printStackTrace();
 			}
 		}

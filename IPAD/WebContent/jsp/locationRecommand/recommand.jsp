@@ -153,7 +153,7 @@
 	<%@ include file="/jsp/common/footer.jsp"%>>
 
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9f622a57db8d51137b80a7e575e09fca&libraries=services"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0983003a235a4d3c0ae25870de9c471a&libraries=services"></script>
 
 	<script
 		src="${pageContext.request.contextPath}/js/locationRecommand.js"></script>

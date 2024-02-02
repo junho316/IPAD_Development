@@ -24,6 +24,34 @@ public class CalNetProfitDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public int CalEmploymentAvgFee(String adm_cd) {
+		int employmentFee =0;
+		try {
+			con=dataSource.getConnection();
+			String query = "select average from employmentFee where adm_cd = ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, adm_cd);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				employmentFee = (int) Math.round((double)rs.getInt("average")/12 * 10000);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				con.close();
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return employmentFee;
+	}
 
 	public int CalRentFee(String adm_cd, String areaSize) {
 		int rentFee = 0;
@@ -53,33 +81,7 @@ public class CalNetProfitDao {
 		}
 		return rentFee;
 	}
-	public int CalEmploymentAvgFee(String adm_cd) {
-		int employmentFee =0;
-		try {
-			con=dataSource.getConnection();
-			String query = "select average from employmentFee where adm_cd = ?";
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, adm_cd);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				employmentFee = (int) Math.round((double)rs.getInt("average")/12 * 10000);
-			}
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				rs.close();
-				pstmt.close();
-				con.close();
-			} catch(Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		
-		return employmentFee;
-	}
+	
 	public ArrayList<Integer> CalEmploymentFee(String adm_cd, String seniorEmployeeCount, String juniorEmployeeCount) {
 		ArrayList<Integer> empArray = new ArrayList<>();
 		
