@@ -8,348 +8,157 @@
     margin-top: 2%;
 }
 
-#mapContainer {
-    margin-top: 2%;
-}
-
-#regionSearch {
-    text-align: center;
-    margin-top: 2%;
-    width: 100%;
+.blank {
     height: 50px;
+    width: 100px;
 }
 
-#regionSearch input {
-    height: 80%;
-    font-size: 1rem;
-    text-indent: 5%;
-    border-radius: 2%;
-    border: 1px solid black
+.table input {
+    margin-bottom: 10px;
 }
 
-#map3 {
-    height: 80vh;
-    padding: 0;
-    margin: 0;
-    position: relative;
+.boxShadow {
     background-color: white;
     border-radius: 50px;
     box-shadow: 5px 5px 5px 5px lightgray;
 }
 
-
-
-/* #container {
-    padding: 0.5%;
-} */
-
-/* #sidebar { */
-/* background-color: #f8f9fa; */
-*/
-/* 원하는 배경색 설정 */
-/* padding: 20px;
-    height: 94.5vh;
-    overflow-y: auto;
-    border: 5px solid #4B89DC;
-} */
-
-/* #location {
-    justify-content: center;
-    /* margin-top: 20px; */
-/* background-color: red; */
-/* z-index: 10; 
-} */
-
-/* #searchD {
-    height: 50px;
-    position: fixed;
-    z-index: 10;
-    background-color: white;
-    font-size: 1.5rem;
-    opacity: 0.7;
-    text-align: center;
-    border-radius: 50px;
-    font-weight: bold;
-} */
-
-/* #backSearch {
-    height: 95%;
-    margin-top: 50px;
-    z-index: 10;
-    position: absolute;
-    background-color: white;
-    border-radius: 50px;
-    background-color: #547cdc;
-    opacity: 0.7;
-    display: none;
-} */
-
-/* #searchInfo {
-    height: 80%;
-    z-index: 10;
-    position: fixed;
-    margin-top: 1%;
-    background-color: white;
-    padding: 30px 50px;
-    border-radius: 50px;
-} */
-
-/* #infoSection {
-    justify-content: center;
-    margin-top: 30px;
-} */
-
-/* #selectSection {
-    width: 30%;
-    height: 50px;
-    justify-content: center center;
-    text-align: center;
-    display: inline-grid;
-    align-content: center;
-    vertical-align: middle;
-    font-size: 1.2rem;
-    border: 3px solid #547cdc;
-    border-radius: 5px;
-} */
-
-
-
-/* #firstLow {
-    display: flex;
-    justify-content: space-between; */
-/* background: greenyellow; */
-/* margin-top: 5%;
-} */
-
-/* .box {
-    text-align: center;
-}
-
-.box:hover {
-    cursor: pointer;
-}
-
-.box p {
-    margin-top: 5px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    
-}
-
-.iconBox {
-    border: 3px dotted #ccc;
-    border-radius: 15px;
-    width: 100%;
-    height: 100%;
-    
-}
-
-.iconBox img {
-    margin-top: 15%;
-    
-    width: 80%;
-    height: 80%;
-}
-
-.iconBox img:hover {
-    scale: 1.2;
-    overflow: hidden;
-    transition: 1s;
-}
-
-#secondLow {
-    margin-top: 10%;
-    display: flex;
-    justify-content: space-between;
-    
-}
-
-
-#pickSubject {
-    margin-top: 10%;
-    height: 10%;
-    padding: 0;
-}
-
-#subject {
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    font-size: 1.2rem;
-} */
-
-/* #simpleSearch {
-    height: 50px;
-    margin-top: 20px;
-    text-align: center;
-} */
-
-/* #searchButton {
-    height: 100%;
-    width: 80%;
-    border-radius: 15px;
-}
-
-#detailButton {
-    height: 100%;
-    width: 80%;
-    border-radius: 15px;
-}
-
-#detailSearch {
-    height: 50px;
-    margin-top: 20px;
-    text-align: center;
-} */
-
-/* #simpleInfo {
-    height: 95%;
-    margin-top: 50px;
-    z-index: 10;
-    position: absolute;
-    background-color: white;
-    border-radius: 50px;
-    margin-left: 26%;
-    transition: 0.5s;
-}
-
-#detailInfo {
-    height: 95%;
-    margin-top: 50px;
-    z-index: 10;
-    position: absolute;
-    background-color: white;
-    border-radius: 50px;
-    margin-left: 25%;
-    transition: 0.5s;
-} */
-
-/* 
-#simpleClose {
-    height: 50px;
-    width: 50px;
-    float: right;
-    margin-top: 20px;
-    margin-right: 20px;
-}
-
-#detailClose {
-    height: 50px;
-    width: 50px;
-    float: right;
-    margin-top: 20px;
-    margin-right: 20px;
-}
-
-.searchInfoIcon {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    left: 50px;
-    z-index: 9999;
-    cursor: pointer;
-}
-
-.searchInfoIcon button {
-    font-size: 2rem;
-}
-
-.searchInfoIcon:hover {
-    opacity: 1;
-} */
-
-/* #choiceBox {
-    display: flex;
-    border: 1px solid #ccc;
-    margin-top: 100px;
-    width: 80%;
-    height: 50px;
-    justify-content: center;
-    margin-left: 10%;
-} */
-
-/* #regionChoice,
-#subjectChoice {
-  
+.vertical1 {
+    height: 650px;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 40%;
- 
-} */
+}
 
-/* #salePredict {
+.inputSection {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0;
+    width: 100%;
     display: flex;
-    margin-top: 50px;
-    margin-left: 10%;
-    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.subtitle {
+    font-size: 20px;
+    width: 180px;
+    height: 40px;
+    border: none;
+    border-radius: 18px;
+    background-color: #A9A9A9;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#submitButton {
+    font-size: 20px;
+    width: 180px;
+}
+
+.large-number {
+    font-size: 1.5em;
+    font-weight: bold;
+
+}
+
+#map3 {
+    overflow: hidden;
+    width: 100%;
+    height: 900px;
+}
+
+#analyzeInfo {
+    overflow-x: hidden;
+}
+
+#s_salePredict {
     border-bottom: 3px solid #ccc;
     height: 70px;
 }
 
-#population {
-    display: flex;
-    margin-top: 50px;
-    margin-left: 10%;
-    width: 80%;
-    border-bottom: 3px solid #ccc;
-    height: 70px;
-}
-
-#floatingPp {
-    display: flex;
-    margin-top: 50px;
-    margin-left: 10%;
-    width: 80%;
-    border-bottom: 3px solid #ccc;
-    height: 70px;
-}
-
-#countHospital {
-    display: flex;
-    margin-top: 50px;
-    margin-left: 10%;
-    width: 80%;
-    border-bottom: 3px solid #ccc;
-    height: 70px;
-}
-
-.bodyIcon {
+.s_bodyIcon {
     margin-left: 5%;
-    display: flex;
     align-items: center;
 }
 
-.bodyIcon img {
+.s_bodyIcon img {
     width: 50px;
     height: 50px;
 }
 
-.textBox {
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
+.s_textBox {
+    line-height: 50px;
     margin-left: 5%;
 }
 
-.chartBox {
-    width: 80%;
-    margin-left: 10%;
-    height: 40%;
+.s_chartBox {
+    width: 90%;
+    margin-left: 5%;
+    height: 400px;
 }
 
-.roundChartBox {
-    width: 50%;
-    margin-left: 25%;
-    margin-top: 3%;
+.list_textBox {
+    line-height: 50px;
+    color: rgb(202, 117, 117);
 }
 
-.blank {
-    width: 100%;
-    height: 5%;
-} */
-    {}
+.list_box {
+    height: 70px;
+    border-bottom: 3px solid #ccc;
+}
+
+.chart_box {
+    border-bottom: 3px solid #ccc;
+    padding-bottom: 50px;
+}
+
+.figurebox {
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 5%;
+}
+
+.figure-caption {
+    color: #a3a3a3;
+}
+
+#income_list {
+    border-bottom: 3px solid rgb(158, 0, 0);
+}
+
+.double_box {
+    width: 90%;
+    margin-left: 5%;
+    border-bottom: 3px solid #ccc;
+    padding-bottom: 20px;
+}
+
+.double_container {
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+}
+
+.double {
+    width: 40%;
+}
+
+.button_box {
+    display: flex;
+    justify-content: center;
+}
+
+.button_box button {
+    margin: 20px;
+}
 
 @media (min-width:1501px) {
     #simpleInfo {

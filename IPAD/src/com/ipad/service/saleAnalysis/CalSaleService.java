@@ -1,16 +1,12 @@
 package com.ipad.service.saleAnalysis;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
-
 import com.google.gson.Gson;
-import com.ipad.dao.saleAnalysis.CalNetProfitDao;
 import com.ipad.dao.saleAnalysis.CalSaleDao;
 import com.ipad.dao.saleAnalysis.PatientDao;
 import com.ipad.dto.saleAnalysis.CalculateDto;
@@ -18,7 +14,7 @@ import com.ipad.service.Service;
 
 public class CalSaleService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		String regionCode = "";
+		String regionCode = null;
 		String regionName = request.getParameter("name");
 		CalculateDto dto = new CalculateDto();
 
@@ -54,6 +50,5 @@ public class CalSaleService implements Service {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 }

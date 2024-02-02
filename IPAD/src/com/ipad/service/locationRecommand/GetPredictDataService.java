@@ -33,37 +33,36 @@ public class GetPredictDataService implements Service {
 
 			}
 			JSONObject jsonData = new JSONObject(sb.toString());
-		String regionName = jsonData.getString("name");
-		CalculateDto dto = new CalculateDto();
-		
-		PatientDao patientDao = new PatientDao();
-		CalSaleDao calSaleDao = new CalSaleDao();
-		CalNetProfitDao calNetProfit = new CalNetProfitDao();
-		if (regionName != null) {
+			String regionName = jsonData.getString("name");
+			
+			CalculateDto dto = new CalculateDto();
+
+			PatientDao patientDao = new PatientDao();
+			CalSaleDao calSaleDao = new CalSaleDao();
+			CalNetProfitDao calNetProfit = new CalNetProfitDao();
+
 			regionCode = calSaleDao.getResionCode(regionName);
-		} else {
-			regionCode = request.getParameter("regionCode");
-		}
-		
-		int calPatient = patientDao.patientCal(regionCode);
-		int employee = patientDao.employeeCal(calPatient);
-		int size = patientDao.areaSizeCal(calPatient);
-		int calSale = calSaleDao.calculateSale(regionCode);
-		int rentFee = calNetProfit.CalRentFee(regionCode,  Integer.toString(size));
-		int employment_cost = calNetProfit.CalEmploymentAvgFee(regionCode);
-		int netProfit = calSale - rentFee-employment_cost;
 
-		dto.setPredictPatient(calPatient);
-		dto.setEmployee(employee);
-		dto.setSize(size);
-		dto.setPredictSale(calSale);
-		dto.setNetProfit(netProfit);
+			
+			int calPatient = patientDao.patientCal(regionCode);
+			int employee = patientDao.employeeCal(calPatient);
+			int size = patientDao.areaSizeCal(calPatient);
+			int calSale = calSaleDao.calculateSale(regionCode);
+			int rentFee = calNetProfit.CalRentFee(regionCode, Integer.toString(size));
+			int employment_cost = calNetProfit.CalEmploymentAvgFee(regionCode);
+			int netProfit = calSale - rentFee - employment_cost;
 
-		String jsonResponse = new Gson().toJson(dto);
+			dto.setPredictPatient(calPatient);
+			dto.setEmployee(employee);
+			dto.setSize(size);
+			dto.setPredictSale(calSale);
+			dto.setNetProfit(netProfit);
 
-		request.setAttribute("dto", dto);
-		
-		PrintWriter out = response.getWriter(); 
+			String jsonResponse = new Gson().toJson(dto);
+
+			request.setAttribute("dto", dto);
+
+			PrintWriter out = response.getWriter();
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			out.print(jsonResponse);
@@ -73,7 +72,5 @@ public class GetPredictDataService implements Service {
 		}
 
 	}
-		
-	}
 
-
+}
