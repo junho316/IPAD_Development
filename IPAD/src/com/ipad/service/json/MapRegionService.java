@@ -1,4 +1,4 @@
-package com.ipad.service;
+package com.ipad.service.json;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,21 +7,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ipad.dao.locationAnalysis.FootTrafficDao;
 import com.ipad.dao.locationAnalysis.HospitalDao;
-import com.ipad.dao.locationAnalysis.OpenCloseCountDao;
 import com.ipad.dao.locationAnalysis.ResidentPopulationDao;
 import com.ipad.dto.locationAnalysis.HospitalCountDto;
 import com.ipad.dto.locationAnalysis.HospitalPopulationDTO;
-import com.ipad.dto.locationAnalysis.OpenCloseCountDto;
 import com.ipad.dto.locationAnalysis.RegionSummaryDto;
 import com.ipad.dto.locationAnalysis.ResidentPopulationDto;
-import com.ipad.dto.locationRecommand.HospitalDetailDto;
+import com.ipad.service.Service;
 
-public class JsonService {
+public class MapRegionService implements Service {
 
-	// 지도 페이지 지역 정보
-	public void mapRegionData(HttpServletRequest request, HttpServletResponse response) {
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		ArrayList<RegionSummaryDto> regionSummaryDtos = new ArrayList<RegionSummaryDto>();
 
 		// 병원수
@@ -204,65 +201,7 @@ public class JsonService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public void mapData(HttpServletRequest request, HttpServletResponse response) {
-		ObjectMapper objectMapper = new ObjectMapper();
-		HospitalDao dao = new HospitalDao();
-		ArrayList<HospitalDetailDto> dtos = dao.getHospitalData();
-		try {
-			String json = objectMapper.writeValueAsString(dtos);
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(json);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void hospitalChart(HttpServletRequest request, HttpServletResponse response) {
-		ObjectMapper objectMapper = new ObjectMapper();
-		OpenCloseCountDao dao = new OpenCloseCountDao();
-		ArrayList<OpenCloseCountDto> dtos = dao.getOpenData();
-		try {
-			String json = objectMapper.writeValueAsString(dtos);
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(json);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void residentPopulationChart(HttpServletRequest request, HttpServletResponse response) {
-
-		ObjectMapper objectMapper = new ObjectMapper();
-
-		ResidentPopulationDao residentPopulationDao = new ResidentPopulationDao();
-		FootTrafficDao footTrafficDao = new FootTrafficDao();
-
-		ArrayList<ResidentPopulationDto> dtos = new ArrayList<ResidentPopulationDto>();
-		ArrayList<String> admCds = residentPopulationDao.getAdmCode();
-
-		try {
-			// 전체 데이터를 담을 리스트
-			ArrayList<ResidentPopulationDto> allData = new ArrayList<>();
-
-			// 각 지역 코드에 대한 데이터를 전체 데이터에 추가
-			for (String admCd : admCds) {
-				ArrayList<ResidentPopulationDto> residentPopulationDtosdtos = residentPopulationDao
-						.selectPopulationData(admCd);
-				allData.addAll(residentPopulationDtosdtos);
-			}
-
-			// 전체 데이터를 JSON으로 변환하여 응답
-			String json = objectMapper.writeValueAsString(allData);
-			response.setContentType("application/json");
-			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write(json);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 }
