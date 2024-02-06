@@ -132,7 +132,7 @@
 					<div class="modal-body" id="analyzeInfo">
 						<figure class="figure figurebox">
 							<div id="s_salePredict_list" class="row justify-content-between list_box">
-								<div class="col s_bodyIcon"><img src="${pageContext.request.contextPath}/img/won.png"
+								<div class="col-1 s_bodyIcon"><img src="${pageContext.request.contextPath}/img/won.png"
 										alt=""></div>
 								<div class="col fs-5 text-end list_textBox" id="salePredictList"></div>
 							</div>
