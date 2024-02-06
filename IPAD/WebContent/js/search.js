@@ -12,7 +12,6 @@ function newpage() {
     window.open('../jsp/saleAnalysis/analyze.jsp', 'result', 'width=800, height=1200, left=550');
     return true;
 }
-
 function validateForm() {
     var areaSize = document.getElementById('area-size').value;
     var seniorEmployeeCount = document.getElementById('senior-employee-count').value;
@@ -20,7 +19,6 @@ function validateForm() {
     var deptAmount = document.getElementById('dept-amount').value;
     var regionCodeCheck = document.getElementById('area-name').value;
 
-    console.log(regionCodeCheck);
 
     if (areaSize < 15 || areaSize > 150 ||
         seniorEmployeeCount < 0 || seniorEmployeeCount > 10 ||
@@ -252,21 +250,21 @@ window.onload = function () {
                     });
                 }
                 var detailModal = $('#detailModal');
-                clearModal();
+                // clearModal();
 
                 detailModal.modal('show');
             });
         }
     }
 
-    function clearModal() {
-        $('#area-size').val('');
-        $('#senior-employee-count').val('');
-        $('#junior-employee-count').val('');
-        $('#dept-amount').val('');
-        $('#area-name').val('');
-        $('#area-code').val('');
-    }
+    // function clearModal() {
+    //     $('#area-size').val('');
+    //     $('#senior-employee-count').val('');
+    //     $('#junior-employee-count').val('');
+    //     $('#dept-amount').val('');
+    // $('#area-name').val('');
+    // $('#area-code').val('');
+    // }
 
     function removePolygon() {
 
@@ -287,7 +285,6 @@ window.onload = function () {
         event.preventDefault();
 
         var rgCode = document.getElementById('area-code').value;
-        console.log(rgCode);
         var seEmple = document.getElementById('senior-employee-count').value;
         var juEmple = document.getElementById('junior-employee-count').value;
         var arSize = document.getElementById('area-size').value;

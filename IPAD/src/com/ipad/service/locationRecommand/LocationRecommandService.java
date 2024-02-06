@@ -54,9 +54,9 @@ public class LocationRecommandService implements Service {
 			response.setCharacterEncoding("UTF-8");
 			out.print(jsonResponse);
 			out.flush();
-		} catch (IOException e1) {
+		} catch (IOException e) {
 			 
-			e1.printStackTrace();
+			e.printStackTrace();
 		}
 
 	}

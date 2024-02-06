@@ -56,49 +56,12 @@ public class LocationRecommandDao {
 		return average;
 	}
 
-	public ArrayList<Integer> getSale(ArrayList<LocationRecommandDto> dto) {
-		ArrayList<Integer> dataList = new ArrayList<>();
-		for (int i = 0; i < dto.size(); i++) {
-			dto.get(i).getSale();
-		}
-		return dataList;
-	}
-
-	public ArrayList<Integer> getTeens(ArrayList<LocationRecommandDto> dto) {
-		ArrayList<Integer> dataList = new ArrayList<>();
-		for (int i = 0; i < dto.size(); i++) {
-			dto.get(i).getTeens();
-		}
-		return dataList;
-	}
-	public ArrayList<Integer> getTwenties(ArrayList<LocationRecommandDto> dto) {
-		ArrayList<Integer> dataList = new ArrayList<>();
-		for (int i = 0; i < dto.size(); i++) {
-			dto.get(i).getTwenties();
-		}
-		return dataList;
-	}
-
-	public ArrayList<Integer> getSixties(ArrayList<LocationRecommandDto> dto) {
-		ArrayList<Integer> dataList = new ArrayList<>();
-		for (int i = 0; i < dto.size(); i++) {
-			dto.get(i).getSixties();
-		}
-		return dataList;
-	}
-	public ArrayList<Integer> getOver70s(ArrayList<LocationRecommandDto> dto) {
-		ArrayList<Integer> dataList = new ArrayList<>();
-		for (int i = 0; i < dto.size(); i++) {
-			dto.get(i).getOver70s();
-		}
-		return dataList;
-	}
-
 	public void setSaleScore(LocationRecommandDto dto) {
 		double score = 0;
 		score = (dto.getSale() - minData("sale")) * 10 / (maxData("sale") - minData("sale"));
 		dto.setSaleScore(score);
 	}
+
 	public void setTeensScore(LocationRecommandDto dto) {
 		double score = 0;
 		score = (dto.getTeens() - minData("teens")) * 10 / (maxData("teens") - minData("teens"));
@@ -116,6 +79,7 @@ public class LocationRecommandDao {
 		score = (dto.getSixties() - minData("sixties")) * 10 / (maxData("sixties") - minData("sixties"));
 		dto.setSixtiesScore(score);
 	}
+
 	public void setOver70sScore(LocationRecommandDto dto) {
 		double score = 0;
 		score = (dto.getOver70s() - minData("over70s")) * 10 / (maxData("over70s") - minData("over70s"));
@@ -124,13 +88,17 @@ public class LocationRecommandDao {
 
 	public void setTotalScore(LocationRecommandDto dto, boolean opt1, boolean opt2) {
 		if (opt1 == true && opt2 == true) {
-			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 1+dto.getTeensScore()*1 + dto.getSixtiesScore() * 1+dto.getOver70sScore()*1);
+			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 1 + dto.getTeensScore() * 1
+					+ dto.getSixtiesScore() * 1 + dto.getOver70sScore() * 1);
 		} else if (opt1 == false && opt2 == true) {
-			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 0+dto.getTeensScore()*0 + dto.getSixtiesScore() * 2+dto.getOver70sScore()*2);
+			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 0 + dto.getTeensScore() * 0
+					+ dto.getSixtiesScore() * 2 + dto.getOver70sScore() * 2);
 		} else if (opt1 == true && opt2 == false) {
-			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 2+dto.getTeensScore()*2 + dto.getSixtiesScore() * 0+dto.getOver70sScore()*0);
+			dto.setTotalScore(dto.getSaleScore() * 6 + dto.getTwentiesScore() * 2 + dto.getTeensScore() * 2
+					+ dto.getSixtiesScore() * 0 + dto.getOver70sScore() * 0);
 		} else if (opt1 == false && opt2 == false) {
-			dto.setTotalScore(dto.getSaleScore() * 10 + dto.getTwentiesScore() * 0+dto.getTeensScore()*0 + dto.getSixtiesScore() * 0+dto.getOver70sScore()*0);
+			dto.setTotalScore(dto.getSaleScore() * 10 + dto.getTwentiesScore() * 0 + dto.getTeensScore() * 0
+					+ dto.getSixtiesScore() * 0 + dto.getOver70sScore() * 0);
 		}
 
 	}
@@ -141,7 +109,6 @@ public class LocationRecommandDao {
 			con = dataSource.getConnection();
 			String query = "select min(" + option + ") from region_data";
 			pstmt = con.prepareStatement(query);
-//			pstmt.setString(1, option);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -167,7 +134,6 @@ public class LocationRecommandDao {
 			con = dataSource.getConnection();
 			String query = "select max(" + option + ") from region_data";
 			pstmt = con.prepareStatement(query);
-//			pstmt.setString(1, option);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -230,17 +196,6 @@ public class LocationRecommandDao {
 			}
 		}
 		return max;
-	}
-
-	public ArrayList<LocationRecommandDto> getList(ArrayList<LocationRecommandDto> dtos) {
-		ArrayList<LocationRecommandDto> list = new ArrayList<LocationRecommandDto>();
-		double max = getMaxScore(dtos);
-		for (int i = 0; i < dtos.size(); i++) {
-			if (dtos.get(i).getTotalScore() == max) {
-				list.add(dtos.get(i));
-			}
-		}
-		return list;
 	}
 
 	public List<LocationRecommandDto> getTop3List(List<LocationRecommandDto> dtos) {
