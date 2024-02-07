@@ -15,10 +15,10 @@ public class ConnectHospitalApiService implements ConnectAPIService {
 
 	private String apiKey = "b5bf0e1932654fa68ed0dfa7d6fea986";
 	private String url = "https://openapi.gg.go.kr/DentistryPrivateHospital";
-	HospitalDao dao = new HospitalDao();
 	private ArrayList<String> sigunNameList = new ArrayList<String>();
 
 	public ConnectHospitalApiService() {
+		HospitalDao dao = new HospitalDao();
 		try {
 			sigunNameList = dao.getSigunNm();
 		} catch (Exception e) {
@@ -28,6 +28,7 @@ public class ConnectHospitalApiService implements ConnectAPIService {
 
 	// JsonNode에 있는 데이터를 DB에 저장하는 메소드
 	public void insertData() {
+		HospitalDao dao = new HospitalDao();
 		try {
 			for (String sigunName : sigunNameList) {
 				JsonNode jsonData = parseJsonData(fetchDataFromAPI(sigunName));

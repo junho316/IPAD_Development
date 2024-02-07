@@ -17,13 +17,13 @@ public class ConnectResidentPopulationAPIService implements ConnectAPIService {
 	private String token;
 	private String url = "https://sgisapi.kostat.go.kr/OpenAPI3/stats/searchpopulation.json";
 
-	ResidentPopulationDao dao = new ResidentPopulationDao();
 	private ArrayList<String> admCodeList = new ArrayList<String>();
 	private ArrayList<String> yearList = new ArrayList<String>();
 	private ArrayList<String> ageTypeList = new ArrayList<String>();
 	private String[] genderTypeList = { "0", "1", "2" };
 
 	public ConnectResidentPopulationAPIService() {
+		ResidentPopulationDao dao = new ResidentPopulationDao();
 		try {
 			GetOpenAPITokenServiceIMPL getPopulationOpenAPIToken = new GetOpenAPITokenServiceIMPL();
 			token = getPopulationOpenAPIToken.getToken();
@@ -37,6 +37,7 @@ public class ConnectResidentPopulationAPIService implements ConnectAPIService {
 
 	// JsonNode에 있는 데이터를 DB에 저장하는 메소드
 	public void insertData() {
+		ResidentPopulationDao dao = new ResidentPopulationDao();
 		try {
 			for (String admCode : admCodeList) {
 				for (String year : yearList) {
@@ -97,7 +98,7 @@ public class ConnectResidentPopulationAPIService implements ConnectAPIService {
 			while ((line = reader.readLine()) != null) {
 				apiResponse.append(line);
 			}
-			
+
 			return apiResponse.toString();
 		}
 	}

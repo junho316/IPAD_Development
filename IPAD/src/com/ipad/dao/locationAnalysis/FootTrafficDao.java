@@ -12,7 +12,6 @@ import javax.sql.DataSource;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.ipad.dto.locationAnalysis.FootTrafficDto;
-import com.ipad.dto.locationAnalysis.ResidentPopulationDto;
 
 public class FootTrafficDao {
 	private Connection con;
@@ -136,7 +135,7 @@ public class FootTrafficDao {
 		}
 	}
 
-	private static String transformString(String originalString) {
+	private String transformString(String originalString) {
 		String year = originalString.substring(0, 4);
 		String quarter = originalString.substring(4);
 		return year + "년 " + quarter + "분기";

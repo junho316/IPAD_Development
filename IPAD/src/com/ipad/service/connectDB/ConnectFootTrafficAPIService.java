@@ -14,10 +14,10 @@ import oracle.net.aso.d;
 public class ConnectFootTrafficAPIService implements ConnectAPIService {
 
 	private String url = "http://openapi.seoul.go.kr:8088/4b45426a4e6a756e353463624e574c/json/VwsmAdstrdFlpopW";
-	FootTrafficDao dao = new FootTrafficDao();
 
 	// JsonNode에 있는 데이터를 DB에 저장하는 메소드
 	public void insertData() {
+		FootTrafficDao dao = new FootTrafficDao();
 		try {
 			int start = 1;
 			int end = 1000;

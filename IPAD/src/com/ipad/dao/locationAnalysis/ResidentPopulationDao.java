@@ -13,15 +13,13 @@ import javax.sql.DataSource;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.ipad.dto.locationAnalysis.ResidentPopulationDto;
 
-import oracle.net.aso.i;
-
 public class ResidentPopulationDao {
 
 	private Connection con;
 	private PreparedStatement pstmt;
 	private ResultSet resultSet;
 	private DataSource dataSource;
-	ArrayList<String> admCode = new ArrayList<String>();
+	private ArrayList<String> admCode = new ArrayList<String>();
 
 	public ResidentPopulationDao() {
 		try {

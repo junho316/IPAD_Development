@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ipad.dao.locationAnalysis.HospitalDao;
-import com.ipad.dto.locationRecommand.HospitalDetailDto;
+import com.ipad.dto.locationRecommand.HospitalDto;
 import com.ipad.service.Service;
 
 public class MapDataService implements Service {
@@ -16,7 +16,7 @@ public class MapDataService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		HospitalDao dao = new HospitalDao();
-		ArrayList<HospitalDetailDto> dtos = dao.getHospitalData();
+		ArrayList<HospitalDto> dtos = dao.getHospitalData();
 		try {
 			String json = objectMapper.writeValueAsString(dtos);
 			response.setContentType("application/json");

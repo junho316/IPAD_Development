@@ -9,16 +9,7 @@ import com.ipad.service.locationAnalysis.OpenCloseCountService;
 public class UpdateDBService {
 	private ScheduledExecutorService scheduler;
 
-	ConnectFootTrafficAPIService connectFootTrafficAPIService = new ConnectFootTrafficAPIService();
-	ConnectHospitalApiService connectHospitalApiService = new ConnectHospitalApiService();
-	ConnectResidentPopulationAPIService connectResidentPopulationAPIService = new ConnectResidentPopulationAPIService();
-	OpenCloseCountService openCloseCountService = new OpenCloseCountService();
-	DetailPopulationAPIService detailPopulationAPIService = new DetailPopulationAPIService();
-	DetailBuildingAPIService detailBuildingAPIService = new DetailBuildingAPIService();
-	ConnectPopulationAPIService connectPopulationService = new ConnectPopulationAPIService();
-	PopulationForecastService populationForecastService = new PopulationForecastService();
-
-	// DB 데이터 업데이트
+	// DB 데이터 업데이트 
 	public void updateDB() {
 		scheduler = Executors.newScheduledThreadPool(1);
 		scheduler.scheduleAtFixedRate(this::runDailyTask, 0, 30, TimeUnit.MINUTES);
@@ -33,6 +24,14 @@ public class UpdateDBService {
 
 	// 일정 시간마다 반복해서 실행하는 메소드
 	private void runDailyTask() {
+		ConnectFootTrafficAPIService connectFootTrafficAPIService = new ConnectFootTrafficAPIService();
+		ConnectHospitalApiService connectHospitalApiService = new ConnectHospitalApiService();
+		ConnectResidentPopulationAPIService connectResidentPopulationAPIService = new ConnectResidentPopulationAPIService();
+		OpenCloseCountService openCloseCountService = new OpenCloseCountService();
+		DetailPopulationAPIService detailPopulationAPIService = new DetailPopulationAPIService();
+		DetailBuildingAPIService detailBuildingAPIService = new DetailBuildingAPIService();
+		ConnectPopulationAPIService connectPopulationService = new ConnectPopulationAPIService();
+		PopulationForecastService populationForecastService = new PopulationForecastService();
 //		connectPopulationService.insertData();
 //		detailPopulationAPIService.insertData();
 //		detailBuildingAPIService.insertData();

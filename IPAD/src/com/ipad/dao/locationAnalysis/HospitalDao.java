@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.ipad.dto.locationAnalysis.HospitalCountDto;
-import com.ipad.dto.locationRecommand.HospitalDetailDto;
+import com.ipad.dto.locationRecommand.HospitalDto;
 
 
 public class HospitalDao {
@@ -63,8 +63,8 @@ public class HospitalDao {
 	}
 
 	// 차트용 데이터
-	public ArrayList<HospitalDetailDto> getHospitalData() {
-		ArrayList<HospitalDetailDto> dtos = new ArrayList<HospitalDetailDto>();
+	public ArrayList<HospitalDto> getHospitalData() {
+		ArrayList<HospitalDto> dtos = new ArrayList<HospitalDto>();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			con = dataSource.getConnection();
@@ -86,7 +86,7 @@ public class HospitalDao {
 				if (close_date != null) {
 					close_dateString = dateFormat.format(close_date);
 				}
-				HospitalDetailDto dto = new HospitalDetailDto(hospital_name, region, address, region_name_detail,
+				HospitalDto dto = new HospitalDto(hospital_name, region, address, region_name_detail,
 						business_status, x_coordinate, y_coordinate, license_dateString, close_dateString);
 				dtos.add(dto);
 			}

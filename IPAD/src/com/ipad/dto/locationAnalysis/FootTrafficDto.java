@@ -26,16 +26,16 @@ public class FootTrafficDto {
 		this.population_fri = population_fri;
 		this.population_sat = population_sat;
 		this.population_sun = population_sun;
-		this.region_name_detail = region_name_detail;
+		this.setRegion_name_detail(region_name_detail);
 
 	}
 
-	public String getAdv_cd() {
+	public String getAdm_cd() {
 		return adm_cd;
 	}
 
-	public void setAdv_cd(String adv_cd) {
-		this.adm_cd = adv_cd;
+	public void setAdm_cd(String adm_cd) {
+		this.adm_cd = adm_cd;
 	}
 
 	public String getQuater() {
@@ -108,6 +108,14 @@ public class FootTrafficDto {
 
 	public void setPopulation_sun(String population_sun) {
 		this.population_sun = population_sun;
+	}
+
+	public String getRegion_name_detail() {
+		return region_name_detail;
+	}
+
+	public void setRegion_name_detail(String region_name_detail) {
+		this.region_name_detail = region_name_detail;
 	}
 
 }

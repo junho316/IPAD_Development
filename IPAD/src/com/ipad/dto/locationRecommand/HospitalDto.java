@@ -1,26 +1,38 @@
-package com.ipad.dto.locationAnalysis;
+package com.ipad.dto.locationRecommand;
 
 import java.sql.Date;
 
 public class HospitalDto {
 	private String hospital_name;
 	private String region;
-	private Date license_date;
+	private String license_date;
 	private String business_status;
+	private String region_name_detail;
 	private String address;
-	private Date close_date;
+	private String close_date;
 	private float x_coordinate;
 	private float y_coordinate;
 
-	public HospitalDto(String hospital_name, String region, String address, String business_status, float x_coordinate,
-			float y_coordinate) {
+	public HospitalDto(String hospital_name, String region, String address, String region_name_detail,
+			String business_status, float x_coordinate, float y_coordinate, String license_date, String close_date) {
 		this.hospital_name = hospital_name;
 		this.region = region;
 		this.address = address;
 		this.business_status = business_status;
 		this.x_coordinate = x_coordinate;
 		this.y_coordinate = y_coordinate;
+		this.region_name_detail = region_name_detail;
+		this.license_date = license_date;
+		this.close_date = close_date;
 
+	}
+
+	public String getAdm_cd() {
+		return region_name_detail;
+	}
+
+	public void setAdm_cd(String adm_cd) {
+		this.region_name_detail = adm_cd;
 	}
 
 	public String getHospital_name() {
@@ -39,11 +51,11 @@ public class HospitalDto {
 		this.region = region;
 	}
 
-	public Date getLicense_date() {
+	public String getLicense_date() {
 		return license_date;
 	}
 
-	public void setLicense_date(Date license_date) {
+	public void setLicense_date(String license_date) {
 		this.license_date = license_date;
 	}
 
@@ -63,11 +75,11 @@ public class HospitalDto {
 		this.address = address;
 	}
 
-	public Date getClose_date() {
+	public String getClose_date() {
 		return close_date;
 	}
 
-	public void setClose_date(Date close_date) {
+	public void setClose_date(String close_date) {
 		this.close_date = close_date;
 	}
 
@@ -86,5 +98,14 @@ public class HospitalDto {
 	public void setY_coordinate(float y_coordinate) {
 		this.y_coordinate = y_coordinate;
 	}
+
+	public String getRegion_name_detail() {
+		return region_name_detail;
+	}
+
+	public void setRegion_name_detail(String region_name_detail) {
+		this.region_name_detail = region_name_detail;
+	}
+	
 
 }

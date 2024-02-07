@@ -18,8 +18,7 @@ import com.ipad.service.connectDB.UpdateDBService;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
-
-	UpdateDBService updateDBService;
+	private UpdateDBService updateDBService;
 
 	public void init() throws ServletException {
 		updateDBService = new UpdateDBService();
@@ -36,7 +35,7 @@ public class FrontController extends HttpServlet {
 		actionDO(request, response);
 	}
 
-	protected void actionDO(HttpServletRequest request, HttpServletResponse response)
+	private void actionDO(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String viewPage = null;
@@ -46,7 +45,7 @@ public class FrontController extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		String pathAfterContext = extractDesiredPart(com);
-		
+
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 
@@ -72,7 +71,7 @@ public class FrontController extends HttpServlet {
 			} else if (pathAfterContext.equals("/locationRecommand")) {
 				controller = new LocationRecommandController();
 				controller.execute(request, response, com);
-			} 
+			}
 		}
 	}
 
