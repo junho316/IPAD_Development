@@ -60,7 +60,7 @@ public class GetPredictDataService implements Service {
 
 			String jsonResponse = new Gson().toJson(dto);
 
-			request.setAttribute("dto", dto);
+//			request.setAttribute("dto", dto);
 
 			PrintWriter out = response.getWriter();
 			response.setContentType("application/json");

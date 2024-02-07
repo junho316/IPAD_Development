@@ -193,42 +193,6 @@ public class SearchDao {
 		}
 	}
 
-	public ArrayList<SearchDto> select() {
-		ArrayList<SearchDto> dtos = new ArrayList<>();
-		try {
-			con = dataSource.getConnection();
-			String query = "select * from region_data order by adm_cd";
-			pstmt = con.prepareStatement(query);
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				SearchDto dto = new SearchDto();
-				dto.setAdm_cd(rs.getString("adm_cd"));
-				dto.setPopulation(rs.getInt("population"));
-				dto.setFloatingPp(rs.getInt("floatPp"));
-				dto.setHouseHold(rs.getInt("household"));
-				dto.setIncome(rs.getInt("income"));
-				dto.setDentalClinic(rs.getInt("dentalclinic"));
-				dto.setSale(rs.getInt("sale"));
-				dtos.add(dto);
-
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				rs.close();
-				pstmt.close();
-				con.close();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-
-		return dtos;
-	}
-
 	public void updateSale(String code) {
 		
 		pstmt = null;
@@ -238,12 +202,6 @@ public class SearchDao {
 			String query = "update region_data set sale = " + calculateSale(code) + " where adm_cd = " + code;
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
-
-//			String query = "update data set sale = ? where adm_cd = ? ";
-//			pstmt = con.prepareStatement(query);
-//			pstmt.setInt(1, calculateSale(code));
-//			pstmt.setString(2, code);
-//			pstmt.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -55,6 +55,7 @@ public class LocationRecommandDao {
 		}
 		return average;
 	}
+	
 
 	public void setSaleScore(LocationRecommandDto dto) {
 		double score = 0;

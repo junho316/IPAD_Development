@@ -11,7 +11,7 @@ import com.ipad.service.Service;
 import com.ipad.service.locationRecommand.GetPredictDataService;
 import com.ipad.service.locationRecommand.LocationRecommandService;
 import com.ipad.service.saleAnalysis.CalSaleService;
-import com.ipad.service.saleAnalysis.InfoService;
+//import com.ipad.service.saleAnalysis.InfoService;
 
 public class JsonController implements Controller {
 
@@ -32,14 +32,10 @@ public class JsonController implements Controller {
 			chartService.mapData(request, response);
 		} else if (com.equals("/json/mapRegion.do")) {
 			chartService.mapRegionData(request, response);
-		} else if (com.equals("/json/info.do")) {
-			service = new InfoService();
-			service.execute(request, response);
-			
-		} else if(com.equals("/json/locationRecommand.do")) {
+		} else if (com.equals("/json/locationRecommand.do")) {
 			service = new LocationRecommandService();
 			service.execute(request, response);
-		} else if(com.equals("/json/predict.do")) {
+		} else if (com.equals("/json/predict.do")) {
 			service = new GetPredictDataService();
 			service.execute(request, response);
 		}

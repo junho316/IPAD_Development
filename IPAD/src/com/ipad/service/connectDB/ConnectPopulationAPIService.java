@@ -14,10 +14,10 @@ import com.ipad.dto.saleAnalysis.SearchDto;
 
 public class ConnectPopulationAPIService implements ConnectAPIService {
 
-	String token;
-	String url = "https://sgisapi.kostat.go.kr/OpenAPI3/stats/searchpopulation.json";
+	private String token;
+	private String url = "https://sgisapi.kostat.go.kr/OpenAPI3/stats/searchpopulation.json";
 	SearchDao dao = new SearchDao();
-	int year = LocalDate.now().getYear();
+	private int year = LocalDate.now().getYear();
 	private ArrayList<SearchDto> dtos = new ArrayList<>();
 	private ArrayList<Integer> ageTypeList = new ArrayList<>();
 	private ArrayList<String> code = dao.selectAdm();
