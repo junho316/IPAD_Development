@@ -55,7 +55,6 @@ public class LocationRecommandDao {
 		}
 		return average;
 	}
-	
 
 	public void setSaleScore(LocationRecommandDto dto) {
 		double score = 0;
@@ -102,6 +101,17 @@ public class LocationRecommandDao {
 					+ dto.getSixtiesScore() * 0 + dto.getOver70sScore() * 0);
 		}
 
+	}
+
+	public void setScore(ArrayList<LocationRecommandDto> dtos, boolean opt1, boolean opt2) {
+		for (LocationRecommandDto dto : dtos) {
+			setSaleScore(dto);
+			setTeensScore(dto);
+			setTwentiesScore(dto);
+			setSixtiesScore(dto);
+			setOver70sScore(dto);
+			setTotalScore(dto, opt1, opt2);
+		}
 	}
 
 	public int minData(String option) {
@@ -159,7 +169,9 @@ public class LocationRecommandDao {
 		try {
 			con = dataSource.getConnection();
 
-			String query = "select data.twenties, data.teens, data.over70s, data.sixties, region.region_name_detail, region.adm_cd, data.sale from region_data data, region where data.adm_cd = region.adm_cd order by adm_cd";
+			String query = "SELECT data.twenties, data.teens, data.over70s, data.sixties, region.region_name_detail, region.adm_cd, sale.sale "
+					+ "FROM region_population data, region_sale sale, region "
+					+ "WHERE data.adm_cd = region.adm_cd AND data.adm_cd = sale.adm_cd " + "ORDER BY data.adm_cd";
 
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();

@@ -33,34 +33,15 @@ public class GetPredictDataService implements Service {
 
 			}
 			JSONObject jsonData = new JSONObject(sb.toString());
-			String regionName = jsonData.getString("name");
+			String regionName = jsonData.getString("name");		
 			
-			CalculateDto dto = new CalculateDto();
-
-			PatientDao patientDao = new PatientDao();
 			CalSaleDao calSaleDao = new CalSaleDao();
-			CalNetProfitDao calNetProfit = new CalNetProfitDao();
+			CalNetProfitDao calNetProfitDao = new CalNetProfitDao();
 
 			regionCode = calSaleDao.getResionCode(regionName);
 
-			
-			int calPatient = patientDao.patientCal(regionCode);
-			int employee = patientDao.employeeCal(calPatient);
-			int size = patientDao.areaSizeCal(calPatient);
-			int calSale = calSaleDao.calculateSale(regionCode);
-			int rentFee = calNetProfit.CalRentFee(regionCode, Integer.toString(size));
-			int employment_cost = calNetProfit.CalEmploymentAvgFee(regionCode);
-			int netProfit = calSale - rentFee - employment_cost;
-
-			dto.setPredictPatient(calPatient);
-			dto.setEmployee(employee);
-			dto.setSize(size);
-			dto.setPredictSale(calSale);
-			dto.setNetProfit(netProfit);
-
+			CalculateDto dto = calNetProfitDao.calNetProfit(regionCode);
 			String jsonResponse = new Gson().toJson(dto);
-
-//			request.setAttribute("dto", dto);
 
 			PrintWriter out = response.getWriter();
 			response.setContentType("application/json");

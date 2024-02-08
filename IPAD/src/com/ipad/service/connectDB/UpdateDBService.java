@@ -32,7 +32,7 @@ public class UpdateDBService {
 		DetailBuildingAPIService detailBuildingAPIService = new DetailBuildingAPIService();
 		ConnectPopulationAPIService connectPopulationService = new ConnectPopulationAPIService();
 		PopulationForecastService populationForecastService = new PopulationForecastService();
-//		connectPopulationService.insertData();
+		connectPopulationService.insertData();
 //		detailPopulationAPIService.insertData();
 //		detailBuildingAPIService.insertData();
 //		connectFootTrafficAPIService.insertData();

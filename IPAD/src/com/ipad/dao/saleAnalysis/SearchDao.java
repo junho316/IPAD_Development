@@ -29,7 +29,7 @@ public class SearchDao {
 	private ArrayList<Integer> resident = new ArrayList<>();
 	private ArrayList<Integer> floatpp = new ArrayList<>();
 	private ArrayList<SearchDto> dtoS = new ArrayList<>();
-	ArrayList<String> code;
+	private ArrayList<String> code;
 
 	public ArrayList<SearchDto> getDtoS() {
 		return dtoS;
@@ -67,26 +67,52 @@ public class SearchDao {
 			e.printStackTrace();
 		}
 	}
+	public void insertOtherData(SearchDto dto) {
+		try {
+			con=dataSource.getConnection();
+			String query ="insert into region_otherData (adm_cd, household, houseprice, dentalclinic, income, subway, bus, resident, floatpp) values (?,?,?,?,?,?,?,?,?)";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, dto.getAdm_cd());
+			pstmt.setInt(2, dto.getHouseHold());
+			pstmt.setInt(3, dto.getHousePrice());
+			pstmt.setInt(4, dto.getDentalClinic());
+			pstmt.setInt(5, dto.getIncome());
+			pstmt.setInt(6, dto.getSubway());
+			pstmt.setInt(7, dto.getBus());
+			pstmt.setInt(8, dto.getResident());
+			pstmt.setInt(9, dto.getFloatingPp());
+			pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				con.close();
+			} catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
 
-	public void insert(JsonNode record, int age, SearchDto dto) {
+	public void insertPopulation(JsonNode record, int age, SearchDto dto) {
 
 		try {
 			con = dataSource.getConnection();
 
 			if (age == 41) {
 
-				String query = "insert into region_data (adm_cd, POPULATION, HOUSEHOLD, HOUSEPRICE, DENTALCLINIC, INCOME, SUBWAY, BUS, RESIDENT, FLOATPP) values (?,?,?,?,?,?,?,?,?,?)";
+				String query = "insert into region_population (adm_cd, POPULATION) values (?,?)";
 				pstmt = con.prepareStatement(query);
 				pstmt.setString(1, dto.getAdm_cd());
 				pstmt.setInt(2, record.get("population").asInt());
-				pstmt.setInt(3, dto.getHouseHold());
-				pstmt.setInt(4, dto.getHousePrice());
-				pstmt.setInt(5, dto.getDentalClinic());
-				pstmt.setInt(6, dto.getIncome());
-				pstmt.setInt(7, dto.getSubway());
-				pstmt.setInt(8, dto.getBus());
-				pstmt.setInt(9, dto.getResident());
-				pstmt.setInt(10, dto.getFloatingPp());
+//				pstmt.setInt(3, dto.getHouseHold());
+//				pstmt.setInt(4, dto.getHousePrice());
+//				pstmt.setInt(5, dto.getDentalClinic());
+//				pstmt.setInt(6, dto.getIncome());
+//				pstmt.setInt(7, dto.getSubway());
+//				pstmt.setInt(8, dto.getBus());
+//				pstmt.setInt(9, dto.getResident());
+//				pstmt.setInt(10, dto.getFloatingPp());
 				pstmt.executeUpdate();
 
 			} else {
@@ -146,7 +172,7 @@ public class SearchDao {
 	public void update(JsonNode record, int age) {
 		try {
 			con = dataSource.getConnection();
-			String query = "update region_data set ";
+			String query = "update region_population set ";
 			switch(age) {
 			case 41:
 				query += "population";
@@ -199,7 +225,7 @@ public class SearchDao {
 
 		try {
 			con = dataSource.getConnection();
-			String query = "update region_data set sale = " + calculateSale(code) + " where adm_cd = " + code;
+			String query = "update region_sale set sale = " + calculateSale(code) + " where adm_cd = " + code;
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
 
@@ -249,7 +275,9 @@ public class SearchDao {
 		int sale = 0;
 		try {
 			con = dataSource.getConnection();
-			String query = "select twenties, thirties, sixties, over70s, floatPp, income, dentalClinic, subway from region_data where adm_cd=?";
+			String query = "SELECT rp.twenties, rp.thirties, rp.sixties, rp.over70s, rod.floatPp, rod.income, rod.dentalClinic, rod.subway \r\n" + 
+					"FROM region_population rp, region_otherData rod \r\n" + 
+					"WHERE rp.adm_cd = rod.adm_cd AND rp.adm_cd = ?";
 
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, adm_cd);
@@ -314,7 +342,7 @@ public class SearchDao {
 	public int checkDataDB() {
 		try {
 			con = dataSource.getConnection();
-			String query = "select count(*) from region_data";
+			String query = "select count(*) from region_population";
 			pstmt = con.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			

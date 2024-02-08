@@ -36,11 +36,12 @@ public class ConnectPopulationAPIService implements ConnectAPIService {
 
 	@Override
 	public void insertData() {
-		int checkNum = dao.checkDataDB();
+		int checkNum = dao.checkDataDB();		
 		JsonNode jsonData = null;
 		try {
 			if(checkNum<dtos.size()) {
 				for (SearchDto dto : dtos) {
+					dao.insertOtherData(dto);
 					for (int age : ageTypeList) {
 
 						try {
@@ -49,7 +50,8 @@ public class ConnectPopulationAPIService implements ConnectAPIService {
 								JsonNode resultNode = jsonData.get("result");
 								if (resultNode.isArray() && resultNode.size() > 0) {
 									JsonNode populationNode = resultNode.get(0);
-									dao.insert(populationNode, age, dto);
+									dao.insertPopulation(populationNode, age, dto);
+									
 								}
 							}
 						} catch (Exception e) {
@@ -68,6 +70,7 @@ public class ConnectPopulationAPIService implements ConnectAPIService {
 								if (resultNode.isArray() && resultNode.size() > 0) {
 									JsonNode populationNode = resultNode.get(0);
 									dao.update(populationNode, age);
+									
 								}
 							}
 						} catch (Exception e) {

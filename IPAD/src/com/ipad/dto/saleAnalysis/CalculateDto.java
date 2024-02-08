@@ -8,6 +8,17 @@ public class CalculateDto {
 	private int size;
 	private int employee;
 	private int netProfit;
+		
+	public CalculateDto() {
+		
+	}
+	public CalculateDto(int predictPatient, int employee, int size, int predictSale, int netProfit) {
+		this.predictPatient=predictPatient;
+		this.employee = employee;
+		this.size = size;
+		this.predictSale = predictSale;
+		this.netProfit = netProfit;
+	}
 	
 	public int getNetProfit() {
 		return netProfit;

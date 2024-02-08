@@ -9,6 +9,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.ipad.dto.saleAnalysis.CalculateDto;
+
 public class CalNetProfitDao {
 
 	private DataSource dataSource;
@@ -25,7 +27,7 @@ public class CalNetProfitDao {
 		}
 	}
 	
-	public int CalEmploymentAvgFee(String adm_cd) {
+	public int calEmploymentAvgFee(String adm_cd) {
 		int employmentFee =0;
 		try {
 			con=dataSource.getConnection();
@@ -53,7 +55,7 @@ public class CalNetProfitDao {
 		return employmentFee;
 	}
 
-	public int CalRentFee(String adm_cd, String areaSize) {
+	public int calRentFee(String adm_cd, String areaSize) {
 		int rentFee = 0;
 		int size = Integer.parseInt(areaSize);
 
@@ -82,7 +84,7 @@ public class CalNetProfitDao {
 		return rentFee;
 	}
 	
-	public ArrayList<Integer> CalEmploymentFee(String adm_cd, String seniorEmployeeCount, String juniorEmployeeCount) {
+	public ArrayList<Integer> calEmploymentFee(String adm_cd, String seniorEmployeeCount, String juniorEmployeeCount) {
 		ArrayList<Integer> empArray = new ArrayList<>();
 		
 		int employmentFee = 0;
@@ -121,5 +123,20 @@ public class CalNetProfitDao {
 		}
 		
 		return empArray;
+	}
+	
+	public CalculateDto calNetProfit(String adm_cd) {
+		
+		PatientDao patientDao = new PatientDao();
+		CalSaleDao saleDao = new CalSaleDao();
+		int patient = patientDao.patientCal(adm_cd);
+		int employee = patientDao.employeeCal(patient);
+		int size = patientDao.areaSizeCal(patient);
+		int sale = saleDao.calculateSale(adm_cd);
+		int rentFee = calRentFee(adm_cd, Integer.toString(size));
+		int wage = calEmploymentAvgFee(adm_cd);
+		int netProfit = sale - rentFee - wage*employee;
+		CalculateDto dto = new CalculateDto(patient, employee, size, sale, netProfit);
+		return dto;
 	}
 }

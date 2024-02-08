@@ -27,10 +27,10 @@ public class CalNetProfitService implements Service {
 		PatientDao patientDao = new PatientDao();
 		CalNetProfitDao calNetProfitDao = new CalNetProfitDao();
 
-		ArrayList<Integer> a = calNetProfitDao.CalEmploymentFee(regionCode, seniorEmployeeCount, juniorEmployeeCount);
+		ArrayList<Integer> a = calNetProfitDao.calEmploymentFee(regionCode, seniorEmployeeCount, juniorEmployeeCount);
 		int predictSale = calSaleDao.calculateSale(regionCode);
 		int predictPatient = patientDao.patientCal(regionCode);
-		int rentFee = calNetProfitDao.CalRentFee(regionCode, areaSize);
+		int rentFee = calNetProfitDao.calRentFee(regionCode, areaSize);
 		int employment_cost = a.get(0);
 		int seniorEmployment_cost = a.get(1);
 		int juniorEmployment_cost = a.get(2);
